@@ -11,14 +11,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="Class.cpp" />
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+    <ClCompile Include="BikaHttpClient.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Midl Include="Class.idl" />
+    <ClInclude Include="BikaHttpClient.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="BikaClient.def" />
@@ -28,6 +26,6 @@
     <None Include="PropertySheet.props" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="readme.txt" />
+    <Midl Include="BikaClient.idl" />
   </ItemGroup>
 </Project>

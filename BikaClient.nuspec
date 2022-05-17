@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>BikaClient</id>
+    <version>0.0.2</version>
+    <title>BikaClient</title>
+    <authors>KitUIN</authors>
+    <owners>KitUIN</owners>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/KitUIN/BikaClient</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>BikaClient</description>
+    <copyright>Copyright 2022-2022</copyright>
+    <icon>images\small-logo.png</icon>
+    <iconUrl>https://raw.githubusercontent.com/wiki/KitUIN/BikaClient/image/small-logo.png</iconUrl>
+    <tags>uwp</tags>
+    <dependencies>
+      <group targetFramework="UAP10.0">
+        <dependency id="Microsoft.UI.Xaml" version="2.7.1"/>
+        <dependency id="Microsoft.Windows.CppWinRT" version="2.0.210806.1"/>
+        <dependency id="VC-LTL" version="5.0.5" />
+        <dependency id="YY.NuGet.Import.Helper" version="1.0.0.4" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <!-- WinMd and IntelliSense files -->
+    <file src=".\x64\Release\BikaClient\BikaClient.xml" target="lib\uap10.0"/>
+    <file src=".\Release\BikaClient\BikaClient.winmd" target="lib\uap10.0"/>
+    <!-- DLLs and resources -->
+    <file src=".\ARM\Release\BikaClient\BikaClient.dll" target="runtimes\win10-arm\native"/>
+    <file src=".\ARM\Release\BikaClient\BikaClient.pri" target="runtimes\win10-arm\native"/>
+
+    <file src=".\ARM64\Release\BikaClient\BikaClient.dll" target="runtimes\win10-arm64\native"/>
+    <file src=".\ARM64\Release\BikaClient\BikaClient.pri" target="runtimes\win10-arm64\native"/>
+
+    <file src=".\x64\Release\BikaClient\BikaClient.dll" target="runtimes\win10-x64\native"/>
+    <file src=".\x64\Release\BikaClient\BikaClient.pri" target="runtimes\win10-x64\native"/>
+
+    <file src=".\Release\BikaClient\BikaClient.dll" target="runtimes\win10-x86\native"/>
+    <file src=".\Release\BikaClient\BikaClient.pri" target="runtimes\win10-x86\native"/>
+    <!-- .targets -->
+    <file src="BikaClient.targets" target="build\native"/>
+    <!-- Docs -->
+    <file src=".\BikaClient\README.md" target="content"/>
+    <file src=".\BikaClient\LICENSE*" target="content"/>
+    <file src=".\BikaClient\small-logo.png" target="images\small-logo.png" />
+
+  </files>
+</package>
