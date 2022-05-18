@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>BikaClient</id>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
     <title>BikaClient</title>
     <authors>KitUIN</authors>
     <owners>KitUIN</owners>
@@ -25,8 +25,8 @@
   </metadata>
   <files>
     <!-- WinMd and IntelliSense files -->
-    <file src=".\x64\Release\BikaClient\BikaClient.xml" target="lib\uap10.0"/>
     <file src=".\Release\BikaClient\BikaClient.winmd" target="lib\uap10.0"/>
+    <file src=".\x64\Release\BikaClient\BikaClient.xml" target="lib\uap10.0"/>
     <!-- DLLs and resources -->
     <file src=".\ARM\Release\BikaClient\BikaClient.dll" target="runtimes\win10-arm\native"/>
     <file src=".\ARM\Release\BikaClient\BikaClient.pri" target="runtimes\win10-arm\native"/>
@@ -42,9 +42,9 @@
     <!-- .targets -->
     <file src="BikaClient.targets" target="build\native"/>
     <!-- Docs -->
-    <file src=".\BikaClient\README.md" target="content"/>
-    <file src=".\BikaClient\LICENSE*" target="content"/>
-    <file src=".\BikaClient\small-logo.png" target="images\small-logo.png" />
+    <file src=".\README.md" target="content"/>
+    <file src=".\BikaClient\LICENSE" target="content"/>
+    <file src=".\small-logo.png" target="images\small-logo.png" />
 
   </files>
 </package>
