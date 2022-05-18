@@ -1,6 +1,6 @@
 #pragma once
 #include "BikaHttpClient.g.h"
-
+#include "Responses/Responses.LoginResponse.h"
 
 namespace winrt::BikaClient::implementation
 {
@@ -17,10 +17,11 @@ namespace winrt::BikaClient::implementation
         hstring SetRaw(hstring const& strAPI, hstring const& uid, time_t const& t, hstring const& method, hstring const& apiKey);
         hstring BikaEncryption(hstring const& strAPI, hstring const& uid, time_t const& t, hstring const& method, hstring const& apiKey, hstring const& strKey);
         winrt::Windows::Web::Http::Headers::HttpRequestHeaderCollection SetHeader(winrt::Windows::Web::Http::Headers::HttpRequestHeaderCollection const& headers, hstring const& strAPI, time_t const& t, hstring const& method);
-        winrt::Windows::Foundation::IAsyncOperation<hstring> GET(winrt::Windows::Foundation::Uri const& requestUri, hstring const& strAPI);
-        winrt::Windows::Foundation::IAsyncOperation<hstring> POST(winrt::Windows::Foundation::Uri const& requestUri, winrt::Windows::Web::Http::HttpStringContent const& jsonContent, hstring const& strAPI);
-        winrt::Windows::Foundation::IAsyncOperation<hstring> PUT(winrt::Windows::Foundation::Uri const& requestUri, winrt::Windows::Web::Http::HttpStringContent const& jsonContent, hstring const& strAPI);
-        winrt::Windows::Foundation::IAsyncOperation<hstring> Login(hstring account, hstring password);
+        winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Data::Json::JsonObject> Submit(winrt::Windows::Web::Http::HttpClient const& httpClient, winrt::Windows::Web::Http::HttpRequestMessage const& httpRequestMessage);
+        winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Data::Json::JsonObject> GET(winrt::Windows::Foundation::Uri const& requestUri, hstring const& strAPI);
+        winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Data::Json::JsonObject> POST(winrt::Windows::Foundation::Uri const& requestUri, winrt::Windows::Web::Http::HttpStringContent const& jsonContent, hstring const& strAPI);
+        winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Data::Json::JsonObject> PUT(winrt::Windows::Foundation::Uri const& requestUri, winrt::Windows::Web::Http::HttpStringContent const& jsonContent, hstring const& strAPI);
+        winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::LoginResponse> Login(hstring account, hstring password);
         winrt::Windows::Foundation::IAsyncOperation<hstring> PersonInfo();
         winrt::Windows::Foundation::IAsyncOperation<hstring> Categories();
         winrt::Windows::Foundation::IAsyncOperation<hstring> Keywords();
@@ -40,6 +41,7 @@ namespace winrt::BikaClient::implementation
         winrt::Windows::Foundation::IAsyncOperation<hstring> SetPassword(hstring oldPassword, hstring newPassword);
         winrt::Windows::Foundation::IAsyncOperation<hstring> ReplyComment(hstring commentId, hstring content);
         winrt::Windows::Foundation::IAsyncOperation<hstring> GetReplyComment(hstring commentId, int32_t page);
+        const hstring ORIGINURL = L"https://picaapi.picacomic.com/";
     private:
 		hstring m_token;
         hstring m_imageQuality = L"original";

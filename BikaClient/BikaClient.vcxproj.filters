@@ -13,10 +13,12 @@
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
     <ClCompile Include="BikaHttpClient.cpp" />
+    <ClCompile Include="Responses\Responses.LoginResponse.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="BikaHttpClient.h" />
+    <ClInclude Include="Responses\Responses.LoginResponse.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="BikaClient.def" />
@@ -27,5 +29,6 @@
   </ItemGroup>
   <ItemGroup>
     <Midl Include="BikaClient.idl" />
+    <Midl Include="Responses\Responses.idl" />
   </ItemGroup>
 </Project>

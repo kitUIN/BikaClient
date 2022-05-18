@@ -11,6 +11,8 @@ using namespace Windows::Web::Http;
 using namespace Windows::Web::Http::Headers;
 using namespace Windows::Security::Cryptography;
 using namespace Windows::Security::Cryptography::Core;
+using namespace Windows::Data::Json;
+using namespace BikaClient::Responses;
 
 namespace winrt::BikaClient::implementation
 {
@@ -184,41 +186,45 @@ namespace winrt::BikaClient::implementation
         headers.Insert(L"signature", BikaEncryption(strAPI, L"b1ab87b4800d4d4590a11701b8551afa", t, method, L"c69baf41da5abd1ffedc6d2fea56b", L"~d}$Q7$eIni=V)9\\RK/P.RM4;9[7|@/CA}b~OW!3?EV`:<>M7pddUBL5n|0/*Cn"));
         return headers;
     }
-
+    IAsyncOperation<JsonObject> BikaHttpClient::Submit(HttpClient const& httpClient, HttpRequestMessage const& httpRequestMessage)
+    {
+        try
+        {
+            HttpResponseMessage res{ co_await httpClient.SendRequestAsync(httpRequestMessage) };
+            co_return JsonObject::Parse(co_await res.Content().ReadAsStringAsync());
+        }
+        catch (winrt::hresult_error const& ex)
+        {
+            JsonObject res;
+            winrt::hresult hr = ex.code();
+            if (hr == WININET_E_CANNOT_CONNECT) {
+                res.Insert(L"code", JsonValue::CreateNumberValue(-1));
+                res.Insert(L"message", JsonValue::CreateStringValue(L"Time out"));
+            }
+            else
+            {
+                res.Insert(L"code", JsonValue::CreateNumberValue(-2));
+                res.Insert(L"message", JsonValue::CreateStringValue(L"Error"));
+            }
+            res.Insert(L"detail", JsonValue::CreateStringValue(ex.message()));
+            co_return res;
+        }
+    }
     /// <summary>
     /// GET
     /// </summary>
     /// <param name="requestUri">url</param>
-    /// <param name="strAPI">strAPI</param>
+    /// <param name="strAPI">API</param>
     /// <param name="uuid">uuid</param>
     /// <returns></returns>
-    IAsyncOperation<hstring> BikaHttpClient::GET(Uri const& requestUri,hstring const& strAPI)
+    IAsyncOperation<JsonObject> BikaHttpClient::GET(Uri const& requestUri,hstring const& strAPI)
     {
         HttpClient httpClient;
         HttpRequestMessage httpRequestMessage;
-        HttpResponseMessage httpResponseMessage;
-        time_t t = time(NULL);
         httpRequestMessage.Method(HttpMethod::Get());
         httpRequestMessage.RequestUri(requestUri);
-        httpRequestMessage.Headers() = SetHeader(httpRequestMessage.Headers(), strAPI, t, L"GET");
-        try
-        {
-            HttpResponseMessage res{ co_await httpClient.SendRequestAsync(httpRequestMessage) };
-            co_return co_await res.Content().ReadAsStringAsync();
-        }
-        catch (winrt::hresult_error const& ex)
-        {
-            winrt::hstring message = ex.message();
-            winrt::hresult hr = ex.code();
-            if (hr == WININET_E_CANNOT_CONNECT) {
-                OutputDebugStringW(message.c_str());
-                co_return L"[TimeOut]" + message;
-            }
-            else
-            {
-                co_return L"[ERROR]" + message;
-            }
-        }
+        httpRequestMessage.Headers() = SetHeader(httpRequestMessage.Headers(), strAPI, time(NULL), L"GET");
+        co_return co_await Submit(httpClient, httpRequestMessage);
     }
 
     /// <summary>
@@ -226,35 +232,18 @@ namespace winrt::BikaClient::implementation
     /// </summary>
     /// <param name="requestUri">url</param>
     /// <param name="jsonContent">json</param>
-    /// <param name="strAPI">strAPI</param>
+    /// <param name="strAPI">API</param>
     /// <returns></returns>
-    IAsyncOperation<hstring>  BikaHttpClient::POST(Uri const& requestUri,HttpStringContent const& jsonContent, hstring const& strAPI)
+    IAsyncOperation<JsonObject> BikaHttpClient::POST(Uri const& requestUri,HttpStringContent const& jsonContent, hstring const& strAPI)
     {
         HttpClient httpClient;
         HttpRequestMessage httpRequestMessage;
-        time_t t = time(NULL);
         httpRequestMessage.Method(HttpMethod::Post());
         httpRequestMessage.RequestUri(requestUri);
-        httpRequestMessage.Headers() = SetHeader(httpRequestMessage.Headers(), strAPI, t, L"POST");
+        httpRequestMessage.Headers() = SetHeader(httpRequestMessage.Headers(), strAPI, time(NULL), L"POST");
         httpRequestMessage.Content(jsonContent);
-        try
-        {
-            HttpResponseMessage res{ co_await httpClient.SendRequestAsync(httpRequestMessage) };
-            co_return co_await res.Content().ReadAsStringAsync();
-        }
-        catch (winrt::hresult_error const& ex)
-        {
-            winrt::hstring message = ex.message();
-            winrt::hresult hr = ex.code();
-            if (hr == WININET_E_CANNOT_CONNECT) {
-                OutputDebugStringW(message.c_str());
-                co_return L"[TimeOut]" + message;
-            }
-            else
-            {
-                co_return L"[ERROR]" + message;
-            }
-        }
+        co_return co_await Submit(httpClient, httpRequestMessage);
+
     }
 
     /// <summary>
@@ -262,35 +251,17 @@ namespace winrt::BikaClient::implementation
     /// </summary>
     /// <param name="requestUri">url</param>
     /// <param name="jsonContent">json</param>
-    /// <param name="strAPI"></param>
+    /// <param name="strAPI">API</param>
     /// <returns></returns>
-    IAsyncOperation<hstring>  BikaHttpClient::PUT(Uri const& requestUri,HttpStringContent const& jsonContent,hstring const& strAPI)
+    IAsyncOperation<JsonObject>  BikaHttpClient::PUT(Uri const& requestUri,HttpStringContent const& jsonContent,hstring const& strAPI)
     {
         HttpClient httpClient;
         HttpRequestMessage httpRequestMessage;
-        time_t t = time(NULL);
         httpRequestMessage.Method(HttpMethod::Put());
         httpRequestMessage.RequestUri(requestUri);
-        httpRequestMessage.Headers() = SetHeader(httpRequestMessage.Headers(), strAPI, t, L"PUT");
+        httpRequestMessage.Headers() = SetHeader(httpRequestMessage.Headers(), strAPI, time(NULL), L"PUT");
         httpRequestMessage.Content(jsonContent);
-        try
-        {
-            HttpResponseMessage res{ co_await httpClient.SendRequestAsync(httpRequestMessage) };
-            co_return co_await res.Content().ReadAsStringAsync();
-        }
-        catch (winrt::hresult_error const& ex)
-        {
-            winrt::hstring message = ex.message();
-            winrt::hresult hr = ex.code();
-            if (hr == WININET_E_CANNOT_CONNECT) {
-                OutputDebugStringW(message.c_str());
-                co_return L"[TimeOut]" + message;
-            }
-            else
-            {
-                co_return L"[ERROR]" + message;
-            }
-        }
+        co_return co_await Submit(httpClient, httpRequestMessage);
     }
 
     /// <summary>
@@ -299,17 +270,18 @@ namespace winrt::BikaClient::implementation
     /// <param name="account" >用户名.</param>
     /// <param name="password" >密码.</param>
     /// <returns>请求结果</returns>
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Login(hstring account, hstring password)
+    winrt::Windows::Foundation::IAsyncOperation<LoginResponse> BikaHttpClient::Login(hstring account, hstring password)
     {
-        Uri requestUri{ L"https://picaapi.picacomic.com/auth/sign-in" };
-        guid uuid = GuidHelper::CreateNewGuid();
-        HttpStringContent jsonContent(
-            L"{ \"email\": \"" + account + L"\", \"password\": \"" + password + L"\" }",
-            UnicodeEncoding::Utf8,
-            L"application/json");
-        hstring ress = co_await POST(requestUri, jsonContent, L"auth/sign-in");
-        HttpLogOut(L"[POST]->/auth/sign-in\nReturn:", ress.c_str());
-        co_return ress;
+        LoginResponse res{
+            co_await POST(
+                Uri{ ORIGINURL + L"auth/sign-in" },
+                HttpStringContent{
+                    L"{ \"email\": \"" + account + L"\", \"password\": \"" + password + L"\" }",
+                    UnicodeEncoding::Utf8,
+                    L"application/json" },
+                L"auth/sign-in") };
+        HttpLogOut(L"[POST]->/auth/sign-in\nReturn:", res.Json());
+        co_return res;
     }
 
     winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::PersonInfo()

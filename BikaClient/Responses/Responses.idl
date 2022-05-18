@@ -1,0 +1,24 @@
+namespace BikaClient.Responses
+{
+	interface IPageData
+	{
+		Int32 Page;
+		Int32 Pages;
+		Int32 Total;
+		Int32 Limit;
+	}
+	interface IRespData
+	{
+		Int32 Code;
+		String Message;
+		String Error;
+		String Detail;
+		String Json{ get; };
+	}
+	runtimeclass LoginResponse : IRespData
+	{
+		LoginResponse();
+		LoginResponse(Windows.Data.Json.JsonObject json);
+		String Token{ get; };
+	}
+}

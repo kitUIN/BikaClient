@@ -67,14 +67,12 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <UseDebugLibraries>true</UseDebugLibraries>
     <LinkIncremental>true</LinkIncremental>
-    
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Release'" Label="Configuration">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <LinkIncremental>false</LinkIncremental>
-    
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -115,7 +113,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
     <ClCompile>
-      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <GenerateXMLDocumentationFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateXMLDocumentationFiles>
     </ClCompile>
     <Link>
@@ -126,6 +124,7 @@
   <ItemGroup>
     <ClInclude Include="BikaHttpClient.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Responses\Responses.LoginResponse.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BikaHttpClient.cpp" />
@@ -133,6 +132,7 @@
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+    <ClCompile Include="Responses\Responses.LoginResponse.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="BikaClient.def" />
@@ -143,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <Midl Include="BikaClient.idl" />
+    <Midl Include="Responses\Responses.idl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
