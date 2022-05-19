@@ -9,6 +9,7 @@ namespace winrt::BikaClient::implementation
         BikaHttpClient() = default;
         BikaHttpClient(hstring token);
         BikaHttpClient(hstring token,hstring imageQuality);
+        winrt::Windows::Foundation::Diagnostics::LoggingChannel GetLoggingChannel();
         void Token(hstring value);
         hstring Token();
         void ImageQuality(hstring value);
@@ -45,6 +46,7 @@ namespace winrt::BikaClient::implementation
     private:
 		hstring m_token;
         hstring m_imageQuality = L"original";
+        winrt::Windows::Foundation::Diagnostics::LoggingChannel m_loggingChannel = winrt::Windows::Foundation::Diagnostics::LoggingChannel(to_hstring(winrt::Windows::Foundation::GuidHelper::CreateNewGuid()));
     };
 }
 namespace winrt::BikaClient::factory_implementation

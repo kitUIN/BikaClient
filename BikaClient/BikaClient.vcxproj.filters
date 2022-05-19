@@ -14,11 +14,21 @@
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
     <ClCompile Include="BikaHttpClient.cpp" />
     <ClCompile Include="Responses\Responses.LoginResponse.cpp" />
+    <ClCompile Include="Blocks\Blocks.TagBlock.cpp" />
+    <ClCompile Include="Date\Date.BikaDate.cpp" />
+    <ClCompile Include="Blocks\Blocks.ThumbBlock.cpp" />
+    <ClCompile Include="Blocks\Blocks.CategoriesBlock.cpp" />
+    <ClCompile Include="Blocks\Blocks.UserBlock.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="BikaHttpClient.h" />
     <ClInclude Include="Responses\Responses.LoginResponse.h" />
+    <ClInclude Include="Blocks\Blocks.TagBlock.h" />
+    <ClInclude Include="Date\Date.BikaDate.h" />
+    <ClInclude Include="Blocks\Blocks.ThumbBlock.h" />
+    <ClInclude Include="Blocks\Blocks.CategoriesBlock.h" />
+    <ClInclude Include="Blocks\Blocks.UserBlock.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="BikaClient.def" />
@@ -30,5 +40,7 @@
   <ItemGroup>
     <Midl Include="BikaClient.idl" />
     <Midl Include="Responses\Responses.idl" />
+    <Midl Include="Blocks\Blocks.idl" />
+    <Midl Include="Date\BikaDate.idl" />
   </ItemGroup>
 </Project>

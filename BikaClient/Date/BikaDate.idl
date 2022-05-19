@@ -1,0 +1,9 @@
+namespace BikaClient.Date
+{
+    runtimeclass BikaDate
+    {
+        BikaDate(String date);
+        String SetTimeZone;
+        String GetDateTime{ get; };
+    }
+}

@@ -58,6 +58,7 @@ namespace winrt::BikaClient::implementation
 
     void BikaHttpClient::HttpLogOut(hstring s1, hstring s2)
     {
+        m_loggingChannel.LogMessage(L"\n"+s1 + L"\n" + s2+ L"\n");
         OutputDebugStringW(L"\n");
         OutputDebugStringW(s1.c_str());
         OutputDebugStringW(L"\n");
@@ -119,6 +120,10 @@ namespace winrt::BikaClient::implementation
         return strTemp;
     }
 
+    winrt::Windows::Foundation::Diagnostics::LoggingChannel BikaHttpClient::GetLoggingChannel()
+    {
+        return m_loggingChannel;
+    }
     /// <summary>
     /// …Ë÷√URL
     /// </summary>

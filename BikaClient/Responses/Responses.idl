@@ -21,4 +21,5 @@ namespace BikaClient.Responses
 		LoginResponse(Windows.Data.Json.JsonObject json);
 		String Token{ get; };
 	}
+
 }

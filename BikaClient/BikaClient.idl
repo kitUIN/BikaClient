@@ -9,6 +9,7 @@ namespace BikaClient
         BikaHttpClient(String token, String imageQuality);
         String Token;
         String ImageQuality;
+        Windows.Foundation.Diagnostics.LoggingChannel GetLoggingChannel();
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.LoginResponse> Login(String account, String password);
         Windows.Foundation.IAsyncOperation<String> PersonInfo();
         Windows.Foundation.IAsyncOperation<String> Categories();

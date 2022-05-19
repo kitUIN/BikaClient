@@ -123,11 +123,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BikaHttpClient.h" />
+    <ClInclude Include="Blocks\Blocks.CategoriesBlock.h" />
+    <ClInclude Include="Blocks\Blocks.TagBlock.h" />
+    <ClInclude Include="Blocks\Blocks.ThumbBlock.h" />
+    <ClInclude Include="Blocks\Blocks.UserBlock.h" />
+    <ClInclude Include="Date\Date.BikaDate.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Responses\Responses.LoginResponse.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BikaHttpClient.cpp" />
+    <ClCompile Include="Blocks\Blocks.CategoriesBlock.cpp" />
+    <ClCompile Include="Blocks\Blocks.TagBlock.cpp" />
+    <ClCompile Include="Blocks\Blocks.ThumbBlock.cpp" />
+    <ClCompile Include="Blocks\Blocks.UserBlock.cpp" />
+    <ClCompile Include="Date\Date.BikaDate.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
@@ -143,6 +153,8 @@
   </ItemGroup>
   <ItemGroup>
     <Midl Include="BikaClient.idl" />
+    <Midl Include="Blocks\Blocks.idl" />
+    <Midl Include="Date\BikaDate.idl" />
     <Midl Include="Responses\Responses.idl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

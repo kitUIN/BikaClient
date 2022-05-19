@@ -1,0 +1,62 @@
+namespace BikaClient.Blocks
+{
+    interface IBlockJson
+    {
+        String Json{ get; };
+    }
+    runtimeclass ThumbBlock : Windows.UI.Xaml.Data.INotifyPropertyChanged, IBlockJson
+    {
+        ThumbBlock();
+        ThumbBlock(Windows.Data.Json.JsonObject json);
+        ThumbBlock(Windows.Data.Json.JsonObject json,String fileServer);
+        String FileServer;
+        Windows.UI.Xaml.Media.Imaging.BitmapImage Img;
+        String Path;
+        String OriginalName;
+        String Url{ get; };
+
+    }
+    runtimeclass TagBlock : Windows.UI.Xaml.Data.INotifyPropertyChanged
+    {
+        TagBlock(String tag);
+        String Tag;
+    }
+    runtimeclass UserBlock : Windows.UI.Xaml.Data.INotifyPropertyChanged, IBlockJson
+    {
+        UserBlock(Windows.Data.Json.JsonObject json);
+        UserBlock(Windows.Data.Json.JsonObject json, String fileServer);
+        String ID;
+        String Name;
+        String CreatedAt;
+        String Birthday;
+        String Email;
+        String Level;
+        String LevelString;
+        Boolean IsPunched;
+        Boolean Verified;
+        String Gender;
+        BikaClient.Blocks.ThumbBlock Thumb;
+        String Slogan;
+        Int32 Exp;
+        Int32 Percent;
+        String Title;
+        String Role;
+        String Character;
+        Windows.Foundation.Collections.IObservableVector<BikaClient.Blocks.TagBlock> Characters;
+        String CharactersString;
+        String LevelExp;
+        void Clear();
+    }
+    runtimeclass CategoriesBlock : Windows.UI.Xaml.Data.INotifyPropertyChanged, IBlockJson
+    {
+        CategoriesBlock(Windows.Data.Json.JsonObject json);
+        CategoriesBlock(Windows.Data.Json.JsonObject json,String fileServer);
+        String Title;
+        BikaClient.Blocks.ThumbBlock Thumb;
+        String Id;
+        Boolean IsWeb;
+        Boolean Active;
+        String Link;
+        String Description;
+    }
+}
