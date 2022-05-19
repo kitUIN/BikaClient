@@ -3,6 +3,7 @@ namespace BikaClient.Date
     runtimeclass BikaDate
     {
         BikaDate(String date);
+        String Raw{ get; };
         String SetTimeZone;
         String GetDateTime{ get; };
     }

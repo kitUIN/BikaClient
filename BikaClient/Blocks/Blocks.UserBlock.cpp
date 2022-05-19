@@ -28,9 +28,9 @@ namespace winrt::BikaClient::Blocks::implementation
 		if (json.HasKey(L"isPunched"))
 			IsPunched(json.GetNamedBoolean(L"isPunched"));
 		if (json.HasKey(L"created_at"))
-			CreatedAt(json.GetNamedString(L"created_at"));
+			m_createAt = winrt::BikaClient::Date::BikaDate(json.GetNamedString(L"created_at"));
 		if (json.HasKey(L"birthday"))
-			Birthday(json.GetNamedString(L"birthday"));
+			m_birthday = winrt::BikaClient::Date::BikaDate(json.GetNamedString(L"birthday"));
 		if (json.HasKey(L"level"))
 			Level(to_hstring(json.GetNamedNumber(L"level")));
 		if (json.HasKey(L"exp") && json.HasKey(L"level"))
@@ -73,24 +73,22 @@ namespace winrt::BikaClient::Blocks::implementation
 		}
 
 	}
-	hstring UserBlock::CreatedAt()
+	winrt::BikaClient::Date::BikaDate UserBlock::CreatedAt()
 	{
 		return m_createAt;
 	}
-	void UserBlock::CreatedAt(hstring const& value)
+	void UserBlock::CreatedAt(winrt::BikaClient::Date::BikaDate const& value)
 	{
-		BikaClient::Date::BikaDate datetime{ value };
-		m_createAt = datetime.GetDateTime();
+		m_createAt = value;
 		m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"CreatedAt" });
 	}
-	hstring UserBlock::Birthday()
+	winrt::BikaClient::Date::BikaDate UserBlock::Birthday()
 	{
 		return m_birthday;
 	}
-	void UserBlock::Birthday(hstring const& value)
+	void UserBlock::Birthday(winrt::BikaClient::Date::BikaDate const& value)
 	{
-		BikaClient::Date::BikaDate datetime{ value };
-		m_birthday = datetime.GetDateTime();
+		m_birthday = value;
 		m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Birthday" });
 	}
 	hstring UserBlock::Email()
@@ -288,8 +286,8 @@ namespace winrt::BikaClient::Blocks::implementation
 		m_id = L"";
 		m_verified = false;
 		m_isPunched = false;
-		m_createAt = L"";
-		m_birthday = L"";
+		m_createAt = winrt::BikaClient::Date::BikaDate{ nullptr };
+		m_birthday = winrt::BikaClient::Date::BikaDate{ nullptr };
 		m_slogan = L"";
 		m_levelExp = L"(? / ?)";
 		m_exp = 0;

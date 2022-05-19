@@ -13,6 +13,7 @@ namespace winrt::BikaClient::Date::implementation
 {
     BikaDate::BikaDate(hstring const& date)
     {
+        m_raw = date;
         std::tm t = {};
         std::string dateTime = to_string(date);
         hstring format = L"%Y-%b-%d %H:%M:%S";
@@ -62,5 +63,9 @@ namespace winrt::BikaClient::Date::implementation
     hstring BikaDate::GetDateTime()
     {
         return m_dateTime + L" (" + m_timeZone + L")";
+    }
+    hstring BikaDate::Raw()
+    {
+        return m_raw;
     }
 }

@@ -15,10 +15,10 @@ namespace winrt::BikaClient::Blocks::implementation
         void ID(hstring const& value);
         hstring Name();
         void Name(hstring const& value);
-        hstring CreatedAt();
-        void CreatedAt(hstring const& value);
-        hstring Birthday();
-        void Birthday(hstring const& value);
+        winrt::BikaClient::Date::BikaDate CreatedAt();
+        void CreatedAt(winrt::BikaClient::Date::BikaDate const& value);
+        winrt::BikaClient::Date::BikaDate Birthday();
+        void Birthday(winrt::BikaClient::Date::BikaDate const& value);
         hstring Email();
         void Email(hstring const& value);
         hstring Level();
@@ -66,8 +66,8 @@ namespace winrt::BikaClient::Blocks::implementation
         winrt::hstring m_verifiedString = L"";
         bool m_isPunched = false;
         winrt::hstring m_isPunchedString = L"";
-        winrt::hstring m_createAt = L"";
-        winrt::hstring m_birthday = L"";
+        winrt::BikaClient::Date::BikaDate m_createAt{ nullptr };
+        winrt::BikaClient::Date::BikaDate m_birthday{ nullptr };
         winrt::hstring m_slogan = L"";
         winrt::hstring m_levelExp = L"(? / ?)";
         int32_t m_exp = 0;

@@ -11,7 +11,9 @@ namespace winrt::BikaClient::Date::implementation
         hstring SetTimeZone();
         void SetTimeZone(hstring const& value);
         hstring GetDateTime();
+        hstring Raw();
     private:
+        hstring m_raw = L"";
         hstring m_timeZone = L"UTC+8";
         int32_t m_times = 8;
         hstring m_dateTime;

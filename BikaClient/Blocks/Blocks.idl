@@ -1,3 +1,4 @@
+import "Date/BikaDate.idl";
 namespace BikaClient.Blocks
 {
     interface IBlockJson
@@ -27,8 +28,8 @@ namespace BikaClient.Blocks
         UserBlock(Windows.Data.Json.JsonObject json, String fileServer);
         String ID;
         String Name;
-        String CreatedAt;
-        String Birthday;
+        BikaClient.Date.BikaDate CreatedAt;
+        BikaClient.Date.BikaDate Birthday;
         String Email;
         String Level;
         String LevelString;
