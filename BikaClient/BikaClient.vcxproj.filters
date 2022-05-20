@@ -19,6 +19,7 @@
     <ClCompile Include="Blocks\Blocks.ThumbBlock.cpp" />
     <ClCompile Include="Blocks\Blocks.CategoriesBlock.cpp" />
     <ClCompile Include="Blocks\Blocks.UserBlock.cpp" />
+    <ClCompile Include="Responses\Responses.CategoriesResponse.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -29,6 +30,7 @@
     <ClInclude Include="Blocks\Blocks.ThumbBlock.h" />
     <ClInclude Include="Blocks\Blocks.CategoriesBlock.h" />
     <ClInclude Include="Blocks\Blocks.UserBlock.h" />
+    <ClInclude Include="Responses\Responses.CategoriesResponse.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="BikaClient.def" />

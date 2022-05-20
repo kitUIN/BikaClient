@@ -19,12 +19,12 @@ namespace winrt::BikaClient::Responses::implementation
         void Detail(hstring const& value);
         hstring Json();
     private:
-		hstring m_token = L"";
-		int32_t m_code = 0;
-		hstring m_message = L"";
-		hstring m_error = L"";
-		hstring m_detail = L"";
-		hstring m_json = L"";
+        hstring m_token{ L"" };
+		int32_t m_code{ 0 };
+		hstring m_message{ L"" };
+		hstring m_error{ L"" };
+		hstring m_detail{ L"" };
+		hstring m_json{ L"" };
     };
 }
 namespace winrt::BikaClient::Responses::factory_implementation

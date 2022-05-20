@@ -1,3 +1,4 @@
+import "Blocks/Blocks.idl";
 namespace BikaClient.Responses
 {
 	interface IPageData
@@ -21,5 +22,10 @@ namespace BikaClient.Responses
 		LoginResponse(Windows.Data.Json.JsonObject json);
 		String Token{ get; };
 	}
-
+	runtimeclass CategoriesResponse : IRespData
+	{
+		CategoriesResponse(Windows.Data.Json.JsonObject json);
+		CategoriesResponse(Windows.Data.Json.JsonObject json,String fileServer);
+		Windows.Foundation.Collections.IObservableVector<BikaClient.Blocks.CategoriesBlock> Categories;
+	}
 }
