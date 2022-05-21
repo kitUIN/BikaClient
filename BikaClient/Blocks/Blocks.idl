@@ -5,14 +5,15 @@ namespace BikaClient.Blocks
     {
         String Json{ get; };
     }
-    runtimeclass ThumbBlock : Windows.UI.Xaml.Data.INotifyPropertyChanged, IBlockJson
+    runtimeclass ImageBlock : Windows.UI.Xaml.Data.INotifyPropertyChanged, IBlockJson
     {
-        ThumbBlock();
-        ThumbBlock(Windows.Data.Json.JsonObject json);
-        ThumbBlock(Windows.Data.Json.JsonObject json,String fileServer);
+        ImageBlock();
+        ImageBlock(Windows.Data.Json.JsonObject json);
+        ImageBlock(Windows.Data.Json.JsonObject json,String fileServer);
         String FileServer;
         Windows.UI.Xaml.Media.Imaging.BitmapImage Img;
         String Path;
+        String ID;
         String OriginalName;
         String Url{ get; };
 
@@ -36,7 +37,7 @@ namespace BikaClient.Blocks
         Boolean IsPunched;
         Boolean Verified;
         String Gender;
-        BikaClient.Blocks.ThumbBlock Thumb;
+        BikaClient.Blocks.ImageBlock Thumb;
         String Slogan;
         Int32 Exp;
         Int32 Percent;
@@ -53,7 +54,7 @@ namespace BikaClient.Blocks
         CategoriesBlock(Windows.Data.Json.JsonObject json);
         CategoriesBlock(Windows.Data.Json.JsonObject json,String fileServer);
         String Title;
-        BikaClient.Blocks.ThumbBlock Thumb;
+        BikaClient.Blocks.ImageBlock Thumb;
         String Id;
         Boolean IsWeb;
         Boolean Active;

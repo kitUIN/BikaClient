@@ -12,8 +12,8 @@ namespace winrt::BikaClient::Blocks::implementation
         CategoriesBlock(winrt::Windows::Data::Json::JsonObject const& json, hstring const& fileServer);
         hstring Title();
         void Title(hstring const& value);
-        winrt::BikaClient::Blocks::ThumbBlock Thumb();
-        void Thumb(winrt::BikaClient::Blocks::ThumbBlock const& value);
+        winrt::BikaClient::Blocks::ImageBlock Thumb();
+        void Thumb(winrt::BikaClient::Blocks::ImageBlock const& value);
         hstring Id();
         void Id(hstring const& value);
         bool IsWeb();
@@ -36,7 +36,7 @@ namespace winrt::BikaClient::Blocks::implementation
         bool m_isWeb = false;
         bool m_active = false;
         hstring m_json = L"";
-        winrt::BikaClient::Blocks::ThumbBlock m_thumb{ nullptr };
+        winrt::BikaClient::Blocks::ImageBlock m_thumb{ nullptr };
     };
 }
 namespace winrt::BikaClient::Blocks::factory_implementation

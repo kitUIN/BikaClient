@@ -57,7 +57,7 @@ namespace winrt::BikaClient::Blocks::implementation
 		if (json.HasKey(L"avatar"))
 		{
 
-			m_thumb = winrt::BikaClient::Blocks::ThumbBlock(json.GetNamedObject(L"avatar"), fileServer);
+			m_thumb = winrt::BikaClient::Blocks::ImageBlock(json.GetNamedObject(L"avatar"), fileServer);
 
 		}
 	}
@@ -165,11 +165,11 @@ namespace winrt::BikaClient::Blocks::implementation
 			m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Gender" });
 		}
 	}
-	winrt::BikaClient::Blocks::ThumbBlock UserBlock::Thumb()
+	winrt::BikaClient::Blocks::ImageBlock UserBlock::Thumb()
 	{
 		return m_thumb;
 	}
-	void UserBlock::Thumb(winrt::BikaClient::Blocks::ThumbBlock const& value)
+	void UserBlock::Thumb(winrt::BikaClient::Blocks::ImageBlock const& value)
 	{
 		m_thumb = value;
 	}
@@ -306,7 +306,7 @@ namespace winrt::BikaClient::Blocks::implementation
 		m_character = L"";
 		m_charactersString = L"";
 		m_characters.Clear();
-		m_thumb = winrt::BikaClient::Blocks::ThumbBlock{ nullptr };
+		m_thumb = winrt::BikaClient::Blocks::ImageBlock{ nullptr };
 		m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"ID" });
 		m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Name" });
 		m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"CreatedAt" });

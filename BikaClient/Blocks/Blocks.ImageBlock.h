@@ -1,16 +1,20 @@
 #pragma once
-#include "Blocks.ThumbBlock.g.h"
+#include "Blocks.ImageBlock.g.h"
 
 namespace winrt::BikaClient::Blocks::implementation
 {
-    struct ThumbBlock : ThumbBlockT<ThumbBlock>
+    struct ImageBlock : ImageBlockT<ImageBlock>
     {
-        ThumbBlock() = default;
+        ImageBlock() = default;
 
-        ThumbBlock(winrt::Windows::Data::Json::JsonObject const& json);
-        ThumbBlock(winrt::Windows::Data::Json::JsonObject const& json, hstring const& fileServer);
+        ImageBlock(winrt::Windows::Data::Json::JsonObject const& json);
+        ImageBlock(winrt::Windows::Data::Json::JsonObject const& json, hstring const& fileServer);
+        void Init(winrt::Windows::Data::Json::JsonObject const& json);
+        void Init(winrt::Windows::Data::Json::JsonObject const& json, hstring const& fileServer);
         hstring FileServer();
         void FileServer(hstring const& value);
+        hstring ID();
+        void ID(hstring const& value);
         winrt::Windows::UI::Xaml::Media::Imaging::BitmapImage Img();
         void Img(winrt::Windows::UI::Xaml::Media::Imaging::BitmapImage const& value);
         hstring Path();
@@ -28,11 +32,12 @@ namespace winrt::BikaClient::Blocks::implementation
         hstring m_path = L"";
 		hstring m_originalName = L"";
 		hstring m_url = L"";
+		hstring m_id = L"";
 	};
 }
 namespace winrt::BikaClient::Blocks::factory_implementation
 {
-    struct ThumbBlock : ThumbBlockT<ThumbBlock, implementation::ThumbBlock>
+    struct ImageBlock : ImageBlockT<ImageBlock, implementation::ImageBlock>
     {
     };
 }

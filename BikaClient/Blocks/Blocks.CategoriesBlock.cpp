@@ -21,11 +21,11 @@ namespace winrt::BikaClient::Blocks::implementation
         {
             if (m_active)
             {
-                m_thumb = winrt::BikaClient::Blocks::ThumbBlock(json.GetNamedObject(L"thumb"), json.GetNamedObject(L"thumb").GetNamedString(L"fileServer"));
+                m_thumb = winrt::BikaClient::Blocks::ImageBlock(json.GetNamedObject(L"thumb"), json.GetNamedObject(L"thumb").GetNamedString(L"fileServer"));
             }
             else
             {
-                m_thumb = winrt::BikaClient::Blocks::ThumbBlock(json.GetNamedObject(L"thumb"), fileServer);
+                m_thumb = winrt::BikaClient::Blocks::ImageBlock(json.GetNamedObject(L"thumb"), fileServer);
             }
 
         }
@@ -39,11 +39,11 @@ namespace winrt::BikaClient::Blocks::implementation
         m_title = value;
         m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Title" });
     }
-    winrt::BikaClient::Blocks::ThumbBlock CategoriesBlock::Thumb()
+    winrt::BikaClient::Blocks::ImageBlock CategoriesBlock::Thumb()
     {
         return m_thumb;
     }
-    void CategoriesBlock::Thumb(winrt::BikaClient::Blocks::ThumbBlock const& value)
+    void CategoriesBlock::Thumb(winrt::BikaClient::Blocks::ImageBlock const& value)
     {
         m_thumb = value;
         m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Thumb" });

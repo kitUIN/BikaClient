@@ -31,8 +31,8 @@ namespace winrt::BikaClient::Blocks::implementation
         void Verified(bool const& value);
         hstring Gender();
         void Gender(hstring const& value);
-        winrt::BikaClient::Blocks::ThumbBlock Thumb();
-        void Thumb(winrt::BikaClient::Blocks::ThumbBlock const& value);
+        winrt::BikaClient::Blocks::ImageBlock Thumb();
+        void Thumb(winrt::BikaClient::Blocks::ImageBlock const& value);
         hstring Slogan();
         void Slogan(hstring const& value);
         int32_t Exp();
@@ -78,7 +78,7 @@ namespace winrt::BikaClient::Blocks::implementation
         hstring  m_level = L"";
         winrt::Windows::Foundation::Collections::IObservableVector<BikaClient::Blocks::TagBlock> m_characters = winrt::single_threaded_observable_vector<BikaClient::Blocks::TagBlock>();
         hstring m_charactersString = L"";
-        winrt::BikaClient::Blocks::ThumbBlock m_thumb{ nullptr };
+        winrt::BikaClient::Blocks::ImageBlock m_thumb{ nullptr };
         hstring m_json = L"";
     };
 }
