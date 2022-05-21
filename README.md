@@ -1,2 +1,2 @@
 # BikaClient
-为bikabika 提供API支持
+为[bikabika](https://github.com/kitUIN/bikabika)提供API支持
