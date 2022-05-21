@@ -318,9 +318,9 @@ namespace winrt::BikaClient::implementation
     winrt::Windows::Foundation::IAsyncOperation<UserResponse> BikaHttpClient::PersonInfo()
     {
         hstring api = L"users/profile";
-        UserResponse res{ co_await GET(Uri{ ORIGINURL + api }, api) ,m_fileServer };
-        HttpLogOut(L"[GET]->/users/profile\nReturn:", res.Json());
-        co_return res;
+        JsonObject resp = co_await GET(Uri{ ORIGINURL + api }, api);
+        HttpLogOut(L"[GET]->/users/profile\nReturn:", resp.Stringify().c_str());
+        co_return UserResponse{ resp,m_fileServer };
     }
 
     /// <summary>

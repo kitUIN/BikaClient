@@ -34,7 +34,13 @@ namespace winrt::BikaClient::Blocks::implementation
 		if (json.HasKey(L"level"))
 			Level(to_hstring(json.GetNamedNumber(L"level")));
 		if (json.HasKey(L"exp") && json.HasKey(L"level"))
-			LevelExp(L"(" + to_hstring(json.GetNamedNumber(L"exp")) + L" / " + to_hstring(GetEXP(json.GetNamedNumber(L"level"))) + L")");
+		{
+			int32_t exp = json.GetNamedNumber(L"exp");
+			int32_t level = GetEXP(json.GetNamedNumber(L"level"));
+			LevelExp(L"(" + to_hstring(exp) + L" / " + to_hstring(level) + L")");
+			Percent(static_cast<int32_t>(exp * 100 / level));
+		}
+
 		if (json.HasKey(L"role"))
 			Role(json.GetNamedString(L"role"));
 		if (json.HasKey(L"character"))
@@ -50,9 +56,9 @@ namespace winrt::BikaClient::Blocks::implementation
 
 		if (json.HasKey(L"avatar"))
 		{
+
 			m_thumb = winrt::BikaClient::Blocks::ThumbBlock(json.GetNamedObject(L"avatar"), fileServer);
-			int32_t percent = (int32_t)json.GetNamedNumber(L"exp") * 100 / GetEXP(json.GetNamedNumber(L"level"));
-			Percent(percent);
+
 		}
 	}
 	int32_t UserBlock::GetEXP(int32_t const& level)

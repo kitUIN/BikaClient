@@ -17,6 +17,8 @@ namespace winrt::BikaClient::Blocks::implementation
         if (json.HasKey(L"path")) m_path = json.GetNamedString(L"path");
         if (json.HasKey(L"originalName")) m_originalName = json.GetNamedString(L"originalName");
         m_fileServer = fileServer;
+        hstring p = m_fileServer + m_path;
+        OutputDebugStringW(p.c_str());
         Img(winrt::Windows::UI::Xaml::Media::Imaging::BitmapImage{ Windows::Foundation::Uri{ m_fileServer + m_path} });
     }
     hstring ThumbBlock::FileServer()
