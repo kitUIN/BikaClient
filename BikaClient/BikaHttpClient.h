@@ -27,7 +27,7 @@ namespace winrt::BikaClient::implementation
         winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Data::Json::JsonObject> POST(winrt::Windows::Foundation::Uri const& requestUri, winrt::Windows::Web::Http::HttpStringContent const& jsonContent, hstring const& strAPI);
         winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Data::Json::JsonObject> PUT(winrt::Windows::Foundation::Uri const& requestUri, winrt::Windows::Web::Http::HttpStringContent const& jsonContent, hstring const& strAPI);
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::LoginResponse> Login(hstring account, hstring password);
-        winrt::Windows::Foundation::IAsyncOperation<hstring> PersonInfo();
+        winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::UserResponse> PersonInfo();
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::CategoriesResponse> Categories();
         winrt::Windows::Foundation::IAsyncOperation<hstring> Keywords();
         winrt::Windows::Foundation::IAsyncOperation<hstring> Comics(int32_t page, hstring title, hstring sort);

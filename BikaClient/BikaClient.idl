@@ -14,7 +14,7 @@ namespace BikaClient
         String APPVersion{ get; };
         Windows.Foundation.Diagnostics.LoggingChannel GetLoggingChannel();
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.LoginResponse> Login(String account, String password);
-        Windows.Foundation.IAsyncOperation<String> PersonInfo();
+        Windows.Foundation.IAsyncOperation<BikaClient.Responses.UserResponse> PersonInfo();
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.CategoriesResponse> Categories();
         Windows.Foundation.IAsyncOperation<String> Keywords();
         Windows.Foundation.IAsyncOperation<String> Comics(Int32 page, String title, String sort);

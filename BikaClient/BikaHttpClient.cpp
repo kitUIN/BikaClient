@@ -301,22 +301,26 @@ namespace winrt::BikaClient::implementation
     /// <returns>LoginResponse</returns>
     winrt::Windows::Foundation::IAsyncOperation<LoginResponse> BikaHttpClient::Login(hstring account, hstring password)
     {
+        hstring api = L"auth/sign-in";
         LoginResponse res{
             co_await POST(
-                Uri{ ORIGINURL + L"auth/sign-in" },
+                Uri{ ORIGINURL + api },
                 HttpStringContent{
                     L"{ \"email\": \"" + account + L"\", \"password\": \"" + password + L"\" }",
                     UnicodeEncoding::Utf8,
                     L"application/json" },
-                L"auth/sign-in") };
+                api) };
         HttpLogOut(L"[POST]->/auth/sign-in\nReturn:", res.Json());
 		if(res.Code() == 200) m_token = res.Token();
         co_return res;
     }
 
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::PersonInfo()
+    winrt::Windows::Foundation::IAsyncOperation<UserResponse> BikaHttpClient::PersonInfo()
     {
-        throw hresult_not_implemented();
+        hstring api = L"users/profile";
+        UserResponse res{ co_await GET(Uri{ ORIGINURL + api }, api) ,m_fileServer };
+        HttpLogOut(L"[GET]->/users/profile\nReturn:", res.Json());
+        co_return res;
     }
 
     /// <summary>
@@ -325,7 +329,8 @@ namespace winrt::BikaClient::implementation
     /// <returns>CategoriesResponse</returns>
     winrt::Windows::Foundation::IAsyncOperation<CategoriesResponse> BikaHttpClient::Categories()
     {
-        CategoriesResponse res{ co_await GET(Uri{ ORIGINURL + L"categories" }, L"categories") ,m_fileServer };
+        hstring api = L"categories";
+        CategoriesResponse res{ co_await GET(Uri{ ORIGINURL + api }, api) , m_fileServer };
         HttpLogOut(L"[GET]->/categories\nReturn:", res.Json());
         co_return res;
     }
