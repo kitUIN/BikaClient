@@ -131,6 +131,7 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="Responses\Responses.CategoriesResponse.h" />
     <ClInclude Include="Responses\Responses.LoginResponse.h" />
+    <ClInclude Include="Responses\Responses.UserResponse.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BikaHttpClient.cpp" />
@@ -145,6 +146,7 @@
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
     <ClCompile Include="Responses\Responses.CategoriesResponse.cpp" />
     <ClCompile Include="Responses\Responses.LoginResponse.cpp" />
+    <ClCompile Include="Responses\Responses.UserResponse.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="BikaClient.def" />

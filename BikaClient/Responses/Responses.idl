@@ -28,4 +28,10 @@ namespace BikaClient.Responses
 		CategoriesResponse(Windows.Data.Json.JsonObject json,String fileServer);
 		Windows.Foundation.Collections.IObservableVector<BikaClient.Blocks.CategoriesBlock> Categories;
 	}
+	runtimeclass UserResponse : IRespData
+	{
+		UserResponse(Windows.Data.Json.JsonObject json);
+		UserResponse(Windows.Data.Json.JsonObject json,String fileServer);
+		BikaClient.Blocks.UserBlock User;
+	}
 }
