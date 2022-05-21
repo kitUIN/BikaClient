@@ -24,7 +24,7 @@ namespace winrt::BikaClient::implementation
         winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Data::Json::JsonObject> PUT(winrt::Windows::Foundation::Uri const& requestUri, winrt::Windows::Web::Http::HttpStringContent const& jsonContent, hstring const& strAPI);
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::LoginResponse> Login(hstring account, hstring password);
         winrt::Windows::Foundation::IAsyncOperation<hstring> PersonInfo();
-        winrt::Windows::Foundation::IAsyncOperation<hstring> Categories();
+        winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::CategoriesResponse> Categories();
         winrt::Windows::Foundation::IAsyncOperation<hstring> Keywords();
         winrt::Windows::Foundation::IAsyncOperation<hstring> Comics(int32_t page, hstring title, hstring sort);
         winrt::Windows::Foundation::IAsyncOperation<hstring> BookInfo(hstring bookId);
@@ -46,6 +46,7 @@ namespace winrt::BikaClient::implementation
     private:
 		hstring m_token;
         hstring m_imageQuality = L"original";
+        hstring m_fileServer = DEFAULT_FILE_SERVER;
         winrt::Windows::Foundation::Diagnostics::LoggingChannel m_loggingChannel = winrt::Windows::Foundation::Diagnostics::LoggingChannel(to_hstring(winrt::Windows::Foundation::GuidHelper::CreateNewGuid()));
     };
 }

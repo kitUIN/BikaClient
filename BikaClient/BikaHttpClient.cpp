@@ -274,7 +274,7 @@ namespace winrt::BikaClient::implementation
     /// </summary>
     /// <param name="account" >用户名.</param>
     /// <param name="password" >密码.</param>
-    /// <returns>请求结果</returns>
+    /// <returns>LoginResponse</returns>
     winrt::Windows::Foundation::IAsyncOperation<LoginResponse> BikaHttpClient::Login(hstring account, hstring password)
     {
         LoginResponse res{
@@ -286,6 +286,7 @@ namespace winrt::BikaClient::implementation
                     L"application/json" },
                 L"auth/sign-in") };
         HttpLogOut(L"[POST]->/auth/sign-in\nReturn:", res.Json());
+		if(res.Code() == 200) m_token = res.Token();
         co_return res;
     }
 
@@ -293,9 +294,16 @@ namespace winrt::BikaClient::implementation
     {
         throw hresult_not_implemented();
     }
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Categories()
+
+    /// <summary>
+    /// 获取分区列表
+    /// </summary>
+    /// <returns>CategoriesResponse</returns>
+    winrt::Windows::Foundation::IAsyncOperation<CategoriesResponse> BikaHttpClient::Categories()
     {
-        throw hresult_not_implemented();
+        CategoriesResponse res{ co_await GET(Uri{ ORIGINURL + L"categories" }, L"categories") ,m_fileServer };
+        HttpLogOut(L"[GET]->/categories\nReturn:", res.Json());
+        co_return res;
     }
     winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Keywords()
     {
