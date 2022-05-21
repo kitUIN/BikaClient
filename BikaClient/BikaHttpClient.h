@@ -9,11 +9,15 @@ namespace winrt::BikaClient::implementation
         BikaHttpClient() = default;
         BikaHttpClient(hstring token);
         BikaHttpClient(hstring token,hstring imageQuality);
+        BikaHttpClient(hstring token,hstring imageQuality,hstring fileServer);
         winrt::Windows::Foundation::Diagnostics::LoggingChannel GetLoggingChannel();
         void Token(hstring value);
         hstring Token();
         void ImageQuality(hstring value);
         hstring ImageQuality();
+        void FileServer(hstring value);
+        hstring FileServer();
+        hstring APPVersion();
         void HttpLogOut(hstring s1, hstring s2);
         hstring SetRaw(hstring const& strAPI, hstring const& uid, time_t const& t, hstring const& method, hstring const& apiKey);
         hstring BikaEncryption(hstring const& strAPI, hstring const& uid, time_t const& t, hstring const& method, hstring const& apiKey, hstring const& strKey);
@@ -45,8 +49,9 @@ namespace winrt::BikaClient::implementation
         const hstring ORIGINURL = L"https://picaapi.picacomic.com/";
     private:
 		hstring m_token;
-        hstring m_imageQuality = L"original";
-        hstring m_fileServer = DEFAULT_FILE_SERVER;
+        hstring m_imageQuality;
+        hstring m_fileServer;
+        hstring m_appVersion=L"2.2.1.2.3.4";
         winrt::Windows::Foundation::Diagnostics::LoggingChannel m_loggingChannel = winrt::Windows::Foundation::Diagnostics::LoggingChannel(to_hstring(winrt::Windows::Foundation::GuidHelper::CreateNewGuid()));
     };
 }

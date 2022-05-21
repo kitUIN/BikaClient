@@ -22,7 +22,7 @@ namespace winrt::BikaClient::implementation
     /// <param name="token">用户凭证</param>
     BikaHttpClient::BikaHttpClient(hstring token)
     {
-		m_token = token;
+        BikaHttpClient(token, L"original", to_hstring(DEFAULT_FILE_SERVER));
     }
 
     /// <summary>
@@ -32,10 +32,20 @@ namespace winrt::BikaClient::implementation
     /// <param name="imageQuality">图片质量</param>
     BikaHttpClient::BikaHttpClient(hstring token, hstring imageQuality)
     {
-		m_token = token;
-		m_imageQuality = imageQuality;
+        BikaHttpClient(token, imageQuality, to_hstring(DEFAULT_FILE_SERVER));
     }
-
+    /// <summary>
+    /// 初始化
+    /// </summary>
+    /// <param name="token">用户凭证</param>
+    /// <param name="imageQuality">图片质量</param>
+    /// <param name="fileServer">图片地址</param>
+    BikaHttpClient::BikaHttpClient(hstring token, hstring imageQuality, hstring fileServer)
+    {
+        m_token = token;
+        m_imageQuality = imageQuality;
+        m_fileServer = fileServer;
+    }
     void BikaHttpClient::Token(hstring value)
     {
 		m_token = value;
@@ -54,6 +64,20 @@ namespace winrt::BikaClient::implementation
     hstring BikaHttpClient::ImageQuality()
     {
         return m_imageQuality;
+    }
+    void BikaHttpClient::FileServer(hstring value)
+    {
+        m_fileServer = value;
+    }
+
+    hstring BikaHttpClient::FileServer()
+    {
+        return m_fileServer;
+    }
+
+    hstring BikaHttpClient::APPVersion()
+    {
+        return m_appVersion;
     }
 
     void BikaHttpClient::HttpLogOut(hstring s1, hstring s2)
@@ -182,7 +206,7 @@ namespace winrt::BikaClient::implementation
         headers.Insert(L"app-channel", L"3");
         headers.Insert(L"time", to_hstring(t));
         headers.Insert(L"signature", L"encrypt");
-        headers.Insert(L"app-version", L"2.2.1.2.3.4");
+        headers.Insert(L"app-version", m_appVersion);
         headers.Insert(L"nonce", L"b1ab87b4800d4d4590a11701b8551afa");
         headers.Insert(L"app-uuid", L"defaultUuid");
         headers.Insert(L"app-platform", L"android");
