@@ -341,12 +341,12 @@ namespace winrt::BikaClient::implementation
         HttpLogOut(L"[GET]->/keywords\nReturn:", res.Stringify().c_str());
         co_return res.Stringify();
     }
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Comics(int32_t page, hstring title, hstring sort)
+    winrt::Windows::Foundation::IAsyncOperation<ComicsResponse> BikaHttpClient::Comics(int32_t page, hstring title, hstring sort)
     {
         hstring api = L"comics?page=" + to_hstring(page) + L"&c=" + to_hstring(UrlEncode(to_string(title))) + L"&s=" + sort;
         JsonObject res = co_await GET(Uri{ ORIGINURL + api }, api);
         HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
-        co_return res.Stringify();
+        co_return ComicsResponse{ res , m_fileServer };
     }
     winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::BookInfo(hstring bookId)
     {

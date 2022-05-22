@@ -1,6 +1,9 @@
 #pragma once
 #include "BikaHttpClient.g.h"
 #include "Responses/Responses.LoginResponse.h"
+#include "Responses/Responses.CategoriesResponse.h"
+#include "Responses/Responses.UserResponse.h"
+#include "Responses/Responses.ComicsResponse.h"
 
 namespace winrt::BikaClient::implementation
 {
@@ -30,7 +33,7 @@ namespace winrt::BikaClient::implementation
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::UserResponse> PersonInfo();
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::CategoriesResponse> Categories();
         winrt::Windows::Foundation::IAsyncOperation<hstring> Keywords();
-        winrt::Windows::Foundation::IAsyncOperation<hstring> Comics(int32_t page, hstring title, hstring sort);
+        winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::ComicsResponse> Comics(int32_t page, hstring title, hstring sort);
         winrt::Windows::Foundation::IAsyncOperation<hstring> BookInfo(hstring bookId);
         winrt::Windows::Foundation::IAsyncOperation<hstring> Episodes(hstring bookId, int32_t page);
         winrt::Windows::Foundation::IAsyncOperation<hstring> Picture(hstring bookId, int32_t epsId, int32_t page);
