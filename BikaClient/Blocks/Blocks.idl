@@ -61,4 +61,22 @@ namespace BikaClient.Blocks
         String Link;
         String Description;
     }
+    runtimeclass ComicBlock : Windows.UI.Xaml.Data.INotifyPropertyChanged, IBlockJson
+    {
+        ComicBlock(Windows.Data.Json.JsonObject json);
+        ComicBlock(Windows.Data.Json.JsonObject json,String fileServer);
+        String Id;
+        String Title;
+        String Author;
+        Int32 TotalViews;
+        Int32 TotalLikes;
+		Int32 LikesCount;
+		Int32 PagesCount;
+		Int32 EpsCount;
+        Boolean Finished;
+        Windows.UI.Xaml.Visibility FinishedVisibility;
+        BikaClient.Blocks.ImageBlock Thumb;
+        Windows.Foundation.Collections.IObservableVector<BikaClient.Blocks.TagBlock> Categories;
+        String CategoriesString;
+    }
 }

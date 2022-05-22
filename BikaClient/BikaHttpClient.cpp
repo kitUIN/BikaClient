@@ -318,9 +318,9 @@ namespace winrt::BikaClient::implementation
     winrt::Windows::Foundation::IAsyncOperation<UserResponse> BikaHttpClient::PersonInfo()
     {
         hstring api = L"users/profile";
-        JsonObject resp = co_await GET(Uri{ ORIGINURL + api }, api);
-        HttpLogOut(L"[GET]->/users/profile\nReturn:", resp.Stringify().c_str());
-        co_return UserResponse{ resp,m_fileServer };
+        JsonObject res = co_await GET(Uri{ ORIGINURL + api }, api);
+        HttpLogOut(L"[GET]->/users/profile\nReturn:", res.Stringify().c_str());
+        co_return UserResponse{ res,m_fileServer };
     }
 
     /// <summary>
@@ -330,17 +330,23 @@ namespace winrt::BikaClient::implementation
     winrt::Windows::Foundation::IAsyncOperation<CategoriesResponse> BikaHttpClient::Categories()
     {
         hstring api = L"categories";
-        CategoriesResponse res{ co_await GET(Uri{ ORIGINURL + api }, api) , m_fileServer };
-        HttpLogOut(L"[GET]->/categories\nReturn:", res.Json());
-        co_return res;
+        JsonObject res = co_await GET(Uri{ ORIGINURL + api }, api);
+        HttpLogOut(L"[GET]->/categories\nReturn:", res.Stringify().c_str());
+        co_return CategoriesResponse{ res , m_fileServer };
     }
     winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Keywords()
     {
-        throw hresult_not_implemented();
+        hstring api = L"keywords";
+        JsonObject res = co_await GET(Uri{ ORIGINURL + api }, api);
+        HttpLogOut(L"[GET]->/keywords\nReturn:", res.Stringify().c_str());
+        co_return res.Stringify();
     }
     winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Comics(int32_t page, hstring title, hstring sort)
     {
-        throw hresult_not_implemented();
+        hstring api = L"comics?page=" + to_hstring(page) + L"&c=" + to_hstring(UrlEncode(to_string(title))) + L"&s=" + sort;
+        JsonObject res = co_await GET(Uri{ ORIGINURL + api }, api);
+        HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
+        co_return res.Stringify();
     }
     winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::BookInfo(hstring bookId)
     {

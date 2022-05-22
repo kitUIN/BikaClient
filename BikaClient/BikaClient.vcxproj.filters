@@ -21,6 +21,7 @@
     <ClCompile Include="Blocks\Blocks.UserBlock.cpp" />
     <ClCompile Include="Responses\Responses.CategoriesResponse.cpp" />
     <ClCompile Include="Responses\Responses.UserResponse.cpp" />
+    <ClCompile Include="Blocks\Blocks.ComicBlock.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -33,6 +34,7 @@
     <ClInclude Include="Blocks\Blocks.UserBlock.h" />
     <ClInclude Include="Responses\Responses.CategoriesResponse.h" />
     <ClInclude Include="Responses\Responses.UserResponse.h" />
+    <ClInclude Include="Blocks\Blocks.ComicBlock.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="BikaClient.def" />
