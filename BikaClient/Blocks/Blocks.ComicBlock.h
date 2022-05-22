@@ -1,7 +1,7 @@
 #pragma once
 #include "Blocks.ComicBlock.g.h"
 #include "Blocks.TagBlock.h"
-
+#include "Blocks.ImageBlock.h"
 namespace winrt::BikaClient::Blocks::implementation
 {
     struct ComicBlock : ComicBlockT<ComicBlock>

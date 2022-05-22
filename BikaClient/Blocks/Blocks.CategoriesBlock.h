@@ -1,6 +1,6 @@
 #pragma once
 #include "Blocks.CategoriesBlock.g.h"
-
+#include "Blocks.ImageBlock.h"
 
 namespace winrt::BikaClient::Blocks::implementation
 {

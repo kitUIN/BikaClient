@@ -17,7 +17,7 @@ namespace winrt::BikaClient::Responses::implementation
         if (json.HasKey(L"detail")) m_detail = json.GetNamedString(L"detail");
         if (json.HasKey(L"data"))
         {
-            m_user = winrt::BikaClient::Blocks::UserBlock{ json.GetNamedObject(L"data").GetNamedObject(L"user") ,fileServer };
+            m_user = make<winrt::BikaClient::Blocks::implementation::UserBlock>(json.GetNamedObject(L"data").GetNamedObject(L"user"), fileServer);
         }
     }
     winrt::BikaClient::Blocks::UserBlock UserResponse::User()

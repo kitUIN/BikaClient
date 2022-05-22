@@ -49,16 +49,14 @@ namespace winrt::BikaClient::Blocks::implementation
 		{
 			for (auto x : json.GetNamedArray(L"characters"))
 			{
-				m_characters.Append(TagBlock(x.GetString()));
+				m_characters.Append(make<winrt::BikaClient::Blocks::implementation::TagBlock>(x.GetString()));
 				m_charactersString = m_charactersString + x.GetString() + L"  ";
 			}
 		}
 
 		if (json.HasKey(L"avatar"))
 		{
-
-			m_thumb = winrt::BikaClient::Blocks::ImageBlock(json.GetNamedObject(L"avatar"), fileServer);
-
+			m_thumb = make<winrt::BikaClient::Blocks::implementation::ImageBlock>(json.GetNamedObject(L"avatar"), fileServer);
 		}
 	}
 	int32_t UserBlock::GetEXP(int32_t const& level)

@@ -1,7 +1,8 @@
 #pragma once
 #include "Blocks.UserBlock.g.h"
 #include "Date/Date.BikaDate.h"
-
+#include "Blocks.ImageBlock.h"
+#include "Blocks.TagBlock.h"
 namespace winrt::BikaClient::Blocks::implementation
 {
     struct UserBlock : UserBlockT<UserBlock>

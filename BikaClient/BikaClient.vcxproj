@@ -131,6 +131,7 @@
     <ClInclude Include="Date\Date.BikaDate.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Responses\Responses.CategoriesResponse.h" />
+    <ClInclude Include="Responses\Responses.ComicsResponse.h" />
     <ClInclude Include="Responses\Responses.LoginResponse.h" />
     <ClInclude Include="Responses\Responses.UserResponse.h" />
   </ItemGroup>
@@ -147,6 +148,7 @@
     </ClCompile>
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
     <ClCompile Include="Responses\Responses.CategoriesResponse.cpp" />
+    <ClCompile Include="Responses\Responses.ComicsResponse.cpp" />
     <ClCompile Include="Responses\Responses.LoginResponse.cpp" />
     <ClCompile Include="Responses\Responses.UserResponse.cpp" />
   </ItemGroup>

@@ -21,11 +21,11 @@ namespace winrt::BikaClient::Blocks::implementation
         {
             if (m_active)
             {
-                m_thumb = winrt::BikaClient::Blocks::ImageBlock(json.GetNamedObject(L"thumb"), json.GetNamedObject(L"thumb").GetNamedString(L"fileServer"));
+                m_thumb = make<winrt::BikaClient::Blocks::implementation::ImageBlock>(json.GetNamedObject(L"thumb"), json.GetNamedObject(L"thumb").GetNamedString(L"fileServer"));
             }
             else
             {
-                m_thumb = winrt::BikaClient::Blocks::ImageBlock(json.GetNamedObject(L"thumb"), fileServer);
+                m_thumb = make<winrt::BikaClient::Blocks::implementation::ImageBlock>(json.GetNamedObject(L"thumb"), fileServer);
             }
 
         }

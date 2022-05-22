@@ -49,11 +49,11 @@ namespace winrt::BikaClient::Blocks::implementation
         {
             for (auto x : json.GetNamedArray(L"categories"))
             {
-                m_categories.Append(winrt::make<TagBlock>(x.GetString()));
+                m_categories.Append(winrt::make<winrt::BikaClient::Blocks::implementation::TagBlock>(x.GetString()));
                 m_categoriesString = m_categoriesString + x.GetString() + L" ";
             }
         }
-        if (json.HasKey(L"thumb"))  m_thumb = winrt::BikaClient::Blocks::ImageBlock(json.GetNamedObject(L"thumb"),fileServer);
+        if (json.HasKey(L"thumb"))  m_thumb = make<winrt::BikaClient::Blocks::implementation::ImageBlock>(json.GetNamedObject(L"thumb"),fileServer);
 
     }
     hstring ComicBlock::Id()
