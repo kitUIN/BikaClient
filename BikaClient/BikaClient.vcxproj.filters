@@ -23,6 +23,7 @@
     <ClCompile Include="Responses\Responses.UserResponse.cpp" />
     <ClCompile Include="Blocks\Blocks.ComicBlock.cpp" />
     <ClCompile Include="Responses\Responses.ComicsResponse.cpp" />
+    <ClCompile Include="Blocks\Blocks.BookBlock.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -37,6 +38,7 @@
     <ClInclude Include="Responses\Responses.UserResponse.h" />
     <ClInclude Include="Blocks\Blocks.ComicBlock.h" />
     <ClInclude Include="Responses\Responses.ComicsResponse.h" />
+    <ClInclude Include="Blocks\Blocks.BookBlock.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="BikaClient.def" />

@@ -6,7 +6,7 @@ namespace winrt::BikaClient::Blocks::implementation
 {
     CategoriesBlock::CategoriesBlock(winrt::Windows::Data::Json::JsonObject const& json)
     {
-        CategoriesBlock(json, to_hstring(DEFAULT_FILE_SERVER));
+        CategoriesBlock(json, DEFAULT_FILE_SERVER);
     }
     CategoriesBlock::CategoriesBlock(winrt::Windows::Data::Json::JsonObject const& json,hstring const& fileServer)
     {

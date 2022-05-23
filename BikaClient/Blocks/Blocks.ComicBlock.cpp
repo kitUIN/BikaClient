@@ -10,7 +10,7 @@ namespace winrt::BikaClient::Blocks::implementation
 {
     ComicBlock::ComicBlock(winrt::Windows::Data::Json::JsonObject const& json)
     {
-        ComicBlock(json, to_hstring(DEFAULT_FILE_SERVER));
+        ComicBlock(json, DEFAULT_FILE_SERVER);
     }
     ComicBlock::ComicBlock(winrt::Windows::Data::Json::JsonObject const& json, hstring const& fileServer)
     {

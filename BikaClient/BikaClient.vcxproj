@@ -123,6 +123,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BikaHttpClient.h" />
+    <ClInclude Include="Blocks\Blocks.BookBlock.h" />
     <ClInclude Include="Blocks\Blocks.CategoriesBlock.h" />
     <ClInclude Include="Blocks\Blocks.ComicBlock.h" />
     <ClInclude Include="Blocks\Blocks.TagBlock.h" />
@@ -137,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BikaHttpClient.cpp" />
+    <ClCompile Include="Blocks\Blocks.BookBlock.cpp" />
     <ClCompile Include="Blocks\Blocks.CategoriesBlock.cpp" />
     <ClCompile Include="Blocks\Blocks.ComicBlock.cpp" />
     <ClCompile Include="Blocks\Blocks.TagBlock.cpp" />

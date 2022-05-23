@@ -79,4 +79,35 @@ namespace BikaClient.Blocks
         Windows.Foundation.Collections.IObservableVector<BikaClient.Blocks.TagBlock> Categories;
         String CategoriesString;
     }
+    runtimeclass BookBlock : Windows.UI.Xaml.Data.INotifyPropertyChanged, IBlockJson
+    {
+        BookBlock(Windows.Data.Json.JsonObject json);
+        BookBlock(Windows.Data.Json.JsonObject json, String fileServer);
+        String ID;
+        String Title;
+        BikaClient.Blocks.UserBlock Creater;
+        String Description;
+        BikaClient.Blocks.ImageBlock Thumb;
+        String Author;
+        String ChineseTeam;
+        Windows.Foundation.Collections.IObservableVector<BikaClient.Blocks.TagBlock> Categories;
+        String CategoriesString;
+        Windows.Foundation.Collections.IObservableVector<BikaClient.Blocks.TagBlock> Tags;
+        String TagsString;
+        Int32 PagesCount;
+        Int32 EpsCount;
+        Boolean Finished;
+        Windows.UI.Xaml.Visibility FinishedVisibility;
+        BikaClient.Date.BikaDate UpdatedAt;
+        BikaClient.Date.BikaDate CreatedAt;
+        Boolean AllowDownload;
+        Boolean AllowComment;
+        Int32 TotalLikes;
+        Int32 TotalViews;
+        Int32 ViewsCount;
+        Int32 LikesCount;
+        Boolean IsFavourite;
+        Boolean IsLiked;
+        Int32 CommentsCount;
+    }
 }

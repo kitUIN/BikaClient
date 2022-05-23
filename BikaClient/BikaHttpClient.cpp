@@ -334,6 +334,10 @@ namespace winrt::BikaClient::implementation
         HttpLogOut(L"[GET]->/categories\nReturn:", res.Stringify().c_str());
         co_return CategoriesResponse{ res , m_fileServer };
     }
+    /// <summary>
+    /// 大家都在搜
+    /// </summary>
+    /// <returns></returns>
     winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Keywords()
     {
         hstring api = L"keywords";
@@ -341,6 +345,13 @@ namespace winrt::BikaClient::implementation
         HttpLogOut(L"[GET]->/keywords\nReturn:", res.Stringify().c_str());
         co_return res.Stringify();
     }
+    /// <summary>
+    /// 获取分区
+    /// </summary>
+    /// <param name="page">页</param>
+    /// <param name="title">分区</param>
+    /// <param name="sort">排序</param>
+    /// <returns>ComicsResponse</returns>
     winrt::Windows::Foundation::IAsyncOperation<ComicsResponse> BikaHttpClient::Comics(int32_t page, hstring title, hstring sort)
     {
         hstring api = L"comics?page=" + to_hstring(page) + L"&c=" + to_hstring(UrlEncode(to_string(title))) + L"&s=" + sort;
