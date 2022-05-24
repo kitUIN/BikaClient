@@ -9,7 +9,7 @@ namespace winrt::BikaClient::Responses::implementation
 {
     ComicsResponse::ComicsResponse(winrt::Windows::Data::Json::JsonObject const& json)
     {
-        ComicsResponse(json, to_hstring(DEFAULT_FILE_SERVER));
+        ComicsResponse(json, DEFAULT_FILE_SERVER);
     }
     ComicsResponse::ComicsResponse(winrt::Windows::Data::Json::JsonObject const& json, hstring const& fileServer)
     {

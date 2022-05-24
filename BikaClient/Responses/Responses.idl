@@ -40,4 +40,10 @@ namespace BikaClient.Responses
 		ComicsResponse(Windows.Data.Json.JsonObject json,String fileServer);
 		Windows.Foundation.Collections.IObservableVector<BikaClient.Blocks.ComicBlock> Comics;
 	}
+	runtimeclass BookInfoResponse : IRespData
+	{
+		BookInfoResponse(Windows.Data.Json.JsonObject json);
+		BookInfoResponse(Windows.Data.Json.JsonObject json,String fileServer);
+		BikaClient.Blocks.BookBlock BookInfos;
+	}
 }

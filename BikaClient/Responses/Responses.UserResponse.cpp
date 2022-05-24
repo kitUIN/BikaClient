@@ -6,7 +6,7 @@ namespace winrt::BikaClient::Responses::implementation
 {
     UserResponse::UserResponse(winrt::Windows::Data::Json::JsonObject const& json)
     {
-        UserResponse(json, to_hstring(DEFAULT_FILE_SERVER));
+        UserResponse(json, DEFAULT_FILE_SERVER);
     }
     UserResponse::UserResponse(winrt::Windows::Data::Json::JsonObject const& json, hstring const& fileServer)
     {

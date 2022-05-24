@@ -7,7 +7,7 @@ namespace winrt::BikaClient::Responses::implementation
 {
     CategoriesResponse::CategoriesResponse(winrt::Windows::Data::Json::JsonObject const& json)
     {
-        CategoriesResponse(json, to_hstring(DEFAULT_FILE_SERVER));
+        CategoriesResponse(json, DEFAULT_FILE_SERVER);
     }
     CategoriesResponse::CategoriesResponse(winrt::Windows::Data::Json::JsonObject const& json, hstring const& fileServer)
     {
