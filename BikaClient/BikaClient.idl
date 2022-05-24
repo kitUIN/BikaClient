@@ -1,4 +1,5 @@
 import "Responses/Responses.idl";
+import "Utils/Utils.idl";
 namespace BikaClient
 {
     [default_interface]
@@ -17,7 +18,7 @@ namespace BikaClient
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.UserResponse> PersonInfo();
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.CategoriesResponse> Categories();
         Windows.Foundation.IAsyncOperation<String> Keywords();
-        Windows.Foundation.IAsyncOperation<BikaClient.Responses.ComicsResponse> Comics(Int32 page, String title, String sort);
+        Windows.Foundation.IAsyncOperation<BikaClient.Responses.ComicsResponse> Comics(Int32 page, String title, BikaClient.Utils.SortMode sort);
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.BookInfoResponse> BookInfo(String bookId);
         Windows.Foundation.IAsyncOperation<String> Episodes(String bookId, Int32 page);
         Windows.Foundation.IAsyncOperation<String> Picture(String bookId, Int32 epsId, Int32 page);

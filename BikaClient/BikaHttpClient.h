@@ -4,7 +4,7 @@
 #include "Responses/Responses.CategoriesResponse.h"
 #include "Responses/Responses.UserResponse.h"
 #include "Responses/Responses.ComicsResponse.h"
-
+#include "Utils/Utils.BikaSort.h"
 namespace winrt::BikaClient::implementation
 {
     struct BikaHttpClient : BikaHttpClientT<BikaHttpClient>
@@ -33,7 +33,7 @@ namespace winrt::BikaClient::implementation
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::UserResponse> PersonInfo();
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::CategoriesResponse> Categories();
         winrt::Windows::Foundation::IAsyncOperation<hstring> Keywords();
-        winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::ComicsResponse> Comics(int32_t const& page, hstring const& title, hstring const& sort);
+        winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::ComicsResponse> Comics(int32_t const& page, hstring const& title, winrt::BikaClient::Utils::SortMode const& sort);
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::BookInfoResponse> BookInfo(hstring const& bookId);
         winrt::Windows::Foundation::IAsyncOperation<hstring> Episodes(hstring const& bookId, int32_t const& page);
         winrt::Windows::Foundation::IAsyncOperation<hstring> Picture(hstring const& bookId, int32_t const& epsId, int32_t const& page);

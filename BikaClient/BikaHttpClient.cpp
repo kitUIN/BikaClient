@@ -13,6 +13,7 @@ using namespace Windows::Security::Cryptography;
 using namespace Windows::Security::Cryptography::Core;
 using namespace Windows::Data::Json;
 using namespace BikaClient::Responses;
+using namespace BikaClient::Utils;
 
 namespace winrt::BikaClient::implementation
 {
@@ -352,9 +353,10 @@ namespace winrt::BikaClient::implementation
     /// <param name="title">分区</param>
     /// <param name="sort">排序</param>
     /// <returns>ComicsResponse</returns>
-    winrt::Windows::Foundation::IAsyncOperation<ComicsResponse> BikaHttpClient::Comics(int32_t const& page, hstring const& title, hstring const& sort)
+    winrt::Windows::Foundation::IAsyncOperation<ComicsResponse> BikaHttpClient::Comics(int32_t const& page, hstring const& title, SortMode const& sort)
     {
-        hstring api = L"comics?page=" + to_hstring(page) + L"&c=" + to_hstring(UrlEncode(to_string(title))) + L"&s=" + sort;
+        BikaSort bikasort{ sort };
+        hstring api = L"comics?page=" + to_hstring(page) + L"&c=" + to_hstring(UrlEncode(to_string(title))) + L"&s=" + bikasort.Sort();
         JsonObject res = co_await GET(Uri{ ORIGINURL + api }, api);
         HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return ComicsResponse{ res, m_fileServer };
@@ -372,6 +374,12 @@ namespace winrt::BikaClient::implementation
         HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return BookInfoResponse{ res, m_fileServer };
     }
+    /// <summary>
+    /// 获取分话信息
+    /// </summary>
+    /// <param name="bookId">漫画id</param>
+    /// <param name="page">页数</param>
+    /// <returns></returns>
     winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Episodes(hstring const& bookId, int32_t const& page)
     {
         throw hresult_not_implemented();
