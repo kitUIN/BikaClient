@@ -299,7 +299,7 @@ namespace winrt::BikaClient::implementation
     /// <param name="account" >用户名.</param>
     /// <param name="password" >密码.</param>
     /// <returns>LoginResponse</returns>
-    winrt::Windows::Foundation::IAsyncOperation<LoginResponse> BikaHttpClient::Login(hstring account, hstring password)
+    winrt::Windows::Foundation::IAsyncOperation<LoginResponse> BikaHttpClient::Login(hstring const& account, hstring const& password)
     {
         hstring api = L"auth/sign-in";
         LoginResponse res{
@@ -352,50 +352,59 @@ namespace winrt::BikaClient::implementation
     /// <param name="title">分区</param>
     /// <param name="sort">排序</param>
     /// <returns>ComicsResponse</returns>
-    winrt::Windows::Foundation::IAsyncOperation<ComicsResponse> BikaHttpClient::Comics(int32_t page, hstring title, hstring sort)
+    winrt::Windows::Foundation::IAsyncOperation<ComicsResponse> BikaHttpClient::Comics(int32_t const& page, hstring const& title, hstring const& sort)
     {
         hstring api = L"comics?page=" + to_hstring(page) + L"&c=" + to_hstring(UrlEncode(to_string(title))) + L"&s=" + sort;
         JsonObject res = co_await GET(Uri{ ORIGINURL + api }, api);
         HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
-        co_return ComicsResponse{ res , m_fileServer };
+        co_return ComicsResponse{ res, m_fileServer };
     }
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::BookInfo(hstring bookId)
+
+    /// <summary>
+    /// 获取漫画信息
+    /// </summary>
+    /// <param name="bookId">漫画id</param>
+    /// <returns>BookInfoResponse</returns>
+    winrt::Windows::Foundation::IAsyncOperation<BookInfoResponse> BikaHttpClient::BookInfo(hstring const& bookId)
+    {
+        hstring api = L"comics/" + bookId;
+        JsonObject res = co_await GET(Uri{ ORIGINURL + api }, api);
+        HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
+        co_return BookInfoResponse{ res, m_fileServer };
+    }
+    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Episodes(hstring const& bookId, int32_t const& page)
     {
         throw hresult_not_implemented();
     }
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Episodes(hstring bookId, int32_t page)
+    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Picture(hstring const& bookId, int32_t const& epsId, int32_t const& page)
     {
         throw hresult_not_implemented();
     }
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Picture(hstring bookId, int32_t epsId, int32_t page)
+    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::PersonFavourite(hstring const& sort, int32_t const& page)
     {
         throw hresult_not_implemented();
     }
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::PersonFavourite(hstring sort, int32_t page)
+    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::PersonComment(int32_t const& page)
     {
         throw hresult_not_implemented();
     }
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::PersonComment(int32_t page)
+    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Search(hstring const& keywords, hstring const& sort, winrt::Windows::Data::Json::JsonArray const& categories, int32_t const& page)
     {
         throw hresult_not_implemented();
     }
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Search(hstring keywords, hstring sort, winrt::Windows::Data::Json::JsonArray categories, int32_t page)
+    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Favourite(hstring const& bookId)
     {
         throw hresult_not_implemented();
     }
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Favourite(hstring bookId)
+    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Like(hstring const& bookId)
     {
         throw hresult_not_implemented();
     }
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Like(hstring bookId)
+    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Comments(hstring const& bookId, int32_t const& page)
     {
         throw hresult_not_implemented();
     }
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Comments(hstring bookId, int32_t page)
-    {
-        throw hresult_not_implemented();
-    }
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::SendComments(hstring bookId, hstring content)
+    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::SendComments(hstring const& bookId, hstring const& content)
     {
         throw hresult_not_implemented();
     }
@@ -403,19 +412,19 @@ namespace winrt::BikaClient::implementation
     {
         throw hresult_not_implemented();
     }
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::SetSlogan(hstring slogan)
+    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::SetSlogan(hstring const& slogan)
     {
         throw hresult_not_implemented();
     }
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::SetPassword(hstring oldPassword, hstring newPassword)
+    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::SetPassword(hstring const& oldPassword, hstring const& newPassword)
     {
         throw hresult_not_implemented();
     }
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::ReplyComment(hstring commentId, hstring content)
+    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::ReplyComment(hstring const& commentId, hstring const& content)
     {
         throw hresult_not_implemented();
     }
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::GetReplyComment(hstring commentId, int32_t page)
+    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::GetReplyComment(hstring const& commentId, int32_t const& page)
     {
         throw hresult_not_implemented();
     }
