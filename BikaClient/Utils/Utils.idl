@@ -1,0 +1,16 @@
+namespace BikaClient.Utils
+{
+	enum SortMode
+	{
+		UA = 0,
+		DD = 1,
+		DA = 2,
+		LD = 3,
+		VD = 4
+	};
+	runtimeclass BikaSort
+	{
+		BikaSort(SortMode sort);
+		String Sort{ get; };
+	}
+}

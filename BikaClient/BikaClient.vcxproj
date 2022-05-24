@@ -136,6 +136,7 @@
     <ClInclude Include="Responses\Responses.ComicsResponse.h" />
     <ClInclude Include="Responses\Responses.LoginResponse.h" />
     <ClInclude Include="Responses\Responses.UserResponse.h" />
+    <ClInclude Include="Utils\Utils.BikaSort.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BikaHttpClient.cpp" />
@@ -155,6 +156,7 @@
     <ClCompile Include="Responses\Responses.ComicsResponse.cpp" />
     <ClCompile Include="Responses\Responses.LoginResponse.cpp" />
     <ClCompile Include="Responses\Responses.UserResponse.cpp" />
+    <ClCompile Include="Utils\Utils.BikaSort.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="BikaClient.def" />
@@ -168,6 +170,7 @@
     <Midl Include="Blocks\Blocks.idl" />
     <Midl Include="Date\BikaDate.idl" />
     <Midl Include="Responses\Responses.idl" />
+    <Midl Include="Utils\Utils.idl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
