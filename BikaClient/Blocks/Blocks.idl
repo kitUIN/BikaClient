@@ -110,4 +110,14 @@ namespace BikaClient.Blocks
         Boolean IsLiked;
         Int32 CommentsCount;
     }
+        runtimeclass EpisodeBlock : Windows.UI.Xaml.Data.INotifyPropertyChanged, IBlockJson
+    {
+        EpisodeBlock(Windows.Data.Json.JsonObject json);
+        String ID;
+        BikaClient.Date.BikaDate UpdatedAt;
+        Int32 Order;
+        String Title;
+        String BookId;
+        Int32 Total;
+    }
 }
