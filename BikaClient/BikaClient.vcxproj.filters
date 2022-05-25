@@ -29,8 +29,8 @@
     <ClCompile Include="Blocks\Blocks.EpisodeBlock.cpp" />
     <ClCompile Include="Responses\Responses.EpisodesResponse.cpp" />
     <ClCompile Include="Responses\Responses.PicturesResponse.cpp" />
-    <ClCompile Include="Blocks\Blocks.CommentsBlock.cpp" />
     <ClCompile Include="Utils\Utils.BikaBoolean.cpp" />
+    <ClCompile Include="Blocks\Blocks.CommentBlock.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -51,8 +51,8 @@
     <ClInclude Include="Blocks\Blocks.EpisodeBlock.h" />
     <ClInclude Include="Responses\Responses.EpisodesResponse.h" />
     <ClInclude Include="Responses\Responses.PicturesResponse.h" />
-    <ClInclude Include="Blocks\Blocks.CommentsBlock.h" />
     <ClInclude Include="Utils\Utils.BikaBoolean.h" />
+    <ClInclude Include="Blocks\Blocks.CommentBlock.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="BikaClient.def" />

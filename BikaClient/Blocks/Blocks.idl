@@ -119,9 +119,9 @@ namespace BikaClient.Blocks
         String BookId;
         Int32 Total;
     }
-    runtimeclass CommentsBlock : Windows.UI.Xaml.Data.INotifyPropertyChanged, IBlockJson
+    runtimeclass CommentBlock : Windows.UI.Xaml.Data.INotifyPropertyChanged, IBlockJson
     {
-        CommentsBlock(Windows.Data.Json.JsonObject json);
+        CommentBlock(Windows.Data.Json.JsonObject json);
         String ID;
         String Content;
         String Comic;
@@ -129,9 +129,9 @@ namespace BikaClient.Blocks
         BikaClient.Date.BikaDate CreatedAt;
         Int32 LikesCount;
         Int32 CommentsCount;
-        Boolean IsTop;
-        Boolean Hide;
-        Boolean IsLiked;
+        BikaClient.Utils.BikaBoolean IsTop;
+        BikaClient.Utils.BikaBoolean Hide;
+        BikaClient.Utils.BikaBoolean IsLiked;
         String BookId;
     }
 }
