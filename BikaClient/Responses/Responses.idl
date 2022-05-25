@@ -51,4 +51,11 @@ namespace BikaClient.Responses
 		EpisodesResponse(Windows.Data.Json.JsonObject json);
 		Windows.Foundation.Collections.IObservableVector<BikaClient.Blocks.EpisodeBlock> Episodes;
 	}
+	runtimeclass PicturesResponse : IPageData, IRespData
+	{
+		PicturesResponse(Windows.Data.Json.JsonObject json);
+		PicturesResponse(Windows.Data.Json.JsonObject json,String fileServer);
+		Windows.Foundation.Collections.IObservableVector<BikaClient.Blocks.ImageBlock> Pictures;
+		BikaClient.Blocks.EpisodeBlock Episode;
+	}
 }

@@ -28,6 +28,7 @@
     <ClCompile Include="Utils\Utils.BikaSort.cpp" />
     <ClCompile Include="Blocks\Blocks.EpisodeBlock.cpp" />
     <ClCompile Include="Responses\Responses.EpisodesResponse.cpp" />
+    <ClCompile Include="Responses\Responses.PicturesResponse.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -47,6 +48,7 @@
     <ClInclude Include="Utils\Utils.BikaSort.h" />
     <ClInclude Include="Blocks\Blocks.EpisodeBlock.h" />
     <ClInclude Include="Responses\Responses.EpisodesResponse.h" />
+    <ClInclude Include="Responses\Responses.PicturesResponse.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="BikaClient.def" />

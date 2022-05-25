@@ -137,6 +137,7 @@
     <ClInclude Include="Responses\Responses.ComicsResponse.h" />
     <ClInclude Include="Responses\Responses.EpisodesResponse.h" />
     <ClInclude Include="Responses\Responses.LoginResponse.h" />
+    <ClInclude Include="Responses\Responses.PicturesResponse.h" />
     <ClInclude Include="Responses\Responses.UserResponse.h" />
     <ClInclude Include="Utils\Utils.BikaSort.h" />
   </ItemGroup>
@@ -159,6 +160,7 @@
     <ClCompile Include="Responses\Responses.ComicsResponse.cpp" />
     <ClCompile Include="Responses\Responses.EpisodesResponse.cpp" />
     <ClCompile Include="Responses\Responses.LoginResponse.cpp" />
+    <ClCompile Include="Responses\Responses.PicturesResponse.cpp" />
     <ClCompile Include="Responses\Responses.UserResponse.cpp" />
     <ClCompile Include="Utils\Utils.BikaSort.cpp" />
   </ItemGroup>
