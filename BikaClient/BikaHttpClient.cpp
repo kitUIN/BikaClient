@@ -303,11 +303,14 @@ namespace winrt::BikaClient::implementation
     winrt::Windows::Foundation::IAsyncOperation<LoginResponse> BikaHttpClient::Login(hstring const& account, hstring const& password)
     {
         hstring api = L"auth/sign-in";
+        JsonObject json;
+        json.Insert(L"email", JsonValue::CreateStringValue(account));
+        json.Insert(L"password", JsonValue::CreateStringValue(password));
         LoginResponse res{
             co_await POST(
                 Uri{ ORIGINURL + api },
                 HttpStringContent{
-                    L"{ \"email\": \"" + account + L"\", \"password\": \"" + password + L"\" }",
+                    json.Stringify(),
                     UnicodeEncoding::Utf8,
                     L"application/json" },
                 api) };
@@ -396,11 +399,19 @@ namespace winrt::BikaClient::implementation
     }
     winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::PersonFavourite(hstring const& sort, int32_t const& page)
     {
-        throw hresult_not_implemented();
+        hstring api = L"users/favourite?s=" + sort + L"&page=" + to_hstring(page);
+        Uri uri = Uri{ L"https://picaapi.picacomic.com/" + api };
+        JsonObject res = co_await GET(uri, api);
+        HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
+        co_return res.Stringify();
     }
     winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::PersonComment(int32_t const& page)
     {
-        throw hresult_not_implemented();
+        hstring api = L"users/my-comments?page=" + to_hstring(page);
+        Uri uri = Uri{ L"https://picaapi.picacomic.com/" + api };
+        JsonObject res = co_await GET(uri, api);
+        HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
+        co_return res.Stringify();
     }
     winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Search(hstring const& keywords, hstring const& sort, winrt::Windows::Data::Json::JsonArray const& categories, int32_t const& page)
     {
