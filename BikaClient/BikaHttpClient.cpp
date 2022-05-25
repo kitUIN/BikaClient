@@ -412,9 +412,22 @@ namespace winrt::BikaClient::implementation
         HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return res.Stringify();
     }
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Search(hstring const& keywords, hstring const& sort, winrt::Windows::Data::Json::JsonArray const& categories, int32_t const& page)
+    winrt::Windows::Foundation::IAsyncOperation<ComicsResponse> BikaHttpClient::Search(hstring const& keywords, hstring const& sort, winrt::Windows::Data::Json::JsonArray const& categories, int32_t const& page)
     {
-        throw hresult_not_implemented();
+        hstring api = L"comics/advanced-search?page=" + to_hstring(page);
+        JsonObject json;
+        json.SetNamedValue(L"keyword", JsonValue::CreateStringValue(keywords));
+        if (categories.Size() > 0) json.SetNamedValue(L"categories", categories);
+        json.SetNamedValue(L"sort", JsonValue::CreateStringValue(sort));
+        JsonObject res = co_await POST(
+            Uri{ ORIGINURL + api },
+            HttpStringContent{
+                json.Stringify(),
+                UnicodeEncoding::Utf8,
+                L"application/json" },
+                api);
+        HttpLogOut(L"[Post]->/" + api + L"\nReturn:", res.Stringify().c_str());
+        co_return ComicsResponse{ res };
     }
     winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Favourite(hstring const& bookId)
     {
