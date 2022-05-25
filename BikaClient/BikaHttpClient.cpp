@@ -397,9 +397,10 @@ namespace winrt::BikaClient::implementation
         HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return PicturesResponse{ res };
     }
-    winrt::Windows::Foundation::IAsyncOperation<ComicsResponse> BikaHttpClient::PersonFavourite(hstring const& sort, int32_t const& page)
+    winrt::Windows::Foundation::IAsyncOperation<ComicsResponse> BikaHttpClient::PersonFavourite(SortMode const& sort, int32_t const& page)
     {
-        hstring api = L"users/favourite?s=" + sort + L"&page=" + to_hstring(page);
+        BikaSort bikasort{ sort };
+        hstring api = L"users/favourite?s=" + bikasort.Sort() + L"&page=" + to_hstring(page);
         JsonObject res = co_await GET(Uri{ ORIGINURL + api }, api);
         HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return ComicsResponse{ res };
@@ -412,13 +413,14 @@ namespace winrt::BikaClient::implementation
         HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return res.Stringify();
     }
-    winrt::Windows::Foundation::IAsyncOperation<ComicsResponse> BikaHttpClient::Search(hstring const& keywords, hstring const& sort, winrt::Windows::Data::Json::JsonArray const& categories, int32_t const& page)
+    winrt::Windows::Foundation::IAsyncOperation<ComicsResponse> BikaHttpClient::Search(hstring const& keywords, winrt::BikaClient::Utils::SortMode const& sort, winrt::Windows::Data::Json::JsonArray const& categories, int32_t const& page)
     {
         hstring api = L"comics/advanced-search?page=" + to_hstring(page);
         JsonObject json;
+        BikaSort bikasort{ sort };
         json.SetNamedValue(L"keyword", JsonValue::CreateStringValue(keywords));
         if (categories.Size() > 0) json.SetNamedValue(L"categories", categories);
-        json.SetNamedValue(L"sort", JsonValue::CreateStringValue(sort));
+        json.SetNamedValue(L"sort", JsonValue::CreateStringValue(bikasort.Sort()));
         JsonObject res = co_await POST(
             Uri{ ORIGINURL + api },
             HttpStringContent{
