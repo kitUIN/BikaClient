@@ -1,17 +1,13 @@
 #include "pch.h"
-#include "Responses.ComicsResponse.h"
-#include "Responses.ComicsResponse.g.cpp"
+#include "Responses.EpisodesResponse.h"
+#include "Responses.EpisodesResponse.g.cpp"
 
 using namespace winrt;
 using namespace Windows::Data::Json;
 
 namespace winrt::BikaClient::Responses::implementation
 {
-    ComicsResponse::ComicsResponse(winrt::Windows::Data::Json::JsonObject const& json)
-    {
-        ComicsResponse(json, DEFAULT_FILE_SERVER);
-    }
-    ComicsResponse::ComicsResponse(winrt::Windows::Data::Json::JsonObject const& json, hstring const& fileServer)
+    EpisodesResponse::EpisodesResponse(winrt::Windows::Data::Json::JsonObject const& json)
     {
         m_json = json.Stringify();
         if (json.HasKey(L"code")) m_code = static_cast<int32_t>(json.GetNamedNumber(L"code"));
@@ -20,90 +16,90 @@ namespace winrt::BikaClient::Responses::implementation
         if (json.HasKey(L"detail")) m_detail = json.GetNamedString(L"detail");
         if (json.HasKey(L"data"))
         {
-            JsonObject data = json.GetNamedObject(L"data").GetNamedObject(L"comics");
+            JsonObject data = json.GetNamedObject(L"data").GetNamedObject(L"eps");
             if (data.HasKey(L"total")) m_total = static_cast<int32_t>(data.GetNamedNumber(L"total"));
             if (data.HasKey(L"limit")) m_limit = static_cast<int32_t>(data.GetNamedNumber(L"limit"));
             if (data.HasKey(L"page")) m_page = static_cast<int32_t>(data.GetNamedNumber(L"page"));
             if (data.HasKey(L"pages")) m_pages = static_cast<int32_t>(data.GetNamedNumber(L"pages"));
             for (auto x : data.GetNamedArray(L"docs"))
             {
-                m_comics.Append(winrt::make<winrt::BikaClient::Blocks::implementation::ComicBlock>(x.GetObject(), fileServer));
+                m_episodes.Append(winrt::make<winrt::BikaClient::Blocks::implementation::EpisodeBlock>(x.GetObject()));
             }
         }
     }
-    winrt::Windows::Foundation::Collections::IObservableVector<winrt::BikaClient::Blocks::ComicBlock> ComicsResponse::Comics()
+    winrt::Windows::Foundation::Collections::IObservableVector<winrt::BikaClient::Blocks::EpisodeBlock> EpisodesResponse::Episodes()
     {
-        return m_comics;
+        return m_episodes;
     }
-    void ComicsResponse::Comics(winrt::Windows::Foundation::Collections::IObservableVector<winrt::BikaClient::Blocks::ComicBlock> const& value)
+    void EpisodesResponse::Episodes(winrt::Windows::Foundation::Collections::IObservableVector<winrt::BikaClient::Blocks::EpisodeBlock> const& value)
     {
-        m_comics = value;
+        m_episodes = value;
     }
-    int32_t ComicsResponse::Page()
+    int32_t EpisodesResponse::Page()
     {
         return m_page;
     }
-    void ComicsResponse::Page(int32_t value)
+    void EpisodesResponse::Page(int32_t value)
     {
         m_page = value;
     }
-    int32_t ComicsResponse::Pages()
+    int32_t EpisodesResponse::Pages()
     {
         return m_pages;
     }
-    void ComicsResponse::Pages(int32_t value)
+    void EpisodesResponse::Pages(int32_t value)
     {
         m_pages = value;
     }
-    int32_t ComicsResponse::Total()
+    int32_t EpisodesResponse::Total()
     {
         return m_total;
     }
-    void ComicsResponse::Total(int32_t value)
+    void EpisodesResponse::Total(int32_t value)
     {
         m_total = value;
     }
-    int32_t ComicsResponse::Limit()
+    int32_t EpisodesResponse::Limit()
     {
         return m_limit;
     }
-    void ComicsResponse::Limit(int32_t value)
+    void EpisodesResponse::Limit(int32_t value)
     {
         m_limit = value;
     }
-    int32_t ComicsResponse::Code()
+    int32_t EpisodesResponse::Code()
     {
         return m_code;
     }
-    void ComicsResponse::Code(int32_t value)
+    void EpisodesResponse::Code(int32_t value)
     {
         m_code = value;
     }
-    hstring ComicsResponse::Message()
+    hstring EpisodesResponse::Message()
     {
         return m_message;
     }
-    void ComicsResponse::Message(hstring const& value)
+    void EpisodesResponse::Message(hstring const& value)
     {
         m_message = value;
     }
-    hstring ComicsResponse::Error()
+    hstring EpisodesResponse::Error()
     {
         return m_error;
     }
-    void ComicsResponse::Error(hstring const& value)
+    void EpisodesResponse::Error(hstring const& value)
     {
         m_error = value;
     }
-    hstring ComicsResponse::Detail()
+    hstring EpisodesResponse::Detail()
     {
         return m_detail;
     }
-    void ComicsResponse::Detail(hstring const& value)
+    void EpisodesResponse::Detail(hstring const& value)
     {
         m_detail = value;
     }
-    hstring ComicsResponse::Json()
+    hstring EpisodesResponse::Json()
     {
         return m_json;
     }

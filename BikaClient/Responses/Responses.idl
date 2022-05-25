@@ -46,4 +46,9 @@ namespace BikaClient.Responses
 		BookInfoResponse(Windows.Data.Json.JsonObject json,String fileServer);
 		BikaClient.Blocks.BookBlock BookInfos;
 	}
+	runtimeclass EpisodesResponse : IPageData, IRespData
+	{
+		EpisodesResponse(Windows.Data.Json.JsonObject json);
+		Windows.Foundation.Collections.IObservableVector<BikaClient.Blocks.EpisodeBlock> Episodes;
+	}
 }

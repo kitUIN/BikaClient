@@ -1,17 +1,15 @@
 #pragma once
-#include "Responses.ComicsResponse.g.h"
-#include "Blocks/Blocks.ComicBlock.h"
-
+#include "Responses.EpisodesResponse.g.h"
+#include "Blocks/Blocks.EpisodeBlock.h"
 namespace winrt::BikaClient::Responses::implementation
 {
-    struct ComicsResponse : ComicsResponseT<ComicsResponse>
+    struct EpisodesResponse : EpisodesResponseT<EpisodesResponse>
     {
-        ComicsResponse() = default;
+        EpisodesResponse() = default;
 
-        ComicsResponse(winrt::Windows::Data::Json::JsonObject const& json);
-        ComicsResponse(winrt::Windows::Data::Json::JsonObject const& json, hstring const& fileServer);
-        winrt::Windows::Foundation::Collections::IObservableVector<winrt::BikaClient::Blocks::ComicBlock> Comics();
-        void Comics(winrt::Windows::Foundation::Collections::IObservableVector<winrt::BikaClient::Blocks::ComicBlock> const& value);
+        EpisodesResponse(winrt::Windows::Data::Json::JsonObject const& json);
+        winrt::Windows::Foundation::Collections::IObservableVector<winrt::BikaClient::Blocks::EpisodeBlock> Episodes();
+        void Episodes(winrt::Windows::Foundation::Collections::IObservableVector<winrt::BikaClient::Blocks::EpisodeBlock> const& value);
         int32_t Page();
         void Page(int32_t value);
         int32_t Pages();
@@ -30,7 +28,7 @@ namespace winrt::BikaClient::Responses::implementation
         void Detail(hstring const& value);
         hstring Json();
     private:
-		winrt::Windows::Foundation::Collections::IObservableVector<winrt::BikaClient::Blocks::ComicBlock> m_comics=winrt::single_threaded_observable_vector<winrt::BikaClient::Blocks::ComicBlock>();
+        winrt::Windows::Foundation::Collections::IObservableVector<winrt::BikaClient::Blocks::EpisodeBlock> m_episodes = winrt::single_threaded_observable_vector<winrt::BikaClient::Blocks::EpisodeBlock>();
 		int32_t m_page{ 0 };
 		int32_t m_pages{ 0 };
 		int32_t m_total{ 0 };
@@ -40,12 +38,11 @@ namespace winrt::BikaClient::Responses::implementation
 		hstring m_error{ L"" };
 		hstring m_detail{ L"" };
 		hstring m_json{ L"" };
-
     };
 }
 namespace winrt::BikaClient::Responses::factory_implementation
 {
-    struct ComicsResponse : ComicsResponseT<ComicsResponse, implementation::ComicsResponse>
+    struct EpisodesResponse : EpisodesResponseT<EpisodesResponse, implementation::EpisodesResponse>
     {
     };
 }
