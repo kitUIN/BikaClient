@@ -33,7 +33,7 @@ namespace winrt::BikaClient::Responses::implementation
         void Detail(hstring const& value);
         hstring Json();
     private:
-		winrt::Windows::Foundation::Collections::IObservableVector<winrt::BikaClient::Blocks::ImageBlock> m_pictures winrt::single_threaded_observable_vector<winrt::BikaClient::Blocks::ImageBlock>();
+		winrt::Windows::Foundation::Collections::IObservableVector<winrt::BikaClient::Blocks::ImageBlock> m_pictures = winrt::single_threaded_observable_vector<winrt::BikaClient::Blocks::ImageBlock>();
 		winrt::BikaClient::Blocks::EpisodeBlock m_episode{ nullptr };
 		int32_t m_page{ 0 };
 		int32_t m_pages{ 0 };

@@ -9,7 +9,7 @@ namespace winrt::BikaClient::Responses::implementation
 {
     PicturesResponse::PicturesResponse(winrt::Windows::Data::Json::JsonObject const& json)
     {
-        throw hresult_not_implemented();
+        PicturesResponse(json, DEFAULT_FILE_SERVER);
     }
     PicturesResponse::PicturesResponse(winrt::Windows::Data::Json::JsonObject const& json, hstring const& fileServer)
     {

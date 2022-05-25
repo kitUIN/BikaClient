@@ -387,9 +387,12 @@ namespace winrt::BikaClient::implementation
         HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return EpisodesResponse{ res };
     }
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Pictures(hstring const& bookId, int32_t const& epsId, int32_t const& page)
+    winrt::Windows::Foundation::IAsyncOperation<PicturesResponse> BikaHttpClient::Pictures(hstring const& bookId, int32_t const& epsId, int32_t const& page)
     {
-        throw hresult_not_implemented();
+        hstring api = L"comics/" + bookId + L"/order/" + to_hstring(epsId) + L"/pages?page=" + to_hstring(page);
+        JsonObject res = co_await GET(Uri{ ORIGINURL + api }, api);
+        HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
+        co_return PicturesResponse{ res };
     }
     winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::PersonFavourite(hstring const& sort, int32_t const& page)
     {
