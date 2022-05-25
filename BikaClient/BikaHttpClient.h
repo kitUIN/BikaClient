@@ -35,7 +35,7 @@ namespace winrt::BikaClient::implementation
         winrt::Windows::Foundation::IAsyncOperation<hstring> Keywords();
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::ComicsResponse> Comics(int32_t const& page, hstring const& title, winrt::BikaClient::Utils::SortMode const& sort);
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::BookInfoResponse> BookInfo(hstring const& bookId);
-        winrt::Windows::Foundation::IAsyncOperation<hstring> Episodes(hstring const& bookId, int32_t const& page);
+        winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::EpisodesResponse> Episodes(hstring const& bookId, int32_t const& page);
         winrt::Windows::Foundation::IAsyncOperation<hstring> Picture(hstring const& bookId, int32_t const& epsId, int32_t const& page);
         winrt::Windows::Foundation::IAsyncOperation<hstring> PersonFavourite(hstring const& sort, int32_t const& page);
         winrt::Windows::Foundation::IAsyncOperation<hstring> PersonComment(int32_t const& page);

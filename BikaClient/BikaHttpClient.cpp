@@ -379,10 +379,13 @@ namespace winrt::BikaClient::implementation
     /// </summary>
     /// <param name="bookId">Âþ»­id</param>
     /// <param name="page">Ò³Êý</param>
-    /// <returns></returns>
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Episodes(hstring const& bookId, int32_t const& page)
+    /// <returns>EpisodesResponse</returns>
+    winrt::Windows::Foundation::IAsyncOperation<EpisodesResponse> BikaHttpClient::Episodes(hstring const& bookId, int32_t const& page)
     {
-        throw hresult_not_implemented();
+        hstring api = L"comics/" + bookId + L"/eps?page=" + to_hstring(page);
+        JsonObject res = co_await GET(Uri{ ORIGINURL + api }, api);
+        HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
+        co_return EpisodesResponse{ res };
     }
     winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Picture(hstring const& bookId, int32_t const& epsId, int32_t const& page)
     {
