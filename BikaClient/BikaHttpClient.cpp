@@ -366,9 +366,9 @@ namespace winrt::BikaClient::implementation
     }
 
     /// <summary>
-    /// 获取漫画信息
+    /// 获取本子详细信息
     /// </summary>
-    /// <param name="bookId">漫画id</param>
+    /// <param name="bookId">本子id</param>
     /// <returns>BookInfoResponse</returns>
     winrt::Windows::Foundation::IAsyncOperation<BookInfoResponse> BikaHttpClient::BookInfo(hstring const& bookId)
     {
@@ -378,9 +378,9 @@ namespace winrt::BikaClient::implementation
         co_return BookInfoResponse{ res, m_fileServer };
     }
     /// <summary>
-    /// 获取分话信息
+    /// 获取本子分话信息
     /// </summary>
-    /// <param name="bookId">漫画id</param>
+    /// <param name="bookId">本子id</param>
     /// <param name="page">页数</param>
     /// <returns>EpisodesResponse</returns>
     winrt::Windows::Foundation::IAsyncOperation<EpisodesResponse> BikaHttpClient::Episodes(hstring const& bookId, int32_t const& page)
@@ -390,6 +390,13 @@ namespace winrt::BikaClient::implementation
         HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return EpisodesResponse{ res };
     }
+    /// <summary>
+    /// 获取本子本体图片
+    /// </summary>
+    /// <param name="bookId">本子id</param>
+    /// <param name="epsId">本子分话id</param>
+    /// <param name="page">页数</param>
+    /// <returns></returns>
     winrt::Windows::Foundation::IAsyncOperation<PicturesResponse> BikaHttpClient::Pictures(hstring const& bookId, int32_t const& epsId, int32_t const& page)
     {
         hstring api = L"comics/" + bookId + L"/order/" + to_hstring(epsId) + L"/pages?page=" + to_hstring(page);
@@ -397,6 +404,12 @@ namespace winrt::BikaClient::implementation
         HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return PicturesResponse{ res };
     }
+    /// <summary>
+    /// 获取用户的收藏
+    /// </summary>
+    /// <param name="sort">排序</param>
+    /// <param name="page">页数</param>
+    /// <returns>ComicsResponse</returns>
     winrt::Windows::Foundation::IAsyncOperation<ComicsResponse> BikaHttpClient::PersonFavourite(SortMode const& sort, int32_t const& page)
     {
         BikaSort bikasort{ sort };
@@ -405,6 +418,11 @@ namespace winrt::BikaClient::implementation
         HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return ComicsResponse{ res };
     }
+    /// <summary>
+    /// 获取用户的评论
+    /// </summary>
+    /// <param name="page">页数</param>
+    /// <returns></returns>
     winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::PersonComment(int32_t const& page)
     {
         hstring api = L"users/my-comments?page=" + to_hstring(page);
@@ -412,6 +430,18 @@ namespace winrt::BikaClient::implementation
         JsonObject res = co_await GET(uri, api);
         HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return res.Stringify();
+    }
+    /// <summary>
+    /// 看了這本子的人也在看
+    /// </summary>
+    /// <param name="bookId">本子id</param>
+    /// <returns>ComicsResponse</returns>
+    winrt::Windows::Foundation::IAsyncOperation<ComicsResponse> BikaHttpClient::Recommend(hstring const& bookId)
+    {
+        hstring api = L"comics/" + to_hstring(bookId) + L"/recommendation";
+        JsonObject res = co_await GET(Uri{ ORIGINURL + api }, api);
+        HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
+        co_return ComicsResponse{ res };
     }
     winrt::Windows::Foundation::IAsyncOperation<ComicsResponse> BikaHttpClient::Search(hstring const& keywords, winrt::BikaClient::Utils::SortMode const& sort, winrt::Windows::Data::Json::JsonArray const& categories, int32_t const& page)
     {
