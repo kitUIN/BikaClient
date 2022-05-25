@@ -17,4 +17,5 @@
 #include <winrt/Windows.UI.Xaml.Media.Imaging.h>
 #include <winrt/Windows.UI.Xaml.Data.h>
 #include <winrt/Windows.Foundation.Diagnostics.h>
+#include <winrt/Windows.ApplicationModel.Resources.h>
 #define DEFAULT_FILE_SERVER L"https://storage1.picacomic.com/static/"

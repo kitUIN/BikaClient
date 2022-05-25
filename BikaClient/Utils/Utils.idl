@@ -12,5 +12,7 @@ namespace BikaClient.Utils
 	{
 		BikaSort(SortMode sort);
 		String Sort{ get; };
+		String SortResource{ get; };
+		String SortName(Windows.ApplicationModel.Resources.ResourceLoader resourceLoader);
 	}
 }
