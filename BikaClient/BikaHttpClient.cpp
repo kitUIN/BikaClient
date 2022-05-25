@@ -397,13 +397,12 @@ namespace winrt::BikaClient::implementation
         HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return PicturesResponse{ res };
     }
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::PersonFavourite(hstring const& sort, int32_t const& page)
+    winrt::Windows::Foundation::IAsyncOperation<ComicsResponse> BikaHttpClient::PersonFavourite(hstring const& sort, int32_t const& page)
     {
         hstring api = L"users/favourite?s=" + sort + L"&page=" + to_hstring(page);
-        Uri uri = Uri{ L"https://picaapi.picacomic.com/" + api };
-        JsonObject res = co_await GET(uri, api);
+        JsonObject res = co_await GET(Uri{ ORIGINURL + api }, api);
         HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
-        co_return res.Stringify();
+        co_return ComicsResponse{ res };
     }
     winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::PersonComment(int32_t const& page)
     {
