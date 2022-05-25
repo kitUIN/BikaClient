@@ -3,6 +3,7 @@
 #include "Date/Date.BikaDate.h"
 #include "Blocks.ImageBlock.h"
 #include "Blocks.TagBlock.h"
+#include "Utils/Utils.BikaBoolean.h"
 namespace winrt::BikaClient::Blocks::implementation
 {
     struct UserBlock : UserBlockT<UserBlock>
@@ -26,10 +27,10 @@ namespace winrt::BikaClient::Blocks::implementation
         void Level(hstring const& value);
         hstring LevelString();
         void LevelString(hstring const& value);
-        bool IsPunched();
-        void IsPunched(bool const& value);
-        bool Verified();
-        void Verified(bool const& value);
+        winrt::BikaClient::Utils::BikaBoolean IsPunched();
+        void IsPunched(winrt::BikaClient::Utils::BikaBoolean const& value);
+        winrt::BikaClient::Utils::BikaBoolean Verified();
+        void Verified(winrt::BikaClient::Utils::BikaBoolean const& value);
         hstring Gender();
         void Gender(hstring const& value);
         winrt::BikaClient::Blocks::ImageBlock Thumb();
@@ -63,10 +64,8 @@ namespace winrt::BikaClient::Blocks::implementation
         winrt::hstring m_role = L"";
         winrt::hstring m_character = L"";
         winrt::hstring m_id = L"";
-        bool m_verified = false;
-        winrt::hstring m_verifiedString = L"";
-        bool m_isPunched = false;
-        winrt::hstring m_isPunchedString = L"";
+        winrt::BikaClient::Utils::BikaBoolean m_verified{ false };
+        winrt::BikaClient::Utils::BikaBoolean m_isPunched{ false };
         winrt::BikaClient::Date::BikaDate m_createAt{ nullptr };
         winrt::BikaClient::Date::BikaDate m_birthday{ nullptr };
         winrt::hstring m_slogan = L"";

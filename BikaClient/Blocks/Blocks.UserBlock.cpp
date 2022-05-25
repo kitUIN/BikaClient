@@ -8,7 +8,7 @@ namespace winrt::BikaClient::Blocks::implementation
 	{
 		UserBlock(json, to_hstring(DEFAULT_FILE_SERVER));
 	}
-	UserBlock::UserBlock(winrt::Windows::Data::Json::JsonObject const& json,hstring const& fileServer)
+	UserBlock::UserBlock(winrt::Windows::Data::Json::JsonObject const& json, hstring const& fileServer)
 	{
 		m_json = json.Stringify();
 		if (json.HasKey(L"name"))
@@ -24,13 +24,13 @@ namespace winrt::BikaClient::Blocks::implementation
 		if (json.HasKey(L"email"))
 			Email(json.GetNamedString(L"email"));
 		if (json.HasKey(L"verified"))
-			Verified(json.GetNamedBoolean(L"verified"));
+			Verified(winrt::BikaClient::Utils::BikaBoolean{ json.GetNamedBoolean(L"verified") });
 		if (json.HasKey(L"isPunched"))
-			IsPunched(json.GetNamedBoolean(L"isPunched"));
+			IsPunched(winrt::BikaClient::Utils::BikaBoolean{ json.GetNamedBoolean(L"isPunched") });
 		if (json.HasKey(L"created_at"))
-			m_createAt = winrt::BikaClient::Date::BikaDate(json.GetNamedString(L"created_at"));
+			CreatedAt(winrt::BikaClient::Date::BikaDate{ json.GetNamedString(L"created_at") });
 		if (json.HasKey(L"birthday"))
-			m_birthday = winrt::BikaClient::Date::BikaDate(json.GetNamedString(L"birthday"));
+			Birthday(winrt::BikaClient::Date::BikaDate{ json.GetNamedString(L"birthday") });
 		if (json.HasKey(L"level"))
 			Level(to_hstring(json.GetNamedNumber(L"level")));
 		if (json.HasKey(L"exp") && json.HasKey(L"level"))
@@ -121,20 +121,20 @@ namespace winrt::BikaClient::Blocks::implementation
 			m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Level" });
 		}
 	}
-	bool UserBlock::IsPunched()
+	winrt::BikaClient::Utils::BikaBoolean UserBlock::IsPunched()
 	{
 		return m_isPunched;
 	}
-	void UserBlock::IsPunched(bool const& value)
+	void UserBlock::IsPunched(winrt::BikaClient::Utils::BikaBoolean const& value)
 	{
 		m_isPunched = value;
 		m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"IsPunched" });
 	}
-	bool UserBlock::Verified()
+	winrt::BikaClient::Utils::BikaBoolean UserBlock::Verified()
 	{
 		return m_verified;
 	}
-	void UserBlock::Verified(bool const& value)
+	void UserBlock::Verified(winrt::BikaClient::Utils::BikaBoolean const& value)
 	{
 		m_verified = value;
 		m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Verified" });

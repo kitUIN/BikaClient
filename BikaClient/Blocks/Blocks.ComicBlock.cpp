@@ -44,7 +44,7 @@ namespace winrt::BikaClient::Blocks::implementation
         }
         if (json.HasKey(L"pagesCount")) m_pagesCount = static_cast<int32_t>(json.GetNamedNumber(L"pagesCount"));
         if (json.HasKey(L"epsCount")) m_epsCount = static_cast<int32_t>(json.GetNamedNumber(L"epsCount"));
-        if (json.HasKey(L"finished")) Finished(json.GetNamedBoolean(L"finished"));
+        if (json.HasKey(L"finished")) Finished(winrt::BikaClient::Utils::BikaBoolean{ json.GetNamedBoolean(L"finished") });
         if (json.HasKey(L"categories"))
         {
             for (auto x : json.GetNamedArray(L"categories"))
@@ -128,25 +128,14 @@ namespace winrt::BikaClient::Blocks::implementation
     {
         m_thumb = value;
     }
-    winrt::Windows::UI::Xaml::Visibility ComicBlock::FinishedVisibility()
-    {
-        return m_finishedVisibility;
-    }
-    void ComicBlock::FinishedVisibility(winrt::Windows::UI::Xaml::Visibility const& value)
-    {
-        m_finishedVisibility = value;
-        if (value == Visibility::Collapsed) m_finished = false;
-        else m_finished = true;
-    }
-    bool ComicBlock::Finished()
+
+    winrt::BikaClient::Utils::BikaBoolean ComicBlock::Finished()
     {
         return m_finished;
     }
-    void ComicBlock::Finished(bool const& value)
+    void ComicBlock::Finished(winrt::BikaClient::Utils::BikaBoolean const& value)
     {
         m_finished = value;
-        if (value) m_finishedVisibility = Visibility::Collapsed;
-        else m_finishedVisibility = Visibility::Visible;
     }
     winrt::Windows::Foundation::Collections::IObservableVector<winrt::BikaClient::Blocks::TagBlock> ComicBlock::Categories()
     {

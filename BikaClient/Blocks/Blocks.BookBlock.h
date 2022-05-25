@@ -4,6 +4,7 @@
 #include "Blocks.UserBlock.h"
 #include "Blocks.TagBlock.h"
 #include "Date/Date.BikaDate.h"
+#include "Utils/Utils.BikaBoolean.h"
 namespace winrt::BikaClient::Blocks::implementation
 {
     struct BookBlock : BookBlockT<BookBlock>
@@ -38,10 +39,8 @@ namespace winrt::BikaClient::Blocks::implementation
         void PagesCount(int32_t value);
         int32_t EpsCount();
         void EpsCount(int32_t value);
-        bool Finished();
-        void Finished(bool value);
-        winrt::Windows::UI::Xaml::Visibility FinishedVisibility();
-        void FinishedVisibility(winrt::Windows::UI::Xaml::Visibility const& value);
+        winrt::BikaClient::Utils::BikaBoolean Finished();
+        void Finished(winrt::BikaClient::Utils::BikaBoolean value);
         winrt::BikaClient::Date::BikaDate UpdatedAt();
         void UpdatedAt(winrt::BikaClient::Date::BikaDate const& value);
         winrt::BikaClient::Date::BikaDate CreatedAt();
@@ -81,8 +80,7 @@ namespace winrt::BikaClient::Blocks::implementation
 		hstring m_tagsString = L"";
 		int32_t m_pagesCount = 0;
 		int32_t m_epsCount = 0;
-		bool m_finished = false;
-		winrt::Windows::UI::Xaml::Visibility m_finishedVisibility = winrt::Windows::UI::Xaml::Visibility::Collapsed;
+        winrt::BikaClient::Utils::BikaBoolean m_finished{ false };
 		winrt::BikaClient::Date::BikaDate m_updatedAt{ nullptr };
 		winrt::BikaClient::Date::BikaDate m_createdAt{ nullptr };
 		bool m_allowDownload = false;

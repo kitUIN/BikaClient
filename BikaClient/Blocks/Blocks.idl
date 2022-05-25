@@ -1,4 +1,5 @@
 import "Date/BikaDate.idl";
+import "Utils/Utils.idl";
 namespace BikaClient.Blocks
 {
     interface IBlockJson
@@ -34,8 +35,8 @@ namespace BikaClient.Blocks
         String Email;
         String Level;
         String LevelString;
-        Boolean IsPunched;
-        Boolean Verified;
+        BikaClient.Utils.BikaBoolean IsPunched;
+        BikaClient.Utils.BikaBoolean Verified;
         String Gender;
         BikaClient.Blocks.ImageBlock Thumb;
         String Slogan;
@@ -73,8 +74,7 @@ namespace BikaClient.Blocks
 		Int32 LikesCount;
 		Int32 PagesCount;
 		Int32 EpsCount;
-        Boolean Finished;
-        Windows.UI.Xaml.Visibility FinishedVisibility;
+        BikaClient.Utils.BikaBoolean Finished;
         BikaClient.Blocks.ImageBlock Thumb;
         Windows.Foundation.Collections.IObservableVector<BikaClient.Blocks.TagBlock> Categories;
         String CategoriesString;
@@ -96,8 +96,7 @@ namespace BikaClient.Blocks
         String TagsString;
         Int32 PagesCount;
         Int32 EpsCount;
-        Boolean Finished;
-        Windows.UI.Xaml.Visibility FinishedVisibility;
+        BikaClient.Utils.BikaBoolean Finished;
         BikaClient.Date.BikaDate UpdatedAt;
         BikaClient.Date.BikaDate CreatedAt;
         Boolean AllowDownload;
@@ -110,7 +109,7 @@ namespace BikaClient.Blocks
         Boolean IsLiked;
         Int32 CommentsCount;
     }
-        runtimeclass EpisodeBlock : Windows.UI.Xaml.Data.INotifyPropertyChanged, IBlockJson
+    runtimeclass EpisodeBlock : Windows.UI.Xaml.Data.INotifyPropertyChanged, IBlockJson
     {
         EpisodeBlock(Windows.Data.Json.JsonObject json);
         String ID;
@@ -119,5 +118,20 @@ namespace BikaClient.Blocks
         String Title;
         String BookId;
         Int32 Total;
+    }
+    runtimeclass CommentsBlock : Windows.UI.Xaml.Data.INotifyPropertyChanged, IBlockJson
+    {
+        CommentsBlock(Windows.Data.Json.JsonObject json);
+        String ID;
+        String Content;
+        String Comic;
+        BikaClient.Blocks.UserBlock User;
+        BikaClient.Date.BikaDate CreatedAt;
+        Int32 LikesCount;
+        Int32 CommentsCount;
+        Boolean IsTop;
+        Boolean Hide;
+        Boolean IsLiked;
+        String BookId;
     }
 }

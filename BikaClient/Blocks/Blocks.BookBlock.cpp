@@ -31,7 +31,7 @@ namespace winrt::BikaClient::Blocks::implementation
         }
         if (json.HasKey(L"chineseTeam")) m_pagesCount =static_cast<int32_t>(json.GetNamedNumber(L"pagesCount"));
         if (json.HasKey(L"chineseTeam")) m_epsCount = static_cast<int32_t>(json.GetNamedNumber(L"epsCount"));
-        if (json.HasKey(L"finished")) Finished(json.GetNamedBoolean(L"finished"));
+        if (json.HasKey(L"finished")) Finished(winrt::BikaClient::Utils::BikaBoolean{ json.GetNamedBoolean(L"finished") });
         if (json.HasKey(L"updated_at")) m_updatedAt = winrt::BikaClient::Date::BikaDate(json.GetNamedString(L"updated_at"));
         if (json.HasKey(L"created_at")) m_createdAt = winrt::BikaClient::Date::BikaDate(json.GetNamedString(L"created_at"));
         if (json.HasKey(L"allowDownload")) m_allowDownload = json.GetNamedBoolean(L"allowDownload");
@@ -149,25 +149,13 @@ namespace winrt::BikaClient::Blocks::implementation
     {
         m_epsCount = value;
     }
-    winrt::Windows::UI::Xaml::Visibility BookBlock::FinishedVisibility()
-    {
-        return m_finishedVisibility;
-    }
-    void BookBlock::FinishedVisibility(winrt::Windows::UI::Xaml::Visibility const& value)
-    {
-        m_finishedVisibility = value;
-        if (value == Visibility::Collapsed) m_finished = false;
-        else m_finished = true;
-    }
-    bool BookBlock::Finished()
+    winrt::BikaClient::Utils::BikaBoolean BookBlock::Finished()
     {
         return m_finished;
     }
-    void BookBlock::Finished(bool value)
+    void BookBlock::Finished(winrt::BikaClient::Utils::BikaBoolean value)
     {
         m_finished = value;
-        if (value) m_finishedVisibility = Visibility::Collapsed;
-        else m_finishedVisibility = Visibility::Visible;
     }
     winrt::BikaClient::Date::BikaDate BookBlock::UpdatedAt()
     {

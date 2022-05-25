@@ -432,7 +432,7 @@ namespace winrt::BikaClient::implementation
         co_return res.Stringify();
     }
     /// <summary>
-    /// 看了這本子的人也在看
+    /// 看了这本子的人也在看
     /// </summary>
     /// <param name="bookId">本子id</param>
     /// <returns>ComicsResponse</returns>

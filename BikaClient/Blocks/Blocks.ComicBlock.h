@@ -2,6 +2,7 @@
 #include "Blocks.ComicBlock.g.h"
 #include "Blocks.TagBlock.h"
 #include "Blocks.ImageBlock.h"
+#include "Utils/Utils.BikaBoolean.h"
 namespace winrt::BikaClient::Blocks::implementation
 {
     struct ComicBlock : ComicBlockT<ComicBlock>
@@ -26,10 +27,8 @@ namespace winrt::BikaClient::Blocks::implementation
         void PagesCount(int32_t const& value);
         int32_t EpsCount();
         void EpsCount(int32_t const& value);
-        winrt::Windows::UI::Xaml::Visibility FinishedVisibility();
-        void FinishedVisibility(winrt::Windows::UI::Xaml::Visibility const& value);
-        bool Finished();
-        void Finished(bool const& value);
+        winrt::BikaClient::Utils::BikaBoolean Finished();
+        void Finished(winrt::BikaClient::Utils::BikaBoolean const& value);
         winrt::BikaClient::Blocks::ImageBlock Thumb();
         void Thumb(winrt::BikaClient::Blocks::ImageBlock const& value);
         winrt::Windows::Foundation::Collections::IObservableVector<winrt::BikaClient::Blocks::TagBlock> Categories();
@@ -48,8 +47,7 @@ namespace winrt::BikaClient::Blocks::implementation
 		int32_t m_likesCount = 0;
 		int32_t m_pagesCount = 0;
 		int32_t m_epsCount = 0;
-        bool m_finished = false;
-        winrt::Windows::UI::Xaml::Visibility m_finishedVisibility = winrt::Windows::UI::Xaml::Visibility::Collapsed;
+        winrt::BikaClient::Utils::BikaBoolean m_finished{ false };
         winrt::BikaClient::Blocks::ImageBlock m_thumb;
         winrt::Windows::Foundation::Collections::IObservableVector<BikaClient::Blocks::TagBlock> m_categories = winrt::single_threaded_observable_vector<BikaClient::Blocks::TagBlock>();
         hstring m_categoriesString = L"";

@@ -126,6 +126,7 @@
     <ClInclude Include="Blocks\Blocks.BookBlock.h" />
     <ClInclude Include="Blocks\Blocks.CategoriesBlock.h" />
     <ClInclude Include="Blocks\Blocks.ComicBlock.h" />
+    <ClInclude Include="Blocks\Blocks.CommentsBlock.h" />
     <ClInclude Include="Blocks\Blocks.EpisodeBlock.h" />
     <ClInclude Include="Blocks\Blocks.TagBlock.h" />
     <ClInclude Include="Blocks\Blocks.ImageBlock.h" />
@@ -139,6 +140,7 @@
     <ClInclude Include="Responses\Responses.LoginResponse.h" />
     <ClInclude Include="Responses\Responses.PicturesResponse.h" />
     <ClInclude Include="Responses\Responses.UserResponse.h" />
+    <ClInclude Include="Utils\Utils.BikaBoolean.h" />
     <ClInclude Include="Utils\Utils.BikaSort.h" />
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +148,7 @@
     <ClCompile Include="Blocks\Blocks.BookBlock.cpp" />
     <ClCompile Include="Blocks\Blocks.CategoriesBlock.cpp" />
     <ClCompile Include="Blocks\Blocks.ComicBlock.cpp" />
+    <ClCompile Include="Blocks\Blocks.CommentsBlock.cpp" />
     <ClCompile Include="Blocks\Blocks.EpisodeBlock.cpp" />
     <ClCompile Include="Blocks\Blocks.TagBlock.cpp" />
     <ClCompile Include="Blocks\Blocks.ImageBlock.cpp" />
@@ -162,6 +165,7 @@
     <ClCompile Include="Responses\Responses.LoginResponse.cpp" />
     <ClCompile Include="Responses\Responses.PicturesResponse.cpp" />
     <ClCompile Include="Responses\Responses.UserResponse.cpp" />
+    <ClCompile Include="Utils\Utils.BikaBoolean.cpp" />
     <ClCompile Include="Utils\Utils.BikaSort.cpp" />
   </ItemGroup>
   <ItemGroup>

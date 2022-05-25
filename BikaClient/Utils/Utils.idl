@@ -15,4 +15,10 @@ namespace BikaClient.Utils
 		String SortResource{ get; };
 		String SortName(Windows.ApplicationModel.Resources.ResourceLoader resourceLoader);
 	}
+	runtimeclass BikaBoolean
+	{
+		BikaBoolean(Boolean isValue);
+		Boolean Bool;
+		Windows.UI.Xaml.Visibility Visibility{ get; };
+	}
 }
