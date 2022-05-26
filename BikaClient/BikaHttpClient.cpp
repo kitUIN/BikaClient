@@ -469,9 +469,12 @@ namespace winrt::BikaClient::implementation
     {
         throw hresult_not_implemented();
     }
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Comments(hstring const& bookId, int32_t const& page)
+    winrt::Windows::Foundation::IAsyncOperation<CommentsResponse> BikaHttpClient::Comments(hstring const& bookId, int32_t const& page)
     {
-        throw hresult_not_implemented();
+        hstring api = L"comics/" + to_hstring(bookId) + L"/comments?page=" + to_hstring(page);
+        JsonObject res = co_await GET(Uri{ ORIGINURL + api }, api);
+        HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
+        co_return CommentsResponse{ res, m_fileServer };
     }
     winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::SendComments(hstring const& bookId, hstring const& content)
     {
