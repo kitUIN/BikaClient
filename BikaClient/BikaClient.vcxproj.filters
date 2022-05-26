@@ -31,6 +31,7 @@
     <ClCompile Include="Responses\Responses.PicturesResponse.cpp" />
     <ClCompile Include="Utils\Utils.BikaBoolean.cpp" />
     <ClCompile Include="Blocks\Blocks.CommentBlock.cpp" />
+    <ClCompile Include="Responses\Responses.CommentsResponse.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -53,6 +54,7 @@
     <ClInclude Include="Responses\Responses.PicturesResponse.h" />
     <ClInclude Include="Utils\Utils.BikaBoolean.h" />
     <ClInclude Include="Blocks\Blocks.CommentBlock.h" />
+    <ClInclude Include="Responses\Responses.CommentsResponse.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="BikaClient.def" />

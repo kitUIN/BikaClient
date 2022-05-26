@@ -53,9 +53,10 @@ namespace winrt::BikaClient::implementation
         const hstring ORIGINURL = L"https://picaapi.picacomic.com/";
     private:
 		hstring m_token;
-        hstring m_imageQuality;
-        hstring m_fileServer=DEFAULT_FILE_SERVER;
-        hstring m_appVersion=L"2.2.1.2.3.4";
+        hstring m_imageQuality = L"high";
+        hstring m_fileServer = DEFAULT_FILE_SERVER;
+        hstring m_appVersion = L"2.2.1.2.3.4";
+        int32_t m_appChannel = 3;
         winrt::Windows::Foundation::Diagnostics::LoggingChannel m_loggingChannel = winrt::Windows::Foundation::Diagnostics::LoggingChannel(to_hstring(winrt::Windows::Foundation::GuidHelper::CreateNewGuid()));
     };
 }

@@ -136,6 +136,7 @@
     <ClInclude Include="Responses\Responses.BookInfoResponse.h" />
     <ClInclude Include="Responses\Responses.CategoriesResponse.h" />
     <ClInclude Include="Responses\Responses.ComicsResponse.h" />
+    <ClInclude Include="Responses\Responses.CommentsResponse.h" />
     <ClInclude Include="Responses\Responses.EpisodesResponse.h" />
     <ClInclude Include="Responses\Responses.LoginResponse.h" />
     <ClInclude Include="Responses\Responses.PicturesResponse.h" />
@@ -161,6 +162,7 @@
     <ClCompile Include="Responses\Responses.BookInfoResponse.cpp" />
     <ClCompile Include="Responses\Responses.CategoriesResponse.cpp" />
     <ClCompile Include="Responses\Responses.ComicsResponse.cpp" />
+    <ClCompile Include="Responses\Responses.CommentsResponse.cpp" />
     <ClCompile Include="Responses\Responses.EpisodesResponse.cpp" />
     <ClCompile Include="Responses\Responses.LoginResponse.cpp" />
     <ClCompile Include="Responses\Responses.PicturesResponse.cpp" />

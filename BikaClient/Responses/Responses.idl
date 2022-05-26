@@ -58,4 +58,11 @@ namespace BikaClient.Responses
 		Windows.Foundation.Collections.IObservableVector<BikaClient.Blocks.ImageBlock> Pictures;
 		BikaClient.Blocks.EpisodeBlock Episode;
 	}
+	runtimeclass CommentsResponse : IPageData, IRespData
+	{
+		CommentsResponse(Windows.Data.Json.JsonObject json);
+		CommentsResponse(Windows.Data.Json.JsonObject json,String fileServer);
+		Windows.Foundation.Collections.IObservableVector<BikaClient.Blocks.CommentBlock> Comments;
+		Windows.Foundation.Collections.IObservableVector<BikaClient.Blocks.CommentBlock> TopComments;
+	}
 }

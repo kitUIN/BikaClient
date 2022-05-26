@@ -204,7 +204,7 @@ namespace winrt::BikaClient::implementation
         headers.Insert(L"image-quality", m_imageQuality);
         headers.Insert(L"api-key", L"C69BAF41DA5ABD1FFEDC6D2FEA56B");
         headers.Insert(L"accept", L"application/vnd.picacomic.com.v1+json");
-        headers.Insert(L"app-channel", L"3");
+        headers.Insert(L"app-channel", to_hstring(m_appChannel));
         headers.Insert(L"time", to_hstring(t));
         headers.Insert(L"signature", L"encrypt");
         headers.Insert(L"app-version", m_appVersion);
