@@ -21,9 +21,9 @@ namespace winrt::BikaClient::implementation
     /// 初始化
     /// </summary>
     /// <param name="token">用户凭证</param>
-    BikaHttpClient::BikaHttpClient(hstring token)
+    BikaHttpClient::BikaHttpClient(hstring const& token)
     {
-        BikaHttpClient(token, L"original", to_hstring(DEFAULT_FILE_SERVER));
+        BikaHttpClient(token, BikaClient::ImageQualityMode::HIGH, DEFAULT_FILE_SERVER);
     }
 
     /// <summary>
@@ -31,9 +31,9 @@ namespace winrt::BikaClient::implementation
     /// </summary>
     /// <param name="token">用户凭证</param>
     /// <param name="imageQuality">图片质量</param>
-    BikaHttpClient::BikaHttpClient(hstring token, hstring imageQuality)
+    BikaHttpClient::BikaHttpClient(hstring const& token, BikaClient::ImageQualityMode const& imageQuality)
     {
-        BikaHttpClient(token, imageQuality, to_hstring(DEFAULT_FILE_SERVER));
+        BikaHttpClient(token, imageQuality, DEFAULT_FILE_SERVER);
     }
     /// <summary>
     /// 初始化
@@ -41,13 +41,13 @@ namespace winrt::BikaClient::implementation
     /// <param name="token">用户凭证</param>
     /// <param name="imageQuality">图片质量</param>
     /// <param name="fileServer">图片地址</param>
-    BikaHttpClient::BikaHttpClient(hstring token, hstring imageQuality, hstring fileServer)
+    BikaHttpClient::BikaHttpClient(hstring const& token, BikaClient::ImageQualityMode const& imageQuality, hstring const& fileServer)
     {
         m_token = token;
         m_imageQuality = imageQuality;
         m_fileServer = fileServer;
     }
-    void BikaHttpClient::Token(hstring value)
+    void BikaHttpClient::Token(hstring const& value)
     {
 		m_token = value;
     }
@@ -57,16 +57,33 @@ namespace winrt::BikaClient::implementation
         return m_token;
     }
 
-    void BikaHttpClient::ImageQuality(hstring value)
+    hstring BikaHttpClient::SetImageQuality(BikaClient::ImageQualityMode const& value)
     {
-		m_imageQuality = value;
+		switch (value)
+		{
+		case BikaClient::ImageQualityMode::ORIGINAL:
+			return L"original";
+		case BikaClient::ImageQualityMode::LOW:
+			return L"low";
+		case BikaClient::ImageQualityMode::MEDIUM:
+			return L"medium";
+		case BikaClient::ImageQualityMode::HIGH:
+			return L"high";
+		default:
+			return L"original";
+		}
     }
 
-    hstring BikaHttpClient::ImageQuality()
+    void BikaHttpClient::ImageQuality(BikaClient::ImageQualityMode const& value)
+    {
+        m_imageQuality = value;
+    }
+
+    BikaClient::ImageQualityMode BikaHttpClient::ImageQuality()
     {
         return m_imageQuality;
     }
-    void BikaHttpClient::FileServer(hstring value)
+    void BikaHttpClient::FileServer(hstring const& value)
     {
         m_fileServer = value;
     }
@@ -81,7 +98,7 @@ namespace winrt::BikaClient::implementation
         return m_appVersion;
     }
 
-    void BikaHttpClient::HttpLogOut(hstring s1, hstring s2)
+    void BikaHttpClient::HttpLogOut(hstring const& s1, hstring const& s2)
     {
         m_loggingChannel.LogMessage(L"\n"+s1 + L"\n" + s2+ L"\n");
         OutputDebugStringW(L"\n");
@@ -201,7 +218,7 @@ namespace winrt::BikaClient::implementation
         {
             headers.Insert(L"Authorization", m_token);
         }
-        headers.Insert(L"image-quality", m_imageQuality);
+        headers.Insert(L"image-quality", SetImageQuality(m_imageQuality));
         headers.Insert(L"api-key", L"C69BAF41DA5ABD1FFEDC6D2FEA56B");
         headers.Insert(L"accept", L"application/vnd.picacomic.com.v1+json");
         headers.Insert(L"app-channel", to_hstring(m_appChannel));

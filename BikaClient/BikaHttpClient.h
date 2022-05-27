@@ -10,18 +10,19 @@ namespace winrt::BikaClient::implementation
     struct BikaHttpClient : BikaHttpClientT<BikaHttpClient>
     {
         BikaHttpClient() = default;
-        BikaHttpClient(hstring token);
-        BikaHttpClient(hstring token,hstring imageQuality);
-        BikaHttpClient(hstring token,hstring imageQuality,hstring fileServer);
+        BikaHttpClient(hstring const& token);
+        BikaHttpClient(hstring const& token, BikaClient::ImageQualityMode const& imageQuality);
+        BikaHttpClient(hstring const& token, BikaClient::ImageQualityMode const& imageQuality,hstring const& fileServer);
         winrt::Windows::Foundation::Diagnostics::LoggingChannel GetLoggingChannel();
-        void Token(hstring value);
+        void Token(hstring const& value);
         hstring Token();
-        void ImageQuality(hstring value);
-        hstring ImageQuality();
-        void FileServer(hstring value);
+        void ImageQuality(BikaClient::ImageQualityMode const& value);
+        hstring SetImageQuality(BikaClient::ImageQualityMode const& value);
+        BikaClient::ImageQualityMode ImageQuality();
+        void FileServer(hstring const& value);
         hstring FileServer();
         hstring APPVersion();
-        void HttpLogOut(hstring s1, hstring s2);
+        void HttpLogOut(hstring const& s1, hstring const& s2);
         hstring SetRaw(hstring const& strAPI, hstring const& uid, time_t const& t, hstring const& method, hstring const& apiKey);
         hstring BikaEncryption(hstring const& strAPI, hstring const& uid, time_t const& t, hstring const& method, hstring const& apiKey, hstring const& strKey);
         winrt::Windows::Web::Http::Headers::HttpRequestHeaderCollection SetHeader(winrt::Windows::Web::Http::Headers::HttpRequestHeaderCollection const& headers, hstring const& strAPI, time_t const& t, hstring const& method);
@@ -53,7 +54,7 @@ namespace winrt::BikaClient::implementation
         const hstring ORIGINURL = L"https://picaapi.picacomic.com/";
     private:
 		hstring m_token;
-        hstring m_imageQuality = L"high";
+        BikaClient::ImageQualityMode m_imageQuality = BikaClient::ImageQualityMode::HIGH;
         hstring m_fileServer = DEFAULT_FILE_SERVER;
         hstring m_appVersion = L"2.2.1.2.3.4";
         int32_t m_appChannel = 3;

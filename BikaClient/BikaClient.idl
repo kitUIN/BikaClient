@@ -2,15 +2,22 @@ import "Responses/Responses.idl";
 import "Utils/Utils.idl";
 namespace BikaClient
 {
+    enum ImageQualityMode
+    {
+        ORIGINAL = 0,
+        HIGH = 1,
+        MEDIUM = 2,
+        LOW = 3,
+    };
     [default_interface]
     runtimeclass BikaHttpClient
     {
         BikaHttpClient();
         BikaHttpClient(String token);
-        BikaHttpClient(String token, String imageQuality);
-        BikaHttpClient(String token, String imageQuality,String fileServer);
+        BikaHttpClient(String token, BikaClient.ImageQualityMode imageQuality);
+        BikaHttpClient(String token, BikaClient.ImageQualityMode imageQuality,String fileServer);
         String Token;
-        String ImageQuality;
+        BikaClient.ImageQualityMode ImageQuality;
         String FileServer;
         String APPVersion{ get; };
         Windows.Foundation.Diagnostics.LoggingChannel GetLoggingChannel();
