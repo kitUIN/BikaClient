@@ -15,6 +15,11 @@ namespace winrt::TestClient::implementation
         MainPage::current = *this;
     }
 
+    BikaClient::BikaHttpClient MainPage::Bika()
+    {
+        return bika;
+    }
+
 
 }
 
