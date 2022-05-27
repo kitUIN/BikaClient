@@ -57,9 +57,9 @@ namespace winrt::BikaClient::implementation
         return m_token;
     }
 
-    hstring BikaHttpClient::SetImageQuality(BikaClient::ImageQualityMode const& value)
+    hstring BikaHttpClient::GetImageQuality(BikaClient::ImageQualityMode const& imageQuality)
     {
-		switch (value)
+		switch (imageQuality)
 		{
 		case BikaClient::ImageQualityMode::ORIGINAL:
 			return L"original";
@@ -218,7 +218,7 @@ namespace winrt::BikaClient::implementation
         {
             headers.Insert(L"Authorization", m_token);
         }
-        headers.Insert(L"image-quality", SetImageQuality(m_imageQuality));
+        headers.Insert(L"image-quality", GetImageQuality(m_imageQuality));
         headers.Insert(L"api-key", L"C69BAF41DA5ABD1FFEDC6D2FEA56B");
         headers.Insert(L"accept", L"application/vnd.picacomic.com.v1+json");
         headers.Insert(L"app-channel", to_hstring(m_appChannel));

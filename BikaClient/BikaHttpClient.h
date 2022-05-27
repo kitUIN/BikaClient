@@ -17,7 +17,7 @@ namespace winrt::BikaClient::implementation
         void Token(hstring const& value);
         hstring Token();
         void ImageQuality(BikaClient::ImageQualityMode const& value);
-        hstring SetImageQuality(BikaClient::ImageQualityMode const& value);
+        hstring GetImageQuality(BikaClient::ImageQualityMode const& imageQuality);
         BikaClient::ImageQualityMode ImageQuality();
         void FileServer(hstring const& value);
         hstring FileServer();

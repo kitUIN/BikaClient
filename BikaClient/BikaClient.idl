@@ -18,6 +18,7 @@ namespace BikaClient
         BikaHttpClient(String token, BikaClient.ImageQualityMode imageQuality,String fileServer);
         String Token;
         BikaClient.ImageQualityMode ImageQuality;
+        String GetImageQuality(BikaClient.ImageQualityMode imageQuality);
         String FileServer;
         String APPVersion{ get; };
         Windows.Foundation.Diagnostics.LoggingChannel GetLoggingChannel();
