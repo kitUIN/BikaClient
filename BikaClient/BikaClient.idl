@@ -14,7 +14,7 @@ namespace BikaClient
         String FileServer;
         String APPVersion{ get; };
         Windows.Foundation.Diagnostics.LoggingChannel GetLoggingChannel();
-        Windows.Foundation.IAsyncOperation<BikaClient.Responses.LoginResponse> Login(String account, String password);
+        Windows.Foundation.IAsyncOperation<BikaClient.Responses.LoginResponse> Login(String email, String password);
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.UserResponse> PersonInfo();
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.CategoriesResponse> Categories();
         Windows.Foundation.IAsyncOperation<String> Keywords();
@@ -24,7 +24,7 @@ namespace BikaClient
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.PicturesResponse> Pictures(String bookId, Int32 epsId, Int32 page);
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.ComicsResponse> PersonFavourite(BikaClient.Utils.SortMode sort, Int32 page);
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.ComicsResponse> Recommend(String bookId);
-        Windows.Foundation.IAsyncOperation<String> PersonComment(Int32 page);
+        Windows.Foundation.IAsyncOperation<BikaClient.Responses.CommentsResponse> PersonComment(Int32 page);
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.ComicsResponse> Search(String keywords, BikaClient.Utils.SortMode sort, Windows.Data.Json.JsonArray categories, Int32 page);
         Windows.Foundation.IAsyncOperation<String> Favourite(String bookId);
         Windows.Foundation.IAsyncOperation<String> Like(String bookId);

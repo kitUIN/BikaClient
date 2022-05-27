@@ -300,11 +300,11 @@ namespace winrt::BikaClient::implementation
     /// <param name="account" >用户名.</param>
     /// <param name="password" >密码.</param>
     /// <returns>LoginResponse</returns>
-    winrt::Windows::Foundation::IAsyncOperation<LoginResponse> BikaHttpClient::Login(hstring const& account, hstring const& password)
+    winrt::Windows::Foundation::IAsyncOperation<LoginResponse> BikaHttpClient::Login(hstring const& email, hstring const& password)
     {
         hstring api = L"auth/sign-in";
         JsonObject json;
-        json.Insert(L"email", JsonValue::CreateStringValue(account));
+        json.Insert(L"email", JsonValue::CreateStringValue(email));
         json.Insert(L"password", JsonValue::CreateStringValue(password));
         LoginResponse res{
             co_await POST(
@@ -423,13 +423,13 @@ namespace winrt::BikaClient::implementation
     /// </summary>
     /// <param name="page">页数</param>
     /// <returns></returns>
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::PersonComment(int32_t const& page)
+    winrt::Windows::Foundation::IAsyncOperation<CommentsResponse> BikaHttpClient::PersonComment(int32_t const& page)
     {
         hstring api = L"users/my-comments?page=" + to_hstring(page);
         Uri uri = Uri{ L"https://picaapi.picacomic.com/" + api };
         JsonObject res = co_await GET(uri, api);
         HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
-        co_return res.Stringify();
+        co_return CommentsResponse{ res, m_fileServer };
     }
     /// <summary>
     /// 看了这本子的人也在看

@@ -29,7 +29,7 @@ namespace winrt::BikaClient::implementation
         winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Data::Json::JsonObject> GET(winrt::Windows::Foundation::Uri const& requestUri, hstring const& strAPI);
         winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Data::Json::JsonObject> POST(winrt::Windows::Foundation::Uri const& requestUri, winrt::Windows::Web::Http::HttpStringContent const& jsonContent, hstring const& strAPI);
         winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Data::Json::JsonObject> PUT(winrt::Windows::Foundation::Uri const& requestUri, winrt::Windows::Web::Http::HttpStringContent const& jsonContent, hstring const& strAPI);
-        winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::LoginResponse> Login(hstring const& account, hstring const& password);
+        winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::LoginResponse> Login(hstring const& email, hstring const& password);
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::UserResponse> PersonInfo();
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::CategoriesResponse> Categories();
         winrt::Windows::Foundation::IAsyncOperation<hstring> Keywords();
@@ -39,7 +39,7 @@ namespace winrt::BikaClient::implementation
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::PicturesResponse> Pictures(hstring const& bookId, int32_t const& epsId, int32_t const& page);
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::ComicsResponse> PersonFavourite(winrt::BikaClient::Utils::SortMode const& sort, int32_t const& page);
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::ComicsResponse> Recommend(hstring const& bookId);
-        winrt::Windows::Foundation::IAsyncOperation<hstring> PersonComment(int32_t const& page);
+        winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::CommentsResponse> PersonComment(int32_t const& page);
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::ComicsResponse> Search(hstring const& keywords, winrt::BikaClient::Utils::SortMode const& sort, winrt::Windows::Data::Json::JsonArray const& categories, int32_t const& page);
         winrt::Windows::Foundation::IAsyncOperation<hstring> Favourite(hstring const& bookId);
         winrt::Windows::Foundation::IAsyncOperation<hstring> Like(hstring const& bookId);

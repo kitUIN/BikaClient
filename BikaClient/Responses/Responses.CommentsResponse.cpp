@@ -22,9 +22,12 @@ namespace winrt::BikaClient::Responses::implementation
         if (json.HasKey(L"data"))
         {
             JsonObject data = json.GetNamedObject(L"data");
-            for (auto x : data.GetNamedArray(L"topComments"))
+            if (data.HasKey(L"topComments"))
             {
-                m_topComments.Append(winrt::make<winrt::BikaClient::Blocks::implementation::CommentBlock>(x.GetObject(), fileServer));
+                for (auto x : data.GetNamedArray(L"topComments"))
+                {
+                    m_topComments.Append(winrt::make<winrt::BikaClient::Blocks::implementation::CommentBlock>(x.GetObject(), fileServer));
+                }
             }
             JsonObject comments = data.GetNamedObject(L"comments");
             for (auto y : comments.GetNamedArray(L"docs"))
