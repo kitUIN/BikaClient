@@ -15,7 +15,7 @@ _✨ 为[哔咔漫画UWP🍍](https://github.com/kitUIN/bikabika)提供API支持
    <a href="https://github.com/kitUIN/BikaClient/releases">
     <img src="https://img.shields.io/github/v/release/kitUIN/BikaClient?color=blueviolet&include_prereleases" alt="release">
   </a>
-  <a href="https://raw.githubusercontent.com/kitUIN/BikaClient/master/LICENSE">
+  <a href="https://github.com/kitUIN/BikaClient/blob/master/LICENSE">
     <img src="https://img.shields.io/github/license/kitUIN/BikaClient" alt="license">
   </a>
 </p>
