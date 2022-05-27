@@ -65,4 +65,9 @@ namespace BikaClient.Responses
 		Windows.Foundation.Collections.IObservableVector<BikaClient.Blocks.CommentBlock> Comments;
 		Windows.Foundation.Collections.IObservableVector<BikaClient.Blocks.CommentBlock> TopComments;
 	}
+	runtimeclass ActionResponse : IRespData
+	{
+		ActionResponse(Windows.Data.Json.JsonObject json);
+		String Action;
+	}
 }

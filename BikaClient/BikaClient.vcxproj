@@ -133,6 +133,7 @@
     <ClInclude Include="Blocks\Blocks.UserBlock.h" />
     <ClInclude Include="Date\Date.BikaDate.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Responses\Responses.ActionResponse.h" />
     <ClInclude Include="Responses\Responses.BookInfoResponse.h" />
     <ClInclude Include="Responses\Responses.CategoriesResponse.h" />
     <ClInclude Include="Responses\Responses.ComicsResponse.h" />
@@ -159,6 +160,7 @@
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+    <ClCompile Include="Responses\Responses.ActionResponse.cpp" />
     <ClCompile Include="Responses\Responses.BookInfoResponse.cpp" />
     <ClCompile Include="Responses\Responses.CategoriesResponse.cpp" />
     <ClCompile Include="Responses\Responses.ComicsResponse.cpp" />
