@@ -478,13 +478,27 @@ namespace winrt::BikaClient::implementation
         HttpLogOut(L"[Post]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return ComicsResponse{ res };
     }
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Favourite(hstring const& bookId)
+    winrt::Windows::Foundation::IAsyncOperation<ActionResponse> BikaHttpClient::Favourite(hstring const& bookId)
     {
-        throw hresult_not_implemented();
+        hstring api = L"comics/" + to_hstring(bookId) + L"/favourite";
+        HttpStringContent jsonContent(
+            L"",
+            UnicodeEncoding::Utf8,
+            L"application/json");
+        JsonObject res = co_await POST(Uri{ ORIGINURL + api }, jsonContent, api);
+        HttpLogOut(L"[Post]->/" + api + L"\nReturn:", res.Stringify().c_str());
+        co_return ActionResponse{ res };
     }
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Like(hstring const& bookId)
+    winrt::Windows::Foundation::IAsyncOperation<ActionResponse> BikaHttpClient::Like(hstring const& bookId)
     {
-        throw hresult_not_implemented();
+        hstring api = L"comics/" + to_hstring(bookId) + L"/like";
+        HttpStringContent jsonContent(
+            L"",
+            UnicodeEncoding::Utf8,
+            L"application/json");
+        JsonObject res = co_await POST(Uri{ ORIGINURL + api }, jsonContent, api);
+        HttpLogOut(L"[Post]->/" + api + L"\nReturn:", res.Stringify().c_str());
+        co_return ActionResponse{ res };
     }
     winrt::Windows::Foundation::IAsyncOperation<CommentsResponse> BikaHttpClient::Comments(hstring const& bookId, int32_t const& page)
     {
@@ -495,15 +509,42 @@ namespace winrt::BikaClient::implementation
     }
     winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::SendComments(hstring const& bookId, hstring const& content)
     {
-        throw hresult_not_implemented();
+        hstring api = L"comics/" + to_hstring(bookId) + L"/comments";
+        Uri uri = Uri{ L"https://picaapi.picacomic.com/" + api };
+        guid uuid = GuidHelper::CreateNewGuid();
+        HttpStringContent jsonContent(
+            L"{\"content\":\"" + content + L"\"}",
+            UnicodeEncoding::Utf8,
+            L"application/json");
+        auto ress = co_await POST(uri, jsonContent, api);
+        HttpLogOut(L"[Post]->/" + api + L"\nReturn:", ress.Stringify().c_str());
+        co_return ress.Stringify();
     }
     winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::PunchIn()
     {
-        throw hresult_not_implemented();
+        hstring api = L"users/punch-in";
+        Uri uri = Uri{ L"https://picaapi.picacomic.com/" + api };
+        guid uuid = GuidHelper::CreateNewGuid();
+        HttpStringContent jsonContent(
+            L"{}",
+            UnicodeEncoding::Utf8,
+            L"application/json");
+        auto ress = co_await POST(uri, jsonContent, api);
+        HttpLogOut(L"[Post]->/" + api + L"\nReturn:", ress.Stringify().c_str());
+        co_return ress.Stringify();
     }
     winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::SetSlogan(hstring const& slogan)
     {
-        throw hresult_not_implemented();
+        hstring api = L"users/profile";
+        Uri uri = Uri{ L"https://picaapi.picacomic.com/" + api };
+        guid uuid = GuidHelper::CreateNewGuid();
+        HttpStringContent jsonContent(
+            L"{\"slogan\":\"" + slogan + L"\"}",
+            UnicodeEncoding::Utf8,
+            L"application/json");
+        auto ress = co_await PUT(uri, jsonContent, api);
+        HttpLogOut(L"[Put]->/" + api + L"\nReturn:", ress.Stringify().c_str());
+        co_return ress.Stringify();
     }
     winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::SetPassword(hstring const& oldPassword, hstring const& newPassword)
     {
