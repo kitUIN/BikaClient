@@ -24,8 +24,10 @@ namespace winrt::TestClient::implementation
         throw hresult_not_implemented();
     }
 
-    void BookInfoPage::ClickHandler(IInspectable const&, RoutedEventArgs const&)
+    winrt::Windows::Foundation::IAsyncAction BookInfoPage::ClickHandler(IInspectable const&, RoutedEventArgs const&)
     {
-        Button().Content(box_value(L"Clicked"));
+        auto res = co_await rootPage.Bika().BookInfo(bookId().Text());
+        a.Append(res);
+        RES().ItemsSource(box_value(a));
     }
 }
