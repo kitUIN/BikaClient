@@ -18,3 +18,5 @@
 #include <winrt/BikaClient.Date.h>
 #include <winrt/BikaClient.Responses.h>
 #include <winrt/BikaClient.Utils.h>
+#include <winrt/Microsoft.UI.Xaml.Controls.h>
+#include <winrt/Microsoft.UI.Xaml.XamlTypeInfo.h>

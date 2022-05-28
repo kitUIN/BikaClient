@@ -50,6 +50,9 @@
                 <x:String>GetReplyComment</x:String>
             </ListView.Items>
         </ListView>
-        <Frame x:Name="mainFrame" />
+        <ScrollViewer>
+            <Frame x:Name="mainFrame" />
+        </ScrollViewer>
+
     </StackPanel>
 </Page>

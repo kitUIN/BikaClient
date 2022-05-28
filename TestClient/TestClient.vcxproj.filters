@@ -6,6 +6,9 @@
   <ItemGroup>
     <Page Include="MainPage.xaml" />
     <Page Include="LoginPage.xaml" />
+    <Page Include="BookInfoPage.xaml" />
+    <Page Include="ComicRes.xaml" />
+    <Page Include="ComicsPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />

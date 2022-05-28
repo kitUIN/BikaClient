@@ -34,7 +34,7 @@
                 <DataTemplate x:DataType="resp:LoginResponse">
                     <StackPanel Orientation="Vertical">
                         <StackPanel>
-                            <TextBlock Foreground="GreenYellow" Text="Code:" />
+                            <TextBlock Foreground="Green" Text="Code:" />
                             <TextBlock
                                 Width="700"
                                 IsTextSelectionEnabled="True"
@@ -42,7 +42,7 @@
                                 TextWrapping="Wrap" />
                         </StackPanel>
                         <StackPanel>
-                            <TextBlock Foreground="GreenYellow" Text="Message:" />
+                            <TextBlock Foreground="Green" Text="Message:" />
                             <TextBlock
                                 Width="700"
                                 IsTextSelectionEnabled="True"
@@ -50,7 +50,7 @@
                                 TextWrapping="Wrap" />
                         </StackPanel>
                         <StackPanel>
-                            <TextBlock Foreground="GreenYellow" Text="Detail:" />
+                            <TextBlock Foreground="Green" Text="Detail:" />
                             <TextBlock
                                 Width="700"
                                 IsTextSelectionEnabled="True"
@@ -58,7 +58,7 @@
                                 TextWrapping="Wrap" />
                         </StackPanel>
                         <StackPanel>
-                            <TextBlock Foreground="GreenYellow" Text="Error:" />
+                            <TextBlock Foreground="Green" Text="Error:" />
                             <TextBlock
                                 Width="700"
                                 IsTextSelectionEnabled="True"
@@ -66,7 +66,7 @@
                                 TextWrapping="Wrap" />
                         </StackPanel>
                         <StackPanel>
-                            <TextBlock Foreground="GreenYellow" Text="Json:" />
+                            <TextBlock Foreground="Green" Text="Json:" />
                             <TextBlock
                                 Width="700"
                                 IsTextSelectionEnabled="True"
@@ -74,7 +74,7 @@
                                 TextWrapping="Wrap" />
                         </StackPanel>
                         <StackPanel>
-                            <TextBlock Foreground="GreenYellow" Text="Token:" />
+                            <TextBlock Foreground="Green" Text="Token:" />
                             <TextBlock
                                 Width="700"
                                 IsTextSelectionEnabled="True"

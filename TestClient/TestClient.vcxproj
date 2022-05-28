@@ -109,6 +109,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BookInfoPage.h">
+      <DependentUpon>BookInfoPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="ComicRes.h">
+      <DependentUpon>ComicRes.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="ComicsPage.h">
+      <DependentUpon>ComicsPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="LoginPage.h">
       <DependentUpon>LoginPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -125,6 +137,15 @@
     <ApplicationDefinition Include="App.xaml">
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="BookInfoPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ComicRes.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ComicsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="LoginPage.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -147,6 +168,18 @@
     <Image Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BookInfoPage.cpp">
+      <DependentUpon>BookInfoPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="ComicRes.cpp">
+      <DependentUpon>ComicRes.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="ComicsPage.cpp">
+      <DependentUpon>ComicsPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="LoginPage.cpp">
       <DependentUpon>LoginPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -165,6 +198,18 @@
   <ItemGroup>
     <Midl Include="App.idl">
       <DependentUpon>App.xaml</DependentUpon>
+    </Midl>
+    <Midl Include="BookInfoPage.idl">
+      <DependentUpon>BookInfoPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="ComicRes.idl">
+      <DependentUpon>ComicRes.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="ComicsPage.idl">
+      <DependentUpon>ComicsPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Midl>
     <Midl Include="LoginPage.idl">
       <DependentUpon>LoginPage.xaml</DependentUpon>
@@ -190,6 +235,7 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="..\packages\Microsoft.Windows.CppWinRT.2.0.210806.1\build\native\Microsoft.Windows.CppWinRT.targets" Condition="Exists('..\packages\Microsoft.Windows.CppWinRT.2.0.210806.1\build\native\Microsoft.Windows.CppWinRT.targets')" />
+    <Import Project="..\packages\Microsoft.UI.Xaml.2.7.1\build\native\Microsoft.UI.Xaml.targets" Condition="Exists('..\packages\Microsoft.UI.Xaml.2.7.1\build\native\Microsoft.UI.Xaml.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -197,5 +243,6 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.Windows.CppWinRT.2.0.210806.1\build\native\Microsoft.Windows.CppWinRT.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Windows.CppWinRT.2.0.210806.1\build\native\Microsoft.Windows.CppWinRT.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Windows.CppWinRT.2.0.210806.1\build\native\Microsoft.Windows.CppWinRT.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Windows.CppWinRT.2.0.210806.1\build\native\Microsoft.Windows.CppWinRT.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.UI.Xaml.2.7.1\build\native\Microsoft.UI.Xaml.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.UI.Xaml.2.7.1\build\native\Microsoft.UI.Xaml.targets'))" />
   </Target>
 </Project>
