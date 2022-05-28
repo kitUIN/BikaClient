@@ -1,7 +1,8 @@
 #include "pch.h"
 #include "Responses.ActionResponse.h"
 #include "Responses.ActionResponse.g.cpp"
-
+using namespace winrt;
+using namespace Windows::Data::Json;
 
 namespace winrt::BikaClient::Responses::implementation
 {
@@ -13,7 +14,9 @@ namespace winrt::BikaClient::Responses::implementation
         if (json.HasKey(L"error")) m_error = json.GetNamedString(L"error");
         if (json.HasKey(L"detail")) m_detail = json.GetNamedString(L"detail");
         if (json.HasKey(L"data")) {
-            m_action = json.GetNamedObject(L"data").GetNamedString(L"action");
+            JsonObject data = json.GetNamedObject(L"data");
+            if(data.HasKey(L"res")) m_action = data.GetNamedString(L"res");
+            if(data.HasKey(L"action")) m_action = data.GetNamedString(L"action");
         }
     }
     hstring ActionResponse::Action()
