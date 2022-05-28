@@ -27,6 +27,8 @@ namespace winrt::TestClient::implementation
     winrt::Windows::Foundation::IAsyncAction SendCommentPage::ClickHandler(IInspectable const&, RoutedEventArgs const&)
     {
         auto res = co_await rootPage.Bika().SendComments(bookId().Text(),content().Text());
-
+        ActionControl resp;
+        resp.ResSet(res);
+        MainStackPanel().Children().Append(resp);
     }
 }

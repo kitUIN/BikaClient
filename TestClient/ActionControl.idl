@@ -1,0 +1,10 @@
+namespace TestClient
+{
+    [default_interface]
+    runtimeclass ActionControl : Windows.UI.Xaml.Controls.UserControl
+    {
+        ActionControl();
+        Int32 MyProperty;
+        void ResSet(BikaClient.Responses.ActionResponse response);
+    }
+}

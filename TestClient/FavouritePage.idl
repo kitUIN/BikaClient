@@ -1,0 +1,9 @@
+namespace TestClient
+{
+    [default_interface]
+    runtimeclass FavouritePage : Windows.UI.Xaml.Controls.Page
+    {
+        FavouritePage();
+        Int32 MyProperty;
+    }
+}

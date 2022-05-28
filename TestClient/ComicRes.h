@@ -12,10 +12,11 @@ namespace winrt::TestClient::implementation
     struct ComicRes : ComicResT<ComicRes>
     {
         ComicRes();
-        void ResSet(winrt::BikaClient::Responses::ComicsResponse const& response);
+
 
         int32_t MyProperty();
         void MyProperty(int32_t value);
+        void ResSet(winrt::BikaClient::Responses::ComicsResponse const& response);
     private:
         winrt::Windows::Foundation::Collections::IObservableVector<winrt::BikaClient::Responses::ComicsResponse> m_comicsResponses = winrt::single_threaded_observable_vector<winrt::BikaClient::Responses::ComicsResponse>();
 

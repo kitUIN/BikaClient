@@ -10,6 +10,12 @@
     <Page Include="ComicRes.xaml" />
     <Page Include="ComicsPage.xaml" />
     <Page Include="SendCommentPage.xaml" />
+    <Page Include="ActionControl.xaml" />
+    <Page Include="PunchInPage.xaml" />
+    <Page Include="SetSloganPage.xaml" />
+    <Page Include="SetPasswordPage.xaml" />
+    <Page Include="FavouritePage.xaml" />
+    <Page Include="LikePage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />
