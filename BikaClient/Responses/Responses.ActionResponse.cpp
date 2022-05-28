@@ -15,7 +15,7 @@ namespace winrt::BikaClient::Responses::implementation
         if (json.HasKey(L"detail")) m_detail = json.GetNamedString(L"detail");
         if (json.HasKey(L"data")) {
             JsonObject data = json.GetNamedObject(L"data");
-            if(data.HasKey(L"res")) m_action = data.GetNamedString(L"res");
+            if(data.HasKey(L"res")) m_action = data.GetNamedObject(L"status").GetNamedString(L"res");
             if(data.HasKey(L"action")) m_action = data.GetNamedString(L"action");
         }
     }

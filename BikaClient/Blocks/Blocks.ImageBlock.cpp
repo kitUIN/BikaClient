@@ -9,7 +9,7 @@ namespace winrt::BikaClient::Blocks::implementation
     {
         if (json.HasKey(L"_id"))
         {
-            m_id = json.GetNamedString(L"_id");
+            ID(json.GetNamedString(L"_id"));
             Init(json.GetNamedObject(L"media"));
         }
         else
@@ -21,7 +21,7 @@ namespace winrt::BikaClient::Blocks::implementation
     {
         if (json.HasKey(L"_id"))
         {
-            m_id = json.GetNamedString(L"_id");
+            ID(json.GetNamedString(L"_id"));
             Init(json.GetNamedObject(L"media"), fileServer);
         }
         else
@@ -35,8 +35,8 @@ namespace winrt::BikaClient::Blocks::implementation
     }
     void ImageBlock::Init(winrt::Windows::Data::Json::JsonObject const& json, hstring const& fileServer)
     {
-        if (json.HasKey(L"path")) m_path = json.GetNamedString(L"path");
-        if (json.HasKey(L"originalName")) m_originalName = json.GetNamedString(L"originalName");
+        if (json.HasKey(L"path")) Path(json.GetNamedString(L"path"));
+        if (json.HasKey(L"originalName")) OriginalName(json.GetNamedString(L"originalName"));
         m_fileServer = fileServer;
         Img(winrt::Windows::UI::Xaml::Media::Imaging::BitmapImage{ Windows::Foundation::Uri{ m_fileServer + m_path} });
     }
@@ -56,6 +56,7 @@ namespace winrt::BikaClient::Blocks::implementation
     void ImageBlock::ID(hstring const& value)
     {
         m_id = value;
+        m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"ID" });
     }
     winrt::Windows::UI::Xaml::Media::Imaging::BitmapImage ImageBlock::Img()
     {
@@ -64,7 +65,7 @@ namespace winrt::BikaClient::Blocks::implementation
     void ImageBlock::Img(winrt::Windows::UI::Xaml::Media::Imaging::BitmapImage const& value)
     {
         m_img = value;
-        m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Tag" });
+        m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Img" });
     }
     hstring ImageBlock::Path()
     {
@@ -73,6 +74,7 @@ namespace winrt::BikaClient::Blocks::implementation
     void ImageBlock::Path(hstring const& value)
     {
         m_path = value;
+        m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Path" });
     }
     hstring ImageBlock::Url()
     {
@@ -85,6 +87,7 @@ namespace winrt::BikaClient::Blocks::implementation
     void ImageBlock::OriginalName(hstring const& value)
     {
         m_originalName = value;
+        m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"OriginalName" });
     }
     winrt::event_token ImageBlock::PropertyChanged(winrt::Windows::UI::Xaml::Data::PropertyChangedEventHandler const& handler)
     {
