@@ -520,7 +520,7 @@ namespace winrt::BikaClient::implementation
         HttpLogOut(L"[Post]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return ActionResponse{ res };
     }
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::PunchIn()
+    winrt::Windows::Foundation::IAsyncOperation<ActionResponse> BikaHttpClient::PunchIn()
     {
         hstring api = L"users/punch-in";
         Uri uri = Uri{ L"https://picaapi.picacomic.com/" + api };
@@ -529,11 +529,11 @@ namespace winrt::BikaClient::implementation
             L"{}",
             UnicodeEncoding::Utf8,
             L"application/json");
-        auto ress = co_await POST(uri, jsonContent, api);
-        HttpLogOut(L"[Post]->/" + api + L"\nReturn:", ress.Stringify().c_str());
-        co_return ress.Stringify();
+        auto res = co_await POST(uri, jsonContent, api);
+        HttpLogOut(L"[Post]->/" + api + L"\nReturn:", res.Stringify().c_str());
+        co_return ActionResponse{ res };
     }
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::SetSlogan(hstring const& slogan)
+    winrt::Windows::Foundation::IAsyncOperation<ActionResponse> BikaHttpClient::SetSlogan(hstring const& slogan)
     {
         hstring api = L"users/profile";
         Uri uri = Uri{ L"https://picaapi.picacomic.com/" + api };
@@ -542,11 +542,11 @@ namespace winrt::BikaClient::implementation
             L"{\"slogan\":\"" + slogan + L"\"}",
             UnicodeEncoding::Utf8,
             L"application/json");
-        auto ress = co_await PUT(uri, jsonContent, api);
-        HttpLogOut(L"[Put]->/" + api + L"\nReturn:", ress.Stringify().c_str());
-        co_return ress.Stringify();
+        auto res = co_await PUT(uri, jsonContent, api);
+        HttpLogOut(L"[Put]->/" + api + L"\nReturn:", res.Stringify().c_str());
+        co_return ActionResponse{ res };
     }
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::SetPassword(hstring const& oldPassword, hstring const& newPassword)
+    winrt::Windows::Foundation::IAsyncOperation<ActionResponse> BikaHttpClient::SetPassword(hstring const& oldPassword, hstring const& newPassword)
     {
         throw hresult_not_implemented();
     }
