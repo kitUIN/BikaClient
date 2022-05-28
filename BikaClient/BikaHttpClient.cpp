@@ -507,7 +507,7 @@ namespace winrt::BikaClient::implementation
         HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return CommentsResponse{ res, m_fileServer };
     }
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::SendComments(hstring const& bookId, hstring const& content)
+    winrt::Windows::Foundation::IAsyncOperation<ActionResponse> BikaHttpClient::SendComments(hstring const& bookId, hstring const& content)
     {
         hstring api = L"comics/" + to_hstring(bookId) + L"/comments";
         Uri uri = Uri{ L"https://picaapi.picacomic.com/" + api };
@@ -516,9 +516,9 @@ namespace winrt::BikaClient::implementation
             L"{\"content\":\"" + content + L"\"}",
             UnicodeEncoding::Utf8,
             L"application/json");
-        auto ress = co_await POST(uri, jsonContent, api);
-        HttpLogOut(L"[Post]->/" + api + L"\nReturn:", ress.Stringify().c_str());
-        co_return ress.Stringify();
+        auto res = co_await POST(uri, jsonContent, api);
+        HttpLogOut(L"[Post]->/" + api + L"\nReturn:", res.Stringify().c_str());
+        co_return ActionResponse{ res };
     }
     winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::PunchIn()
     {

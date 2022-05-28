@@ -322,22 +322,7 @@
                                     Text="{x:Bind BookInfos.CreatedAt.GetDateTime}"
                                     TextWrapping="Wrap" />
                             </StackPanel>
-                            <StackPanel>
-                                <TextBlock Foreground="Green" Text="ID:" />
-                                <TextBlock
-                                    Width="700"
-                                    IsTextSelectionEnabled="True"
-                                    Text="{x:Bind BookInfos.}"
-                                    TextWrapping="Wrap" />
-                            </StackPanel>
-                            <StackPanel>
-                                <TextBlock Foreground="Green" Text="ID:" />
-                                <TextBlock
-                                    Width="700"
-                                    IsTextSelectionEnabled="True"
-                                    Text="{x:Bind BookInfos.}"
-                                    TextWrapping="Wrap" />
-                            </StackPanel>
+
                         </StackPanel>
 
                     </StackPanel>

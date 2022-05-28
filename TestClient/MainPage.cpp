@@ -30,4 +30,5 @@ void winrt::TestClient::implementation::MainPage::MainList_SelectionChanged(winr
     OutputDebugStringW(lsit.c_str());
     if (lsit == L"Login") mainFrame().Navigate(winrt::xaml_typename<TestClient::LoginPage>());
     else if (lsit == L"Comics") mainFrame().Navigate(winrt::xaml_typename<TestClient::ComicsPage>());
+    else if (lsit == L"SendComments") mainFrame().Navigate(winrt::xaml_typename<TestClient::SendCommentPage>());
 }

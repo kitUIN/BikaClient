@@ -45,7 +45,7 @@ namespace winrt::BikaClient::implementation
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::ActionResponse> Favourite(hstring const& bookId);
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::ActionResponse> Like(hstring const& bookId);
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::CommentsResponse> Comments(hstring const& bookId, int32_t const& page);
-        winrt::Windows::Foundation::IAsyncOperation<hstring> SendComments(hstring const& bookId, hstring const& content);
+        winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::ActionResponse> SendComments(hstring const& bookId, hstring const& content);
         winrt::Windows::Foundation::IAsyncOperation<hstring> PunchIn();
         winrt::Windows::Foundation::IAsyncOperation<hstring> SetSlogan(hstring const& slogan);
         winrt::Windows::Foundation::IAsyncOperation<hstring> SetPassword(hstring const& oldPassword, hstring const& newPassword);

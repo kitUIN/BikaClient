@@ -37,7 +37,7 @@ namespace BikaClient
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.ActionResponse> Favourite(String bookId);
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.ActionResponse> Like(String bookId);
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.CommentsResponse> Comments(String bookId, Int32 page);
-        Windows.Foundation.IAsyncOperation<String> SendComments(String bookId, String content);
+        Windows.Foundation.IAsyncOperation<BikaClient.Responses.ActionResponse> SendComments(String bookId, String content);
         Windows.Foundation.IAsyncOperation<String> PunchIn();
         Windows.Foundation.IAsyncOperation<String> SetSlogan(String slogan);
         Windows.Foundation.IAsyncOperation<String> SetPassword(String oldPassword, String newPassword);

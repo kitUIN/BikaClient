@@ -9,6 +9,7 @@
     <Page Include="BookInfoPage.xaml" />
     <Page Include="ComicRes.xaml" />
     <Page Include="ComicsPage.xaml" />
+    <Page Include="SendCommentPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />
