@@ -1,9 +1,0 @@
-namespace TestClient
-{
-    [default_interface]
-    runtimeclass SendCommentPage : Windows.UI.Xaml.Controls.Page
-    {
-        SendCommentPage();
-        Int32 MyProperty;
-    }
-}

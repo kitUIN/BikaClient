@@ -1,9 +1,0 @@
-namespace TestClient
-{
-    [default_interface]
-    runtimeclass SetSloganPage : Windows.UI.Xaml.Controls.Page
-    {
-        SetSloganPage();
-        Int32 MyProperty;
-    }
-}

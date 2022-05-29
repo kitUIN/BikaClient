@@ -1,0 +1,60 @@
+﻿<UserControl
+    x:Class="Demo.ActionItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:Demo"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel Orientation="Vertical">
+        <StackPanel>
+            <TextBlock Foreground="Green" Text="Code:" />
+            <TextBlock
+                Width="500"
+                IsTextSelectionEnabled="True"
+                Text="{x:Bind Actions.Code}"
+                TextWrapping="Wrap" />
+        </StackPanel>
+        <StackPanel>
+            <TextBlock Foreground="Green" Text="Message:" />
+            <TextBlock
+                Width="500"
+                IsTextSelectionEnabled="True"
+                Text="{x:Bind Actions.Message}"
+                TextWrapping="Wrap" />
+        </StackPanel>
+        <StackPanel>
+            <TextBlock Foreground="Green" Text="Detail:" />
+            <TextBlock
+                Width="500"
+                IsTextSelectionEnabled="True"
+                Text="{x:Bind Actions.Detail}"
+                TextWrapping="Wrap" />
+        </StackPanel>
+        <StackPanel>
+            <TextBlock Foreground="Green" Text="Error:" />
+            <TextBlock
+                Width="500"
+                IsTextSelectionEnabled="True"
+                Text="{x:Bind Actions.Error}"
+                TextWrapping="Wrap" />
+        </StackPanel>
+        <StackPanel>
+            <TextBlock Foreground="Green" Text="Json:" />
+            <TextBlock
+                Width="500"
+                IsTextSelectionEnabled="True"
+                Text="{x:Bind Actions.Json}"
+                TextWrapping="Wrap" />
+        </StackPanel>
+        <StackPanel>
+            <TextBlock Foreground="Green" Text="Action:" />
+            <TextBlock
+                Width="500"
+                IsTextSelectionEnabled="True"
+                Text="{x:Bind Actions.Action}"
+                TextWrapping="Wrap" />
+        </StackPanel>
+    </StackPanel>
+</UserControl>

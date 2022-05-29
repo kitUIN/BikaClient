@@ -1,0 +1,10 @@
+namespace Demo
+{
+    [default_interface]
+    runtimeclass ImageItem : Windows.UI.Xaml.Controls.UserControl
+    {
+        ImageItem();
+        static Windows.UI.Xaml.DependencyProperty ThumbProperty{ get; };
+        BikaClient.Blocks.ImageBlock Thumb;
+    }
+}

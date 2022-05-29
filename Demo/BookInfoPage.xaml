@@ -1,0 +1,162 @@
+﻿<Page
+    x:Class="Demo.BookInfoPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:Demo"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:resp="using:BikaClient.Responses"
+    mc:Ignorable="d">
+
+    <StackPanel
+        x:Name="MainStackPanel"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Top"
+        Orientation="Vertical">
+        <TextBox
+            x:Name="bookId"
+            Width="300"
+            HorizontalAlignment="Left"
+            PlaceholderText="bookId"
+            Text="5d56e4370bcf57397e60576b" />
+        <Button
+            x:Name="Button"
+            Width="100"
+            HorizontalAlignment="Left"
+            Click="ClickHandler">
+            请求
+        </Button>
+        <ItemsControl x:Name="Res">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate x:DataType="resp:BookInfoResponse">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel>
+                            <TextBlock Foreground="Green" Text="Code:" />
+                            <TextBlock
+                                Width="500"
+                                IsTextSelectionEnabled="True"
+                                Text="{x:Bind Code}"
+                                TextWrapping="Wrap" />
+                        </StackPanel>
+                        <StackPanel>
+                            <TextBlock Foreground="Green" Text="Message:" />
+                            <TextBlock
+                                Width="500"
+                                IsTextSelectionEnabled="True"
+                                Text="{x:Bind Message}"
+                                TextWrapping="Wrap" />
+                        </StackPanel>
+                        <StackPanel>
+                            <TextBlock Foreground="Green" Text="Detail:" />
+                            <TextBlock
+                                Width="500"
+                                IsTextSelectionEnabled="True"
+                                Text="{x:Bind Detail}"
+                                TextWrapping="Wrap" />
+                        </StackPanel>
+                        <StackPanel>
+                            <TextBlock Foreground="Green" Text="Error:" />
+                            <TextBlock
+                                Width="500"
+                                IsTextSelectionEnabled="True"
+                                Text="{x:Bind Error}"
+                                TextWrapping="Wrap" />
+                        </StackPanel>
+                        <StackPanel>
+                            <TextBlock Foreground="Green" Text="Json:" />
+                            <TextBlock
+                                Width="500"
+                                IsTextSelectionEnabled="True"
+                                Text="{x:Bind Json}"
+                                TextWrapping="Wrap" />
+                        </StackPanel>
+                        <StackPanel>
+                            <StackPanel>
+                                <TextBlock Foreground="Green" Text="ID:" />
+                                <TextBlock
+                                    Width="500"
+                                    IsTextSelectionEnabled="True"
+                                    Text="{x:Bind BookInfos.ID}"
+                                    TextWrapping="Wrap" />
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock Foreground="Green" Text="Title:" />
+                                <TextBlock
+                                    Width="500"
+                                    IsTextSelectionEnabled="True"
+                                    Text="{x:Bind BookInfos.Title}"
+                                    TextWrapping="Wrap" />
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock Foreground="Green" Text="Description:" />
+                                <TextBlock
+                                    Width="500"
+                                    IsTextSelectionEnabled="True"
+                                    Text="{x:Bind BookInfos.Description}"
+                                    TextWrapping="Wrap" />
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock Foreground="Green" Text="Author:" />
+                                <TextBlock
+                                    Width="500"
+                                    IsTextSelectionEnabled="True"
+                                    Text="{x:Bind BookInfos.Author}"
+                                    TextWrapping="Wrap" />
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock Foreground="Green" Text="ChineseTeam:" />
+                                <TextBlock
+                                    Width="500"
+                                    IsTextSelectionEnabled="True"
+                                    Text="{x:Bind BookInfos.ChineseTeam}"
+                                    TextWrapping="Wrap" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Foreground="Green" Text="Categories:" />
+                                <local:TagsItem Tags="{x:Bind BookInfos.Categories, Mode=OneWay}" />
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock Foreground="Green" Text="CategoriesString:" />
+                                <TextBlock
+                                    Width="500"
+                                    IsTextSelectionEnabled="True"
+                                    Text="{x:Bind BookInfos.CategoriesString}"
+                                    TextWrapping="Wrap" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Foreground="Green" Text="Tags:" />
+                                <local:TagsItem Tags="{x:Bind BookInfos.Tags, Mode=OneWay}" />
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock Foreground="Green" Text="TagsString:" />
+                                <TextBlock
+                                    Width="500"
+                                    IsTextSelectionEnabled="True"
+                                    Text="{x:Bind BookInfos.TagsString}"
+                                    TextWrapping="Wrap" />
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock Foreground="Green" Text="UpdatedAt:" />
+                                <TextBlock
+                                    Width="500"
+                                    IsTextSelectionEnabled="True"
+                                    Text="{x:Bind BookInfos.UpdatedAt.GetDateTime}"
+                                    TextWrapping="Wrap" />
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock Foreground="Green" Text="CreatedAt:" />
+                                <TextBlock
+                                    Width="500"
+                                    IsTextSelectionEnabled="True"
+                                    Text="{x:Bind BookInfos.CreatedAt.GetDateTime}"
+                                    TextWrapping="Wrap" />
+                            </StackPanel>
+                            <local:ImageItem Thumb="{x:Bind BookInfos.Thumb}" />
+                            <local:UserItem Margin="50,0,0,0" Users="{x:Bind BookInfos.Creater}" />
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </StackPanel>
+</Page>

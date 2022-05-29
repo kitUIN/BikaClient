@@ -1,0 +1,10 @@
+namespace Demo
+{
+    [default_interface]
+    runtimeclass ComicItem : Windows.UI.Xaml.Controls.UserControl
+    {
+        ComicItem();
+        static Windows.UI.Xaml.DependencyProperty ComicsProperty{ get; };
+        BikaClient.Responses.ComicsResponse Comics;
+    }
+}

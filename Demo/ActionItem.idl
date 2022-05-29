@@ -1,0 +1,11 @@
+namespace Demo
+{
+    [default_interface]
+    runtimeclass ActionItem : Windows.UI.Xaml.Controls.UserControl
+    {
+        ActionItem();
+
+        static Windows.UI.Xaml.DependencyProperty ActionsProperty{ get; };
+        BikaClient.Responses.ActionResponse Actions;
+    }
+}

@@ -1,0 +1,160 @@
+﻿<UserControl
+    x:Class="Demo.UserItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:blocks="using:BikaClient.Blocks"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:Demo"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    mc:Ignorable="d">
+
+    <StackPanel>
+        <TextBlock Foreground="Green" Text="Creater:" />
+        <StackPanel>
+            <StackPanel>
+                <TextBlock Foreground="Green" Text="ID:" />
+                <TextBlock
+                    Width="500"
+                    IsTextSelectionEnabled="True"
+                    Text="{x:Bind Users.ID}"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Foreground="Green" Text="Name:" />
+                <TextBlock
+                    Width="500"
+                    IsTextSelectionEnabled="True"
+                    Text="{x:Bind Users.Name}"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Foreground="Green" Text="CreatedAt:" />
+                <TextBlock
+                    Width="500"
+                    IsTextSelectionEnabled="True"
+                    Text="{x:Bind Users.CreatedAt.GetDateTime}"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Foreground="Green" Text="Birthday:" />
+                <TextBlock
+                    Width="500"
+                    IsTextSelectionEnabled="True"
+                    Text="{x:Bind Users.Birthday.GetDateTime}"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Foreground="Green" Text="Email:" />
+                <TextBlock
+                    Width="500"
+                    IsTextSelectionEnabled="True"
+                    Text="{x:Bind Users.Email}"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Foreground="Green" Text="Level:" />
+                <TextBlock
+                    Width="500"
+                    IsTextSelectionEnabled="True"
+                    Text="{x:Bind Users.Level}"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Foreground="Green" Text="LevelString:" />
+                <TextBlock
+                    Width="500"
+                    IsTextSelectionEnabled="True"
+                    Text="{x:Bind Users.LevelString}"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Foreground="Green" Text="Gender:" />
+                <TextBlock
+                    Width="500"
+                    IsTextSelectionEnabled="True"
+                    Text="{x:Bind Users.Gender}"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Foreground="Green" Text="Slogan:" />
+                <TextBlock
+                    Width="500"
+                    IsTextSelectionEnabled="True"
+                    Text="{x:Bind Users.Slogan}"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Foreground="Green" Text="Title:" />
+                <TextBlock
+                    Width="500"
+                    IsTextSelectionEnabled="True"
+                    Text="{x:Bind Users.Title}"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Foreground="Green" Text="Role:" />
+                <TextBlock
+                    Width="500"
+                    IsTextSelectionEnabled="True"
+                    Text="{x:Bind Users.Role}"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Foreground="Green" Text="Character:" />
+                <TextBlock
+                    Width="500"
+                    IsTextSelectionEnabled="True"
+                    Text="{x:Bind Users.Character}"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Foreground="Green" Text="CharactersString:" />
+                <TextBlock
+                    Width="500"
+                    IsTextSelectionEnabled="True"
+                    Text="{x:Bind Users.CharactersString}"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Foreground="Green" Text="Exp:" />
+                <muxc:NumberBox Value="{x:Bind Users.Exp}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Foreground="Green" Text="Percent:" />
+                <muxc:NumberBox Value="{x:Bind Users.Percent}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Foreground="Green" Text="Characters:" />
+                <local:TagsItem Tags="{x:Bind Users.Characters, Mode=OneWay}" />
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Foreground="Green" Text="LevelExp:" />
+                <TextBlock
+                    Width="500"
+                    IsTextSelectionEnabled="True"
+                    Text="{x:Bind Users.LevelExp}"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Foreground="Green" Text="IsPunched:" />
+                <TextBlock
+                    Width="500"
+                    IsTextSelectionEnabled="True"
+                    Text="true"
+                    TextWrapping="Wrap"
+                    Visibility="{x:Bind Users.IsPunched.Visibility}" />
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Foreground="Green" Text="Verified:" />
+                <TextBlock
+                    Width="500"
+                    IsTextSelectionEnabled="True"
+                    Text="true"
+                    TextWrapping="Wrap"
+                    Visibility="{x:Bind Users.Verified.Visibility}" />
+            </StackPanel>
+            <local:ImageItem Thumb="{x:Bind Users.Thumb}" />
+        </StackPanel>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,10 @@
+namespace Demo
+{
+    [default_interface]
+    runtimeclass TagsItem : Windows.UI.Xaml.Controls.UserControl
+    {
+        TagsItem();
+        static Windows.UI.Xaml.DependencyProperty TagsProperty{ get; };
+        Windows.Foundation.Collections.IObservableVector<BikaClient.Blocks.TagBlock> Tags;
+    }
+}

@@ -1,0 +1,11 @@
+namespace Demo
+{
+
+    [default_interface]
+    runtimeclass BlankUserControl : Windows.UI.Xaml.Controls.UserControl, Windows.UI.Xaml.Data.INotifyPropertyChanged
+    {
+        BlankUserControl();
+        static Windows.UI.Xaml.DependencyProperty LabelProperty{ get; };
+        String Label;
+    }
+}

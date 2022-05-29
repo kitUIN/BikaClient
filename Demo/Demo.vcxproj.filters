@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="MainPage.xaml" />
+    <Page Include="BlankUserControl.xaml" />
+    <Page Include="LoginPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
+    <Page Include="Items\ImageItem.xaml">
+      <Filter>Items</Filter>
+    </Page>
+    <Page Include="ComicItem.xaml">
+      <Filter>Items</Filter>
+    </Page>
+    <Page Include="ComicsPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
+    <Page Include="ActionItem.xaml">
+      <Filter>Items</Filter>
+    </Page>
+    <Page Include="LikePage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
+    <Page Include="FavouritePage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
+    <Page Include="PunchInPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
+    <Page Include="SendCommentPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
+    <Page Include="SetSloganPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
+    <Page Include="SetPasswordPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
+    <Page Include="UserItem.xaml">
+      <Filter>Items</Filter>
+    </Page>
+    <Page Include="BookInfoPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
+    <Page Include="TagsItem.xaml">
+      <Filter>Items</Filter>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="App.idl" />
+    <Midl Include="MainPage.idl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="App.cpp" />
+    <ClCompile Include="MainPage.cpp" />
+    <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\Wide310x150Logo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\StoreLogo.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Square150x150Logo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Square44x44Logo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\SplashScreen.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\LockScreenLogo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Assets">
+      <UniqueIdentifier>{e48dc53e-40b1-40cb-970a-f89935452892}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pages">
+      <UniqueIdentifier>{73972a7e-23cd-42d7-bc57-48f20d4eb4d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Items">
+      <UniqueIdentifier>{44b73b48-4038-45ff-8378-d1d2fab41c14}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PropertySheet.props" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="readme.txt" />
+  </ItemGroup>
+</Project>

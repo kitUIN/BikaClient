@@ -1,0 +1,9 @@
+namespace Demo
+{
+    [default_interface]
+    runtimeclass LikePage : Windows.UI.Xaml.Controls.Page
+    {
+        LikePage();
+        Int32 MyProperty;
+    }
+}

@@ -1,0 +1,10 @@
+namespace Demo
+{
+    [default_interface]
+    runtimeclass UserItem : Windows.UI.Xaml.Controls.UserControl
+    {
+        UserItem();
+        static Windows.UI.Xaml.DependencyProperty UsersProperty{ get; };
+        BikaClient.Blocks.UserBlock Users;
+    }
+}

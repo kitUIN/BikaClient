@@ -1,9 +1,0 @@
-namespace TestClient
-{
-    [default_interface]
-    runtimeclass ComicsPage : Windows.UI.Xaml.Controls.Page
-    {
-        ComicsPage();
-        Int32 MyProperty;
-    }
-}

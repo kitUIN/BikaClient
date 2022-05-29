@@ -1,9 +1,0 @@
-namespace TestClient
-{
-    [default_interface]
-    runtimeclass PunchInPage : Windows.UI.Xaml.Controls.Page
-    {
-        PunchInPage();
-        Int32 MyProperty;
-    }
-}

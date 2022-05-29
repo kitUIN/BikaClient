@@ -1,9 +1,0 @@
-namespace TestClient
-{
-    [default_interface]
-    runtimeclass BookInfoPage : Windows.UI.Xaml.Controls.Page
-    {
-        BookInfoPage();
-        Int32 MyProperty;
-    }
-}

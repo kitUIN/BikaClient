@@ -29,6 +29,14 @@ namespace winrt::BikaClient::Blocks::implementation
                 m_categoriesString = m_categoriesString + x.GetString() + L"  ";
             }
         }
+        if (json.HasKey(L"tags"))
+        {
+            for (auto x : json.GetNamedArray(L"tags"))
+            {
+                m_tags.Append(winrt::make<winrt::BikaClient::Blocks::implementation::TagBlock>(x.GetString()));
+                m_tagsString = m_categoriesString + x.GetString() + L"  ";
+            }
+        }
         if (json.HasKey(L"chineseTeam")) m_pagesCount =static_cast<int32_t>(json.GetNamedNumber(L"pagesCount"));
         if (json.HasKey(L"chineseTeam")) m_epsCount = static_cast<int32_t>(json.GetNamedNumber(L"epsCount"));
         if (json.HasKey(L"finished")) Finished(winrt::BikaClient::Utils::BikaBoolean{ json.GetNamedBoolean(L"finished") });
