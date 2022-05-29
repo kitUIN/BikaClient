@@ -60,6 +60,9 @@
     <Page Include="PicturesPage.xaml">
       <Filter>Pages</Filter>
     </Page>
+    <Page Include="PersonFavouritePage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />

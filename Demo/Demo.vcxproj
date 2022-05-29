@@ -160,6 +160,10 @@
     <ClInclude Include="MainPage.h">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </ClInclude>
+    <ClInclude Include="PersonFavouritePage.h">
+      <DependentUpon>PersonFavouritePage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="PersonInfoPage.h">
       <DependentUpon>PersonInfoPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -231,6 +235,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PersonFavouritePage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Include="PersonInfoPage.xaml">
@@ -327,6 +334,10 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+    <ClCompile Include="PersonFavouritePage.cpp">
+      <DependentUpon>PersonFavouritePage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="PersonInfoPage.cpp">
       <DependentUpon>PersonInfoPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -410,6 +421,10 @@
     </Midl>
     <Midl Include="MainPage.idl">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Midl>
+    <Midl Include="PersonFavouritePage.idl">
+      <DependentUpon>PersonFavouritePage.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Midl>
     <Midl Include="PersonInfoPage.idl">
       <DependentUpon>PersonInfoPage.xaml</DependentUpon>
