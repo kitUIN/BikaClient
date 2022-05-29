@@ -1,0 +1,9 @@
+namespace Demo
+{
+    [default_interface]
+    runtimeclass GetReplyCommentPage : Windows.UI.Xaml.Controls.Page
+    {
+        GetReplyCommentPage();
+        Int32 MyProperty;
+    }
+}

@@ -37,7 +37,7 @@ namespace winrt::Demo::implementation
         else if (lsit == L"BookInfo") mainFrame().Navigate(winrt::xaml_typename<Demo::BookInfoPage>());
         else if (lsit == L"PersonInfo") mainFrame().Navigate(winrt::xaml_typename<Demo::PersonInfoPage>());
         else if (lsit == L"Categories") mainFrame().Navigate(winrt::xaml_typename<Demo::CategoriesPage>());
-        //else if (lsit == L"Keywords") mainFrame().Navigate(winrt::xaml_typename<Demo::KeywordsPage>());
+        else if (lsit == L"Keywords") mainFrame().Navigate(winrt::xaml_typename<Demo::KeywordsPage>());
         else if (lsit == L"Episodes") mainFrame().Navigate(winrt::xaml_typename<Demo::EpisodesPage>());
         else if (lsit == L"Pictures") mainFrame().Navigate(winrt::xaml_typename<Demo::PicturesPage>());
         else if (lsit == L"PersonFavourite") mainFrame().Navigate(winrt::xaml_typename<Demo::PersonFavouritePage>());
@@ -45,6 +45,8 @@ namespace winrt::Demo::implementation
         else if (lsit == L"PersonComment") mainFrame().Navigate(winrt::xaml_typename<Demo::PersonCommentPage>());
         else if (lsit == L"Search") mainFrame().Navigate(winrt::xaml_typename<Demo::SearchPage>());
         else if (lsit == L"Comments") mainFrame().Navigate(winrt::xaml_typename<Demo::CommentsPage>());
+        else if (lsit == L"ReplyComment") mainFrame().Navigate(winrt::xaml_typename<Demo::ReplyCommentPage>());
+        else if (lsit == L"GetReplyComment") mainFrame().Navigate(winrt::xaml_typename<Demo::GetReplyCommentPage>());
     }
 
 

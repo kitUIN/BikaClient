@@ -149,8 +149,16 @@
       <DependentUpon>FavouritePage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="GetReplyCommentPage.h">
+      <DependentUpon>GetReplyCommentPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="Items\ImageItem.h">
       <DependentUpon>Items\ImageItem.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="KeywordsPage.h">
+      <DependentUpon>KeywordsPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
     <ClInclude Include="LikePage.h">
@@ -190,6 +198,10 @@
     </ClInclude>
     <ClInclude Include="RecommendPage.h">
       <DependentUpon>RecommendPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="ReplyCommentPage.h">
+      <DependentUpon>ReplyCommentPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
     <ClInclude Include="SearchPage.h">
@@ -251,7 +263,13 @@
     <Page Include="FavouritePage.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="GetReplyCommentPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Items\ImageItem.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="KeywordsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Include="LikePage.xaml">
@@ -279,6 +297,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="RecommendPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ReplyCommentPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Include="SearchPage.xaml">
@@ -355,8 +376,16 @@
       <DependentUpon>FavouritePage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="GetReplyCommentPage.cpp">
+      <DependentUpon>GetReplyCommentPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="Items\ImageItem.cpp">
       <DependentUpon>Items\ImageItem.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="KeywordsPage.cpp">
+      <DependentUpon>KeywordsPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
     <ClCompile Include="LikePage.cpp">
@@ -399,6 +428,10 @@
     </ClCompile>
     <ClCompile Include="RecommendPage.cpp">
       <DependentUpon>RecommendPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="ReplyCommentPage.cpp">
+      <DependentUpon>ReplyCommentPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
     <ClCompile Include="SearchPage.cpp">
@@ -470,8 +503,16 @@
       <DependentUpon>FavouritePage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Midl>
+    <Midl Include="GetReplyCommentPage.idl">
+      <DependentUpon>GetReplyCommentPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
     <Midl Include="Items\ImageItem.idl">
       <DependentUpon>Items\ImageItem.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="KeywordsPage.idl">
+      <DependentUpon>KeywordsPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Midl>
     <Midl Include="LikePage.idl">
@@ -507,6 +548,10 @@
     </Midl>
     <Midl Include="RecommendPage.idl">
       <DependentUpon>RecommendPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="ReplyCommentPage.idl">
+      <DependentUpon>ReplyCommentPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Midl>
     <Midl Include="SearchPage.idl">

@@ -78,6 +78,15 @@
     <Page Include="CommentsPage.xaml">
       <Filter>Pages</Filter>
     </Page>
+    <Page Include="ReplyCommentPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
+    <Page Include="GetReplyCommentPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
+    <Page Include="KeywordsPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />
