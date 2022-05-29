@@ -137,6 +137,10 @@
       <DependentUpon>CommentItem.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="CommentsPage.h">
+      <DependentUpon>CommentsPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="EpisodesPage.h">
       <DependentUpon>EpisodesPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -238,6 +242,9 @@
     <Page Include="CommentItem.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="CommentsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="EpisodesPage.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -334,6 +341,10 @@
     </ClCompile>
     <ClCompile Include="CommentItem.cpp">
       <DependentUpon>CommentItem.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="CommentsPage.cpp">
+      <DependentUpon>CommentsPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
     <ClCompile Include="EpisodesPage.cpp">
@@ -445,6 +456,10 @@
     </Midl>
     <Midl Include="CommentItem.idl">
       <DependentUpon>CommentItem.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="CommentsPage.idl">
+      <DependentUpon>CommentsPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Midl>
     <Midl Include="EpisodesPage.idl">

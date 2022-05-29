@@ -88,7 +88,7 @@
                         <TextBlock Foreground="Green" Text="CommentsCount:" />
                         <muxc:NumberBox Value="{x:Bind CommentsCount, Mode=OneWay}" />
                     </StackPanel>
-                    <local:UserItem Users="{x:Bind User}" />
+                    <local:UserItem Users="{x:Bind User, Mode=OneWay}" />
                 </StackPanel>
             </Border>
         </DataTemplate>

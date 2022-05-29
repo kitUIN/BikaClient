@@ -18,6 +18,7 @@ namespace winrt::BikaClient::Blocks::implementation
     {
         m_json = json.Stringify();
         if (json.HasKey(L"_id")) ID(json.GetNamedString(L"_id"));
+        if (json.HasKey(L"_comic")) Comic(json.GetNamedString(L"_comic"));
         if (json.HasKey(L"content")) Content(json.GetNamedString(L"content"));
         if (json.HasKey(L"created_at")) CreatedAt(winrt::BikaClient::Date::BikaDate{ json.GetNamedString(L"created_at") });
         if (json.HasKey(L"hide")) Hide(winrt::BikaClient::Utils::BikaBoolean{ json.GetNamedBoolean(L"hide") });
