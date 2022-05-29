@@ -51,6 +51,9 @@
     <Page Include="PersonInfoPage.xaml">
       <Filter>Pages</Filter>
     </Page>
+    <Page Include="CategoriesPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />

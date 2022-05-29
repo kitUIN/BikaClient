@@ -121,6 +121,10 @@
       <DependentUpon>BookInfoPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="CategoriesPage.h">
+      <DependentUpon>CategoriesPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="ComicItem.h">
       <DependentUpon>ComicItem.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -194,6 +198,9 @@
     <Page Include="BookInfoPage.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="CategoriesPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ComicItem.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -262,6 +269,10 @@
     </ClCompile>
     <ClCompile Include="BookInfoPage.cpp">
       <DependentUpon>BookInfoPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="CategoriesPage.cpp">
+      <DependentUpon>CategoriesPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
     <ClCompile Include="ComicItem.cpp">
@@ -341,6 +352,10 @@
     </Midl>
     <Midl Include="BookInfoPage.idl">
       <DependentUpon>BookInfoPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="CategoriesPage.idl">
+      <DependentUpon>CategoriesPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Midl>
     <Midl Include="ComicItem.idl">

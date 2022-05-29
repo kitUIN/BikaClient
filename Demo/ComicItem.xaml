@@ -87,6 +87,14 @@
                                     <local:TagsItem Tags="{x:Bind Categories, Mode=OneWay}" />
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="Green" Text="CategoriesString:" />
+                                    <TextBlock
+                                        Width="500"
+                                        IsTextSelectionEnabled="True"
+                                        Text="{x:Bind CategoriesString, Mode=OneWay}"
+                                        TextWrapping="Wrap" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
                                     <TextBlock Foreground="Green" Text="Finished:" />
                                     <TextBlock
                                         Width="500"

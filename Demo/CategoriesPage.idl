@@ -1,0 +1,9 @@
+namespace Demo
+{
+    [default_interface]
+    runtimeclass CategoriesPage : Windows.UI.Xaml.Controls.Page
+    {
+        CategoriesPage();
+        Int32 MyProperty;
+    }
+}

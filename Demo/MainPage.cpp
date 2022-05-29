@@ -36,6 +36,7 @@ namespace winrt::Demo::implementation
         else if (lsit == L"SetPassword") mainFrame().Navigate(winrt::xaml_typename<Demo::SetPasswordPage>());
         else if (lsit == L"BookInfo") mainFrame().Navigate(winrt::xaml_typename<Demo::BookInfoPage>());
         else if (lsit == L"PersonInfo") mainFrame().Navigate(winrt::xaml_typename<Demo::PersonInfoPage>());
+        else if (lsit == L"Categories") mainFrame().Navigate(winrt::xaml_typename<Demo::CategoriesPage>());
     }
 
 
