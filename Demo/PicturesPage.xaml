@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="Demo.EpisodesPage"
+    x:Class="Demo.PicturesPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:blocks="using:BikaClient.Blocks"
@@ -22,6 +22,7 @@
             PlaceholderText="bookId"
             Text="5d56e4370bcf57397e60576b" />
 
+        <muxc:NumberBox x:Name="epsId" Value="1" />
         <muxc:NumberBox x:Name="page" Value="1" />
 
         <Button
@@ -33,7 +34,7 @@
         </Button>
         <ItemsControl x:Name="Res">
             <ItemsControl.ItemTemplate>
-                <DataTemplate x:DataType="resp:EpisodesResponse">
+                <DataTemplate x:DataType="resp:PicturesResponse">
                     <StackPanel Orientation="Vertical">
                         <StackPanel>
                             <TextBlock Foreground="Green" Text="Code:" />
@@ -75,46 +76,31 @@
                                 Text="{x:Bind Json}"
                                 TextWrapping="Wrap" />
                         </StackPanel>
-                        <ListView ItemsSource="{x:Bind Episodes}">
+                        <ListView ItemsSource="{x:Bind Pictures}">
                             <ListView.ItemTemplate>
-                                <DataTemplate x:DataType="blocks:EpisodeBlock">
-                                    <StackPanel>
-                                        <StackPanel>
-                                            <TextBlock Foreground="Green" Text="ID:" />
-                                            <TextBlock
-                                                Width="300"
-                                                IsTextSelectionEnabled="True"
-                                                Text="{x:Bind ID, Mode=OneWay}"
-                                                TextWrapping="Wrap" />
-                                        </StackPanel>
-                                        <StackPanel>
-                                            <TextBlock Foreground="Green" Text="BookID:" />
-                                            <TextBlock
-                                                Width="300"
-                                                IsTextSelectionEnabled="True"
-                                                Text="{x:Bind BookId, Mode=OneWay}"
-                                                TextWrapping="Wrap" />
-                                        </StackPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Foreground="Green" Text="Order:" />
-                                            <muxc:NumberBox Value="{x:Bind Order, Mode=OneWay}" />
-                                        </StackPanel>
-
-                                        <StackPanel>
-                                            <TextBlock Foreground="Green" Text="UpdatedAt:" />
-                                            <TextBlock
-                                                Width="300"
-                                                IsTextSelectionEnabled="True"
-                                                Text="{x:Bind UpdatedAt.GetDateTime, Mode=OneWay}"
-                                                TextWrapping="Wrap" />
-                                        </StackPanel>
-                                        <StackPanel>
-                                            <TextBlock Foreground="Green" Text="Title:" />
-                                            <TextBlock
-                                                Width="300"
-                                                IsTextSelectionEnabled="True"
-                                                Text="{x:Bind Title, Mode=OneWay}"
-                                                TextWrapping="Wrap" />
+                                <DataTemplate x:DataType="blocks:ImageBlock">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Foreground="Green" Text="Thumb:" />
+                                        <StackPanel Orientation="Vertical">
+                                            <Image Source="{x:Bind Img, Mode=OneWay}" />
+                                            <StackPanel Orientation="Vertical">
+                                                <StackPanel>
+                                                    <TextBlock Foreground="Green" Text="ID:" />
+                                                    <TextBlock
+                                                        Width="300"
+                                                        IsTextSelectionEnabled="True"
+                                                        Text="{x:Bind ID, Mode=OneWay}"
+                                                        TextWrapping="Wrap" />
+                                                </StackPanel>
+                                                <StackPanel>
+                                                    <TextBlock Foreground="Green" Text="Url:" />
+                                                    <TextBlock
+                                                        Width="300"
+                                                        IsTextSelectionEnabled="True"
+                                                        Text="{x:Bind Url, Mode=OneWay}"
+                                                        TextWrapping="Wrap" />
+                                                </StackPanel>
+                                            </StackPanel>
                                         </StackPanel>
                                     </StackPanel>
                                 </DataTemplate>

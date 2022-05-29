@@ -39,6 +39,7 @@ namespace winrt::Demo::implementation
         else if (lsit == L"Categories") mainFrame().Navigate(winrt::xaml_typename<Demo::CategoriesPage>());
         else if (lsit == L"Keywords") mainFrame().Navigate(winrt::xaml_typename<Demo::KeywordsPage>());
         else if (lsit == L"Episodes") mainFrame().Navigate(winrt::xaml_typename<Demo::EpisodesPage>());
+        else if (lsit == L"Pictures") mainFrame().Navigate(winrt::xaml_typename<Demo::PicturesPage>());
     }
 
 

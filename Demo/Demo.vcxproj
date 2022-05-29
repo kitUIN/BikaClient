@@ -168,6 +168,10 @@
       <DependentUpon>PersonInfoPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="PicturesPage.h">
+      <DependentUpon>PicturesPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="PunchInPage.h">
       <DependentUpon>PunchInPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -237,6 +241,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="PersonInfoPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PicturesPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Include="PunchInPage.xaml">
@@ -335,6 +342,10 @@
       <DependentUpon>PersonInfoPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="PicturesPage.cpp">
+      <DependentUpon>PicturesPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="PunchInPage.cpp">
       <DependentUpon>PunchInPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -417,6 +428,10 @@
     </Midl>
     <Midl Include="PersonInfoPage.idl">
       <DependentUpon>PersonInfoPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="PicturesPage.idl">
+      <DependentUpon>PicturesPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Midl>
     <Midl Include="PunchInPage.idl">

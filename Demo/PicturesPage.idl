@@ -1,0 +1,9 @@
+namespace Demo
+{
+    [default_interface]
+    runtimeclass PicturesPage : Windows.UI.Xaml.Controls.Page
+    {
+        PicturesPage();
+        Int32 MyProperty;
+    }
+}
