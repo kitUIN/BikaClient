@@ -48,6 +48,9 @@
     <Page Include="TagsItem.xaml">
       <Filter>Items</Filter>
     </Page>
+    <Page Include="PersonInfoPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />

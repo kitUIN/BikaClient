@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="Demo.LoginPage"
+    x:Class="Demo.PersonInfoPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -9,39 +9,25 @@
     mc:Ignorable="d">
 
     <StackPanel
+        x:Name="MainStackPanel"
         HorizontalAlignment="Left"
         VerticalAlignment="Top"
         Orientation="Vertical">
-        <TextBox
-            x:Name="email"
-            Width="300"
-            HorizontalAlignment="Left"
-            PlaceholderText="邮箱" />
-        <TextBox
-            x:Name="password"
-            Width="300"
-            HorizontalAlignment="Left"
-            PlaceholderText="密码" />
-        <TextBox
-            x:Name="token"
-            Width="300"
-            HorizontalAlignment="Left"
-            PlaceholderText="token" />
         <Button
             x:Name="Button"
             Width="100"
             HorizontalAlignment="Left"
             Click="ClickHandler">
-            登录
+            请求
         </Button>
-        <ItemsControl x:Name="RES">
+        <ItemsControl x:Name="Res">
             <ItemsControl.ItemTemplate>
-                <DataTemplate x:DataType="resp:LoginResponse">
+                <DataTemplate x:DataType="resp:UserResponse">
                     <StackPanel Orientation="Vertical">
                         <StackPanel>
                             <TextBlock Foreground="Green" Text="Code:" />
                             <TextBlock
-                                Width="700"
+                                Width="500"
                                 IsTextSelectionEnabled="True"
                                 Text="{x:Bind Code}"
                                 TextWrapping="Wrap" />
@@ -49,7 +35,7 @@
                         <StackPanel>
                             <TextBlock Foreground="Green" Text="Message:" />
                             <TextBlock
-                                Width="700"
+                                Width="500"
                                 IsTextSelectionEnabled="True"
                                 Text="{x:Bind Message}"
                                 TextWrapping="Wrap" />
@@ -57,7 +43,7 @@
                         <StackPanel>
                             <TextBlock Foreground="Green" Text="Detail:" />
                             <TextBlock
-                                Width="700"
+                                Width="500"
                                 IsTextSelectionEnabled="True"
                                 Text="{x:Bind Detail}"
                                 TextWrapping="Wrap" />
@@ -65,7 +51,7 @@
                         <StackPanel>
                             <TextBlock Foreground="Green" Text="Error:" />
                             <TextBlock
-                                Width="700"
+                                Width="500"
                                 IsTextSelectionEnabled="True"
                                 Text="{x:Bind Error}"
                                 TextWrapping="Wrap" />
@@ -73,18 +59,14 @@
                         <StackPanel>
                             <TextBlock Foreground="Green" Text="Json:" />
                             <TextBlock
-                                Width="700"
+                                Width="500"
                                 IsTextSelectionEnabled="True"
                                 Text="{x:Bind Json}"
                                 TextWrapping="Wrap" />
                         </StackPanel>
                         <StackPanel>
-                            <TextBlock Foreground="Green" Text="Token:" />
-                            <TextBlock
-                                Width="700"
-                                IsTextSelectionEnabled="True"
-                                Text="{x:Bind Token}"
-                                TextWrapping="Wrap" />
+                            <TextBlock Foreground="Green" Text="User:" />
+                            <local:UserItem Users="{x:Bind User}" />
                         </StackPanel>
                     </StackPanel>
                 </DataTemplate>

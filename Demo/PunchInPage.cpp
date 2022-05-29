@@ -26,9 +26,9 @@ namespace winrt::Demo::implementation
 
     winrt::Windows::Foundation::IAsyncAction PunchInPage::ClickHandler(IInspectable const&, RoutedEventArgs const&)
     {
-        auto m_res = co_await rootPage.Bika().PunchIn();
+        auto res = co_await rootPage.Bika().PunchIn();
         ActionItem action;
-        action.Actions(m_res);
+        action.Actions(res);
         MainStackPanel().Children().Append(action);
     }
 }

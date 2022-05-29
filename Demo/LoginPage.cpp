@@ -26,8 +26,13 @@ namespace winrt::Demo::implementation
 
     winrt::Windows::Foundation::IAsyncAction LoginPage::ClickHandler(IInspectable const&, RoutedEventArgs const&)
     {
-        auto res = co_await rootPage.Bika().Login(email().Text(), password().Text());
-        a.Append(res);
-        RES().ItemsSource(box_value(a));
+        if (token().Text() != L"") rootPage.Bika().Token(token().Text());
+        else
+        {
+            auto res = co_await rootPage.Bika().Login(email().Text(), password().Text());
+            a.Append(res);
+            RES().ItemsSource(box_value(a));
+        }
+
     }
 }
