@@ -18,11 +18,11 @@ _✨ 为[哔咔漫画UWP🍍](https://github.com/kitUIN/bikabika)提供API支持
   <a href="https://github.com/kitUIN/BikaClient/blob/master/LICENSE">
     <img src="https://img.shields.io/github/license/kitUIN/BikaClient" alt="license">
   </a>
-  <img src="https://img.shields.io/badge/哔咔内核-2.2.1.2.3.4-pink" alt="bika">
+  <img src="https://img.shields.io/badge/APP内核-2.2.1.2.3.4-pink" alt="bika">
 </p>
 
 ## API
-用户
+- 用户
   - [ ] 注册
   - [x] 登录
   - [x] 更改个性签名
@@ -33,7 +33,7 @@ _✨ 为[哔咔漫画UWP🍍](https://github.com/kitUIN/bikabika)提供API支持
   - [ ] 设置头像
   - [ ] 设置称号
   - [x] 打卡
-本子
+- 本子
   - [x] 分类
   - [ ] 排行榜
   - [ ] 神魔推荐
@@ -49,11 +49,11 @@ _✨ 为[哔咔漫画UWP🍍](https://github.com/kitUIN/bikabika)提供API支持
   - [x] 回复评论
   - [x] 评论的评论
   - [x] 看过这个本子的人还看
-搜索
+- 搜索
   - [x] 搜索
   - [x] 大家都在搜
-小程序
+- 小程序
   - [ ] 锅贴
   - [ ] 聊天室
-游戏
+- 游戏
   - [ ] 游戏区
