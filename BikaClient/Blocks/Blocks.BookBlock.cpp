@@ -10,14 +10,19 @@ namespace winrt::BikaClient::Blocks::implementation
 {
     BookBlock::BookBlock(winrt::Windows::Data::Json::JsonObject const& json)
     {
-        BookBlock(json, DEFAULT_FILE_SERVER);
+        Init(json);
     }
     BookBlock::BookBlock(winrt::Windows::Data::Json::JsonObject const& json, hstring const& fileServer)
+    {
+		m_fileServer = fileServer;
+        Init(json);
+    }
+    void BookBlock::Init(winrt::Windows::Data::Json::JsonObject const& json)
     {
         m_json = json.Stringify();
         if (json.HasKey(L"_id")) m_id = json.GetNamedString(L"_id");
         if (json.HasKey(L"title")) m_title = json.GetNamedString(L"title");
-        if(json.HasKey(L"_creator")) m_creater = winrt::make<winrt::BikaClient::Blocks::implementation::UserBlock>(json.GetNamedObject(L"_creator"), fileServer);
+        if (json.HasKey(L"_creator")) m_creater = winrt::make<winrt::BikaClient::Blocks::implementation::UserBlock>(json.GetNamedObject(L"_creator"), m_fileServer);
         if (json.HasKey(L"description")) m_description = json.GetNamedString(L"description");
         if (json.HasKey(L"author")) m_author = json.GetNamedString(L"author");
         if (json.HasKey(L"chineseTeam")) m_chineseTeam = json.GetNamedString(L"chineseTeam");
@@ -37,7 +42,7 @@ namespace winrt::BikaClient::Blocks::implementation
                 m_tagsString = m_categoriesString + x.GetString() + L"  ";
             }
         }
-        if (json.HasKey(L"chineseTeam")) m_pagesCount =static_cast<int32_t>(json.GetNamedNumber(L"pagesCount"));
+        if (json.HasKey(L"chineseTeam")) m_pagesCount = static_cast<int32_t>(json.GetNamedNumber(L"pagesCount"));
         if (json.HasKey(L"chineseTeam")) m_epsCount = static_cast<int32_t>(json.GetNamedNumber(L"epsCount"));
         if (json.HasKey(L"finished")) Finished(winrt::BikaClient::Utils::BikaBoolean{ json.GetNamedBoolean(L"finished") });
         if (json.HasKey(L"updated_at")) m_updatedAt = winrt::BikaClient::Date::BikaDate(json.GetNamedString(L"updated_at"));
@@ -51,7 +56,7 @@ namespace winrt::BikaClient::Blocks::implementation
         if (json.HasKey(L"isFavourite")) m_isFavourite = json.GetNamedBoolean(L"isFavourite");
         if (json.HasKey(L"isLiked")) m_isLiked = json.GetNamedBoolean(L"isLiked");
         if (json.HasKey(L"commentsCount")) m_commentsCount = static_cast<int32_t>(json.GetNamedNumber(L"commentsCount"));
-        if (json.HasKey(L"thumb")) m_thumb = make<winrt::BikaClient::Blocks::implementation::ImageBlock>(json.GetNamedObject(L"thumb"), fileServer);
+        if (json.HasKey(L"thumb")) m_thumb = make<winrt::BikaClient::Blocks::implementation::ImageBlock>(json.GetNamedObject(L"thumb"), m_fileServer);
     }
     hstring BookBlock::ID()
     {

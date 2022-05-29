@@ -13,6 +13,7 @@ namespace winrt::BikaClient::Blocks::implementation
 
         BookBlock(winrt::Windows::Data::Json::JsonObject const& json);
         BookBlock(winrt::Windows::Data::Json::JsonObject const& json, hstring const& fileServer);
+        void Init(winrt::Windows::Data::Json::JsonObject const& json);
         hstring ID();
         void ID(hstring const& value);
         hstring Title();
@@ -94,6 +95,7 @@ namespace winrt::BikaClient::Blocks::implementation
 		int32_t m_commentsCount = 0;
 		winrt::event<winrt::Windows::UI::Xaml::Data::PropertyChangedEventHandler> m_propertyChanged;
         hstring m_json = L"";
+        hstring m_fileServer = L"https://storage1.picacomic.com/static/";
     };
 }
 namespace winrt::BikaClient::Blocks::factory_implementation

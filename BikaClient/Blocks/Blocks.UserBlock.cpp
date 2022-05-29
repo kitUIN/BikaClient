@@ -6,9 +6,14 @@ namespace winrt::BikaClient::Blocks::implementation
 {
 	UserBlock::UserBlock(winrt::Windows::Data::Json::JsonObject const& json)
 	{
-		UserBlock(json, to_hstring(DEFAULT_FILE_SERVER));
+		Init(json);
 	}
 	UserBlock::UserBlock(winrt::Windows::Data::Json::JsonObject const& json, hstring const& fileServer)
+	{
+		m_fileServer = fileServer;
+		Init(json);
+	}
+	void UserBlock::Init(winrt::Windows::Data::Json::JsonObject const& json)
 	{
 		m_json = json.Stringify();
 		if (json.HasKey(L"name"))
@@ -56,7 +61,7 @@ namespace winrt::BikaClient::Blocks::implementation
 
 		if (json.HasKey(L"avatar"))
 		{
-			m_thumb = make<winrt::BikaClient::Blocks::implementation::ImageBlock>(json.GetNamedObject(L"avatar"), fileServer);
+			m_thumb = make<winrt::BikaClient::Blocks::implementation::ImageBlock>(json.GetNamedObject(L"avatar"), m_fileServer);
 		}
 	}
 	int32_t UserBlock::GetEXP(int32_t const& level)

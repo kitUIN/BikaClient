@@ -7,9 +7,14 @@ namespace winrt::BikaClient::Blocks::implementation
 {
     CommentBlock::CommentBlock(winrt::Windows::Data::Json::JsonObject const& json)
     {
-        CommentBlock(json, DEFAULT_FILE_SERVER);
+        Init(json);
     }
     CommentBlock::CommentBlock(winrt::Windows::Data::Json::JsonObject const& json, hstring const& fileServer)
+    {
+        m_fileServer = fileServer;
+        Init(json);
+    }
+    void CommentBlock::Init(winrt::Windows::Data::Json::JsonObject const& json)
     {
         m_json = json.Stringify();
         if (json.HasKey(L"_id")) ID(json.GetNamedString(L"_id"));
@@ -20,7 +25,7 @@ namespace winrt::BikaClient::Blocks::implementation
         if (json.HasKey(L"isTop")) IsTop(winrt::BikaClient::Utils::BikaBoolean{ json.GetNamedBoolean(L"isTop") });
         if (json.HasKey(L"commentsCount")) CommentsCount(static_cast<int32_t>(json.GetNamedNumber(L"commentsCount")));
         if (json.HasKey(L"likesCount")) LikesCount(static_cast<int32_t>(json.GetNamedNumber(L"likesCount")));
-        if (json.HasKey(L"_user")) m_user = winrt::make<winrt::BikaClient::Blocks::implementation::UserBlock>(json.GetNamedObject(L"_user"),fileServer);
+        if (json.HasKey(L"_user")) m_user = winrt::make<winrt::BikaClient::Blocks::implementation::UserBlock>(json.GetNamedObject(L"_user"), m_fileServer);
     }
     hstring CommentBlock::ID()
     {

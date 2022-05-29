@@ -11,6 +11,7 @@ namespace winrt::BikaClient::Blocks::implementation
 
         ComicBlock(winrt::Windows::Data::Json::JsonObject const& json);
         ComicBlock(winrt::Windows::Data::Json::JsonObject const& json, hstring const& fileServer);
+        void Init(winrt::Windows::Data::Json::JsonObject const& json);
         hstring Id();
         void Id(hstring const& value);
         hstring Title();
@@ -47,6 +48,7 @@ namespace winrt::BikaClient::Blocks::implementation
 		int32_t m_likesCount = 0;
 		int32_t m_pagesCount = 0;
 		int32_t m_epsCount = 0;
+        hstring m_fileServer = L"https://storage1.picacomic.com/static/";
         winrt::BikaClient::Utils::BikaBoolean m_finished{ false };
         winrt::BikaClient::Blocks::ImageBlock m_thumb;
         winrt::Windows::Foundation::Collections::IObservableVector<BikaClient::Blocks::TagBlock> m_categories = winrt::single_threaded_observable_vector<BikaClient::Blocks::TagBlock>();

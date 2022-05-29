@@ -10,9 +10,14 @@ namespace winrt::BikaClient::Blocks::implementation
 {
     ComicBlock::ComicBlock(winrt::Windows::Data::Json::JsonObject const& json)
     {
-        ComicBlock(json, DEFAULT_FILE_SERVER);
+        Init(json);
     }
     ComicBlock::ComicBlock(winrt::Windows::Data::Json::JsonObject const& json, hstring const& fileServer)
+    {
+        m_fileServer = fileServer;
+        Init(json);
+    }
+    void ComicBlock::Init(winrt::Windows::Data::Json::JsonObject const& json)
     {
         m_json = json.Stringify();
         if (json.HasKey(L"_id")) m_id = json.GetNamedString(L"_id");
@@ -53,7 +58,7 @@ namespace winrt::BikaClient::Blocks::implementation
                 m_categoriesString = m_categoriesString + x.GetString() + L" ";
             }
         }
-        if (json.HasKey(L"thumb"))  m_thumb = make<winrt::BikaClient::Blocks::implementation::ImageBlock>(json.GetNamedObject(L"thumb"),fileServer);
+        if (json.HasKey(L"thumb"))  m_thumb = make<winrt::BikaClient::Blocks::implementation::ImageBlock>(json.GetNamedObject(L"thumb"), m_fileServer);
 
     }
     hstring ComicBlock::Id()

@@ -10,6 +10,7 @@ namespace winrt::BikaClient::Blocks::implementation
 
         CategoriesBlock(winrt::Windows::Data::Json::JsonObject const& json);
         CategoriesBlock(winrt::Windows::Data::Json::JsonObject const& json, hstring const& fileServer);
+        void Init(winrt::Windows::Data::Json::JsonObject const& json);
         hstring Title();
         void Title(hstring const& value);
         winrt::BikaClient::Blocks::ImageBlock Thumb();
@@ -37,6 +38,7 @@ namespace winrt::BikaClient::Blocks::implementation
         bool m_active = false;
         hstring m_json = L"";
         winrt::BikaClient::Blocks::ImageBlock m_thumb{ nullptr };
+        hstring m_fileServer = L"https://storage1.picacomic.com/static/";
     };
 }
 namespace winrt::BikaClient::Blocks::factory_implementation

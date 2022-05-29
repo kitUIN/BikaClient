@@ -6,9 +6,14 @@ namespace winrt::BikaClient::Blocks::implementation
 {
     CategoriesBlock::CategoriesBlock(winrt::Windows::Data::Json::JsonObject const& json)
     {
-        CategoriesBlock(json, DEFAULT_FILE_SERVER);
+        Init(json);
     }
     CategoriesBlock::CategoriesBlock(winrt::Windows::Data::Json::JsonObject const& json,hstring const& fileServer)
+    {
+        m_fileServer = fileServer;
+        Init(json);
+    }
+    void CategoriesBlock::Init(winrt::Windows::Data::Json::JsonObject const& json)
     {
         m_json = json.Stringify();
         if (json.HasKey(L"_id")) Id(json.GetNamedString(L"_id"));
@@ -25,7 +30,7 @@ namespace winrt::BikaClient::Blocks::implementation
             }
             else
             {
-                m_thumb = make<winrt::BikaClient::Blocks::implementation::ImageBlock>(json.GetNamedObject(L"thumb"), fileServer);
+                m_thumb = make<winrt::BikaClient::Blocks::implementation::ImageBlock>(json.GetNamedObject(L"thumb"), m_fileServer);
             }
 
         }

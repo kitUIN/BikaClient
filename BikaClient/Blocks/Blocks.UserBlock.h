@@ -12,6 +12,7 @@ namespace winrt::BikaClient::Blocks::implementation
 
         UserBlock(winrt::Windows::Data::Json::JsonObject const& json);
         UserBlock(winrt::Windows::Data::Json::JsonObject const& json,hstring const& fileServer);
+        void Init(winrt::Windows::Data::Json::JsonObject const& json);
         int32_t GetEXP(int32_t const& level);
         hstring ID();
         void ID(hstring const& value);
@@ -58,6 +59,7 @@ namespace winrt::BikaClient::Blocks::implementation
         winrt::event_token PropertyChanged(winrt::Windows::UI::Xaml::Data::PropertyChangedEventHandler const& handler);
         void PropertyChanged(winrt::event_token const& token) noexcept;
     private:
+        hstring m_fileServer = L"https://storage1.picacomic.com/static/";
         winrt::event<Windows::UI::Xaml::Data::PropertyChangedEventHandler> m_propertyChanged;
         winrt::hstring m_title = L"";
         winrt::hstring m_gender = L"";

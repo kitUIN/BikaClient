@@ -464,11 +464,19 @@ namespace winrt::BikaClient::implementation
         HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return ComicsResponse{ res, m_fileServer };
     }
+    /// <summary>
+    /// 搜索
+    /// </summary>
+    /// <param name="keywords">关键字</param>
+    /// <param name="sort">排序</param>
+    /// <param name="categories">分区</param>
+    /// <param name="page">页数</param>
+    /// <returns>ComicsResponse</returns>
     winrt::Windows::Foundation::IAsyncOperation<ComicsResponse> BikaHttpClient::Search(hstring const& keywords, winrt::BikaClient::Utils::SortMode const& sort, winrt::Windows::Data::Json::JsonArray const& categories, int32_t const& page)
     {
         hstring api = L"comics/advanced-search?page=" + to_hstring(page);
-        JsonObject json;
         BikaSort bikasort{ sort };
+        JsonObject json;
         json.SetNamedValue(L"keyword", JsonValue::CreateStringValue(keywords));
         if (categories.Size() > 0) json.SetNamedValue(L"categories", categories);
         json.SetNamedValue(L"sort", JsonValue::CreateStringValue(bikasort.Sort()));
@@ -482,6 +490,11 @@ namespace winrt::BikaClient::implementation
         HttpLogOut(L"[Post]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return ComicsResponse{ res, m_fileServer };
     }
+    /// <summary>
+    /// 收藏本子
+    /// </summary>
+    /// <param name="bookId">本子ID</param>
+    /// <returns>ActionResponse</returns>
     winrt::Windows::Foundation::IAsyncOperation<ActionResponse> BikaHttpClient::Favourite(hstring const& bookId)
     {
         hstring api = L"comics/" + to_hstring(bookId) + L"/favourite";
@@ -493,6 +506,11 @@ namespace winrt::BikaClient::implementation
         HttpLogOut(L"[Post]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return ActionResponse{ res };
     }
+    /// <summary>
+    /// 喜欢本子
+    /// </summary>
+    /// <param name="bookId">本子ID</param>
+    /// <returns>ActionResponse</returns>
     winrt::Windows::Foundation::IAsyncOperation<ActionResponse> BikaHttpClient::Like(hstring const& bookId)
     {
         hstring api = L"comics/" + to_hstring(bookId) + L"/like";
@@ -504,6 +522,12 @@ namespace winrt::BikaClient::implementation
         HttpLogOut(L"[Post]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return ActionResponse{ res };
     }
+    /// <summary>
+    /// 本子的评论
+    /// </summary>
+    /// <param name="bookId">本子ID</param>
+    /// <param name="page">页数</param>
+    /// <returns>CommentsResponse</returns>
     winrt::Windows::Foundation::IAsyncOperation<CommentsResponse> BikaHttpClient::Comments(hstring const& bookId, int32_t const& page)
     {
         hstring api = L"comics/" + to_hstring(bookId) + L"/comments?page=" + to_hstring(page);
@@ -511,56 +535,119 @@ namespace winrt::BikaClient::implementation
         HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return CommentsResponse{ res, m_fileServer };
     }
+    /// <summary>
+    /// 发送评论
+    /// </summary>
+    /// <param name="bookId">本子ID</param>
+    /// <param name="content">评论内容</param>
+    /// <returns>ActionResponse</returns>
     winrt::Windows::Foundation::IAsyncOperation<ActionResponse> BikaHttpClient::SendComments(hstring const& bookId, hstring const& content)
     {
         hstring api = L"comics/" + to_hstring(bookId) + L"/comments";
-        Uri uri = Uri{ L"https://picaapi.picacomic.com/" + api };
-        guid uuid = GuidHelper::CreateNewGuid();
-        HttpStringContent jsonContent(
-            L"{\"content\":\"" + content + L"\"}",
-            UnicodeEncoding::Utf8,
-            L"application/json");
-        auto res = co_await POST(uri, jsonContent, api);
+        JsonObject json;
+        json.SetNamedValue(L"content", JsonValue::CreateStringValue(content));
+        JsonObject res = co_await POST(
+            Uri{ ORIGINURL + api },
+            HttpStringContent{
+                json.Stringify(),
+                UnicodeEncoding::Utf8,
+                L"application/json" },
+                api);
         HttpLogOut(L"[Post]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return ActionResponse{ res };
     }
+    /// <summary>
+    /// 打卡
+    /// </summary>
+    /// <returns>ActionResponse</returns>
     winrt::Windows::Foundation::IAsyncOperation<ActionResponse> BikaHttpClient::PunchIn()
     {
         hstring api = L"users/punch-in";
-        Uri uri = Uri{ L"https://picaapi.picacomic.com/" + api };
-        guid uuid = GuidHelper::CreateNewGuid();
-        HttpStringContent jsonContent(
-            L"{}",
-            UnicodeEncoding::Utf8,
-            L"application/json");
-        auto res = co_await POST(uri, jsonContent, api);
+        JsonObject res = co_await POST(
+            Uri{ ORIGINURL + api },
+            HttpStringContent{
+                L"{}",
+                UnicodeEncoding::Utf8,
+                L"application/json" },
+                api);
         HttpLogOut(L"[Post]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return ActionResponse{ res };
     }
+    /// <summary>
+    /// 设置个性签名
+    /// </summary>
+    /// <param name="slogan">个性签名</param>
+    /// <returns>ActionResponse</returns>
     winrt::Windows::Foundation::IAsyncOperation<ActionResponse> BikaHttpClient::SetSlogan(hstring const& slogan)
     {
         hstring api = L"users/profile";
-        Uri uri = Uri{ L"https://picaapi.picacomic.com/" + api };
-        guid uuid = GuidHelper::CreateNewGuid();
-        HttpStringContent jsonContent(
-            L"{\"slogan\":\"" + slogan + L"\"}",
-            UnicodeEncoding::Utf8,
-            L"application/json");
-        auto res = co_await PUT(uri, jsonContent, api);
+        JsonObject json;
+        json.SetNamedValue(L"slogan", JsonValue::CreateStringValue(slogan));
+        JsonObject res = co_await PUT(
+            Uri{ ORIGINURL + api },
+            HttpStringContent{
+                json.Stringify(),
+                UnicodeEncoding::Utf8,
+                L"application/json" },
+                api);
         HttpLogOut(L"[Put]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return ActionResponse{ res };
     }
+    /// <summary>
+    /// 设置密码
+    /// </summary>
+    /// <param name="oldPassword">旧密码</param>
+    /// <param name="newPassword">新密码</param>
+    /// <returns>ActionResponse</returns>
     winrt::Windows::Foundation::IAsyncOperation<ActionResponse> BikaHttpClient::SetPassword(hstring const& oldPassword, hstring const& newPassword)
     {
-        throw hresult_not_implemented();
+        hstring api = L"users/password";
+        JsonObject json;
+        json.SetNamedValue(L"old_password", JsonValue::CreateStringValue(oldPassword));
+        json.SetNamedValue(L"new_password", JsonValue::CreateStringValue(newPassword));
+        JsonObject res = co_await PUT(
+            Uri{ ORIGINURL + api },
+            HttpStringContent{
+                json.Stringify(),
+                UnicodeEncoding::Utf8,
+                L"application/json" },
+                api);
+        HttpLogOut(L"[Put]->/" + api + L"\nReturn:", res.Stringify().c_str());
+        co_return ActionResponse{ res };
     }
+    /// <summary>
+    /// 回复评论
+    /// </summary>
+    /// <param name="commentId">评论ID</param>
+    /// <param name="content">评论内容</param>
+    /// <returns></returns>
     winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::ReplyComment(hstring const& commentId, hstring const& content)
     {
-        throw hresult_not_implemented();
+        hstring api = L"comments/" + commentId;
+        JsonObject json;
+        json.SetNamedValue(L"content", JsonValue::CreateStringValue(content));
+        JsonObject res = co_await POST(
+            Uri{ ORIGINURL + api },
+            HttpStringContent{
+                json.Stringify(),
+                UnicodeEncoding::Utf8,
+                L"application/json" },
+                api);
+        HttpLogOut(L"[Post]->/" + api + L"\nReturn:", res.Stringify().c_str());
+        co_return res.Stringify();
     }
+    /// <summary>
+    /// 获取评论的回复
+    /// </summary>
+    /// <param name="commentId">评论ID</param>
+    /// <param name="page">页数</param>
+    /// <returns></returns>
     winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::GetReplyComment(hstring const& commentId, int32_t const& page)
     {
-        throw hresult_not_implemented();
+        hstring api = L"comments/" + commentId + L"/childrens?page=" + to_hstring(page);
+        JsonObject res = co_await GET(Uri{ ORIGINURL + api }, api);
+        HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
+        co_return res.Stringify();
     }
 
 }

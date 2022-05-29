@@ -11,6 +11,7 @@ namespace winrt::BikaClient::Blocks::implementation
 
         CommentBlock(winrt::Windows::Data::Json::JsonObject const& json);
         CommentBlock(winrt::Windows::Data::Json::JsonObject const& json, hstring const& fileServer);
+        void Init(winrt::Windows::Data::Json::JsonObject const& json);
         hstring ID();
         void ID(hstring const& value);
         hstring Content();
@@ -47,6 +48,7 @@ namespace winrt::BikaClient::Blocks::implementation
         winrt::BikaClient::Utils::BikaBoolean m_isTop{ nullptr };
 		winrt::BikaClient::Utils::BikaBoolean m_hide{ nullptr };
 		winrt::BikaClient::Utils::BikaBoolean m_isLiked{ nullptr };
+        hstring m_fileServer = L"https://storage1.picacomic.com/static/";
 		hstring m_bookId = L"";
 		winrt::event<winrt::Windows::UI::Xaml::Data::PropertyChangedEventHandler> m_propertyChanged;
 		hstring m_json = L"";
