@@ -1,0 +1,9 @@
+namespace Demo
+{
+    [default_interface]
+    runtimeclass RecommendPage : Windows.UI.Xaml.Controls.Page
+    {
+        RecommendPage();
+        Int32 MyProperty;
+    }
+}

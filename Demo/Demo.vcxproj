@@ -176,6 +176,10 @@
       <DependentUpon>PunchInPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="RecommendPage.h">
+      <DependentUpon>RecommendPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="SendCommentPage.h">
       <DependentUpon>SendCommentPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -247,6 +251,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="PunchInPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RecommendPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Include="SendCommentPage.xaml">
@@ -350,6 +357,10 @@
       <DependentUpon>PunchInPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="RecommendPage.cpp">
+      <DependentUpon>RecommendPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="SendCommentPage.cpp">
       <DependentUpon>SendCommentPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -436,6 +447,10 @@
     </Midl>
     <Midl Include="PunchInPage.idl">
       <DependentUpon>PunchInPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="RecommendPage.idl">
+      <DependentUpon>RecommendPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Midl>
     <Midl Include="SendCommentPage.idl">

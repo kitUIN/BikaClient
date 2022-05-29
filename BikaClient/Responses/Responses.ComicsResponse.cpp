@@ -25,14 +25,26 @@ namespace winrt::BikaClient::Responses::implementation
         if (json.HasKey(L"detail")) m_detail = json.GetNamedString(L"detail");
         if (json.HasKey(L"data"))
         {
-            JsonObject data = json.GetNamedObject(L"data").GetNamedObject(L"comics");
-            if (data.HasKey(L"total")) m_total = static_cast<int32_t>(data.GetNamedNumber(L"total"));
-            if (data.HasKey(L"limit")) m_limit = static_cast<int32_t>(data.GetNamedNumber(L"limit"));
-            if (data.HasKey(L"page")) m_page = static_cast<int32_t>(data.GetNamedNumber(L"page"));
-            if (data.HasKey(L"pages")) m_pages = static_cast<int32_t>(data.GetNamedNumber(L"pages"));
-            for (auto x : data.GetNamedArray(L"docs"))
+            JsonObject data = json.GetNamedObject(L"data");
+            IJsonValue comics = data.Lookup(L"comics");
+            if (comics.ValueType() == JsonValueType::Array)
             {
-                m_comics.Append(winrt::make<winrt::BikaClient::Blocks::implementation::ComicBlock>(x.GetObject(), m_fileServer));
+                for (auto x : comics.GetArray())
+                {
+                    m_comics.Append(winrt::make<winrt::BikaClient::Blocks::implementation::ComicBlock>(x.GetObject(), m_fileServer));
+                }
+            }
+            else
+            {
+                JsonObject comic = comics.GetObject();
+                if (comic.HasKey(L"total")) m_total = static_cast<int32_t>(comic.GetNamedNumber(L"total"));
+                if (comic.HasKey(L"limit")) m_limit = static_cast<int32_t>(comic.GetNamedNumber(L"limit"));
+                if (comic.HasKey(L"page")) m_page = static_cast<int32_t>(comic.GetNamedNumber(L"page"));
+                if (comic.HasKey(L"pages")) m_pages = static_cast<int32_t>(comic.GetNamedNumber(L"pages"));
+                for (auto x : comic.GetNamedArray(L"docs"))
+                {
+                    m_comics.Append(winrt::make<winrt::BikaClient::Blocks::implementation::ComicBlock>(x.GetObject(), m_fileServer));
+                }
             }
         }
     }
