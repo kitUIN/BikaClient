@@ -7,9 +7,14 @@ namespace winrt::BikaClient::Responses::implementation
 {
     BookInfoResponse::BookInfoResponse(winrt::Windows::Data::Json::JsonObject const& json)
     {
-        BookInfoResponse(json, DEFAULT_FILE_SERVER);
+        Init(json);
     }
     BookInfoResponse::BookInfoResponse(winrt::Windows::Data::Json::JsonObject const& json, hstring const& fileServer)
+    {
+		m_fileServer = fileServer;
+        Init(json);
+    }
+    void BookInfoResponse::Init(winrt::Windows::Data::Json::JsonObject const& json)
     {
         m_json = json.Stringify();
         if (json.HasKey(L"code")) m_code = static_cast<int32_t>(json.GetNamedNumber(L"code"));
@@ -17,7 +22,7 @@ namespace winrt::BikaClient::Responses::implementation
         if (json.HasKey(L"error")) m_error = json.GetNamedString(L"error");
         if (json.HasKey(L"detail")) m_detail = json.GetNamedString(L"detail");
         if (json.HasKey(L"data")) {
-            m_bookInfos = make < winrt::BikaClient::Blocks::implementation::BookBlock>(json.GetNamedObject(L"data").GetNamedObject(L"comic"),fileServer);
+            m_bookInfos = make<winrt::BikaClient::Blocks::implementation::BookBlock>(json.GetNamedObject(L"data").GetNamedObject(L"comic"), m_fileServer);
         }
     }
     winrt::BikaClient::Blocks::BookBlock BookInfoResponse::BookInfos()

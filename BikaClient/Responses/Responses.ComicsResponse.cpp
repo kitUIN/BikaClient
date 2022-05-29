@@ -9,9 +9,14 @@ namespace winrt::BikaClient::Responses::implementation
 {
     ComicsResponse::ComicsResponse(winrt::Windows::Data::Json::JsonObject const& json)
     {
-        ComicsResponse(json, DEFAULT_FILE_SERVER);
+        Init(json);
     }
     ComicsResponse::ComicsResponse(winrt::Windows::Data::Json::JsonObject const& json, hstring const& fileServer)
+    {
+        m_fileServer = fileServer;
+        Init(json);
+    }
+    void ComicsResponse::Init(winrt::Windows::Data::Json::JsonObject const& json)
     {
         m_json = json.Stringify();
         if (json.HasKey(L"code")) m_code = static_cast<int32_t>(json.GetNamedNumber(L"code"));
@@ -27,7 +32,7 @@ namespace winrt::BikaClient::Responses::implementation
             if (data.HasKey(L"pages")) m_pages = static_cast<int32_t>(data.GetNamedNumber(L"pages"));
             for (auto x : data.GetNamedArray(L"docs"))
             {
-                m_comics.Append(winrt::make<winrt::BikaClient::Blocks::implementation::ComicBlock>(x.GetObject(), fileServer));
+                m_comics.Append(winrt::make<winrt::BikaClient::Blocks::implementation::ComicBlock>(x.GetObject(), m_fileServer));
             }
         }
     }

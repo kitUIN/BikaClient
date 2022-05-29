@@ -19,7 +19,7 @@ namespace winrt::BikaClient::implementation
         void ImageQuality(BikaClient::ImageQualityMode const& value);
         hstring GetImageQuality(BikaClient::ImageQualityMode const& imageQuality);
         BikaClient::ImageQualityMode ImageQuality();
-        void FileServer(hstring const& value);
+        void FileServer(BikaClient::FileServerMode const& fileServerMode);
         hstring FileServer();
         hstring APPVersion();
         void HttpLogOut(hstring const& s1, hstring const& s2);
@@ -55,7 +55,7 @@ namespace winrt::BikaClient::implementation
     private:
 		hstring m_token;
         BikaClient::ImageQualityMode m_imageQuality = BikaClient::ImageQualityMode::HIGH;
-        hstring m_fileServer = DEFAULT_FILE_SERVER;
+        hstring m_fileServer = L"https://storage1.picacomic.com/static/";
         hstring m_appVersion = L"2.2.1.2.3.4";
         int32_t m_appChannel = 3;
         winrt::Windows::Foundation::Diagnostics::LoggingChannel m_loggingChannel = winrt::Windows::Foundation::Diagnostics::LoggingChannel(to_hstring(winrt::Windows::Foundation::GuidHelper::CreateNewGuid()));

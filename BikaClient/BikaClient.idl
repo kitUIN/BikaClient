@@ -9,6 +9,12 @@ namespace BikaClient
         MEDIUM = 2,
         LOW = 3,
     };
+    enum FileServerMode
+    {
+        S1 = 0,
+        S2 = 1,
+        S3 = 2,
+    };
     [default_interface]
     runtimeclass BikaHttpClient
     {
@@ -19,7 +25,8 @@ namespace BikaClient
         String Token;
         BikaClient.ImageQualityMode ImageQuality;
         String GetImageQuality(BikaClient.ImageQualityMode imageQuality);
-        String FileServer;
+        void FileServer(BikaClient.FileServerMode fileServerMode);
+        String FileServer();
         String APPVersion{ get; };
         Windows.Foundation.Diagnostics.LoggingChannel GetLoggingChannel();
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.LoginResponse> Login(String email, String password);

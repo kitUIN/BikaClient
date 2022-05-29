@@ -83,9 +83,13 @@ namespace winrt::BikaClient::implementation
     {
         return m_imageQuality;
     }
-    void BikaHttpClient::FileServer(hstring const& value)
+
+    void BikaHttpClient::FileServer(BikaClient::FileServerMode const& fileServerMode)
     {
-        m_fileServer = value;
+        if (fileServerMode == BikaClient::FileServerMode::S1) m_fileServer = L"https://storage1.picacomic.com/static/";
+        else if (fileServerMode == BikaClient::FileServerMode::S2) m_fileServer = L"https://s2.picacomic.com/static/";
+        else m_fileServer = L"https://s3.picacomic.com/static/";
+
     }
 
     hstring BikaHttpClient::FileServer()
@@ -341,7 +345,7 @@ namespace winrt::BikaClient::implementation
         hstring api = L"users/profile";
         JsonObject res = co_await GET(Uri{ ORIGINURL + api }, api);
         HttpLogOut(L"[GET]->/users/profile\nReturn:", res.Stringify().c_str());
-        co_return UserResponse{ res,m_fileServer };
+        co_return UserResponse{ res, m_fileServer };
     }
 
     /// <summary>

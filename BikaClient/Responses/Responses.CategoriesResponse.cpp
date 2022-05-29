@@ -7,10 +7,16 @@ namespace winrt::BikaClient::Responses::implementation
 {
     CategoriesResponse::CategoriesResponse(winrt::Windows::Data::Json::JsonObject const& json)
     {
-        CategoriesResponse(json, DEFAULT_FILE_SERVER);
+        Init(json);
     }
     CategoriesResponse::CategoriesResponse(winrt::Windows::Data::Json::JsonObject const& json, hstring const& fileServer)
     {
+        m_fileServer = fileServer;
+        Init(json);
+    }
+    void CategoriesResponse::Init(winrt::Windows::Data::Json::JsonObject const& json)
+    {
+
         m_json = json.Stringify();
         if (json.HasKey(L"code")) m_code = static_cast<int32_t>(json.GetNamedNumber(L"code"));
         if (json.HasKey(L"message")) m_message = json.GetNamedString(L"message");
@@ -19,7 +25,7 @@ namespace winrt::BikaClient::Responses::implementation
         if (json.HasKey(L"data")) {
             for (auto x : json.GetNamedObject(L"data").GetNamedArray(L"categories"))
             {
-                m_categories.Append(winrt::make<winrt::BikaClient::Blocks::implementation::CategoriesBlock>(x.GetObject(), fileServer));
+                m_categories.Append(winrt::make<winrt::BikaClient::Blocks::implementation::CategoriesBlock>(x.GetObject(), m_fileServer));
             }
         }
     }

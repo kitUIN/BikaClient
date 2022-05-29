@@ -145,10 +145,6 @@
       <DependentUpon>Items\ImageItem.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
-    <ClInclude Include="KeywordsPage.h">
-      <DependentUpon>KeywordsPage.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </ClInclude>
     <ClInclude Include="LikePage.h">
       <DependentUpon>LikePage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -226,9 +222,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Items\ImageItem.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="KeywordsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Include="LikePage.xaml">
@@ -314,10 +307,6 @@
     </ClCompile>
     <ClCompile Include="Items\ImageItem.cpp">
       <DependentUpon>Items\ImageItem.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </ClCompile>
-    <ClCompile Include="KeywordsPage.cpp">
-      <DependentUpon>KeywordsPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
     <ClCompile Include="LikePage.cpp">
@@ -409,10 +398,6 @@
     </Midl>
     <Midl Include="Items\ImageItem.idl">
       <DependentUpon>Items\ImageItem.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Midl>
-    <Midl Include="KeywordsPage.idl">
-      <DependentUpon>KeywordsPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Midl>
     <Midl Include="LikePage.idl">

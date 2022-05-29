@@ -10,6 +10,7 @@ namespace winrt::BikaClient::Responses::implementation
 
         UserResponse(winrt::Windows::Data::Json::JsonObject const& json);
         UserResponse(winrt::Windows::Data::Json::JsonObject const& json, hstring const& fileServer);
+        void Init(winrt::Windows::Data::Json::JsonObject const& json);
         winrt::BikaClient::Blocks::UserBlock User();
         void User(winrt::BikaClient::Blocks::UserBlock const& value);
         int32_t Code();
@@ -28,6 +29,7 @@ namespace winrt::BikaClient::Responses::implementation
         hstring m_detail{ L"" };
         hstring m_json{ L"" };
         winrt::BikaClient::Blocks::UserBlock m_user{ nullptr };
+        hstring m_fileServer = L"https://storage1.picacomic.com/static/";
     };
 }
 namespace winrt::BikaClient::Responses::factory_implementation

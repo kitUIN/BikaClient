@@ -54,9 +54,6 @@
     <Page Include="CategoriesPage.xaml">
       <Filter>Pages</Filter>
     </Page>
-    <Page Include="KeywordsPage.xaml">
-      <Filter>Pages</Filter>
-    </Page>
     <Page Include="EpisodesPage.xaml">
       <Filter>Pages</Filter>
     </Page>

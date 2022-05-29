@@ -9,6 +9,7 @@ namespace winrt::BikaClient::Responses::implementation
 
         CategoriesResponse(winrt::Windows::Data::Json::JsonObject const& json);
         CategoriesResponse(winrt::Windows::Data::Json::JsonObject const& json, hstring const& fileServer);
+        void Init(winrt::Windows::Data::Json::JsonObject const& json);
         winrt::Windows::Foundation::Collections::IObservableVector<winrt::BikaClient::Blocks::CategoriesBlock> Categories();
         void Categories(winrt::Windows::Foundation::Collections::IObservableVector<winrt::BikaClient::Blocks::CategoriesBlock> const& value);
         int32_t Code();
@@ -27,6 +28,7 @@ namespace winrt::BikaClient::Responses::implementation
 		hstring m_error{ L"" };
 		hstring m_detail{ L"" };
 		hstring m_json{ L"" };
+        hstring m_fileServer = L"https://storage1.picacomic.com/static/";
     };
 }
 namespace winrt::BikaClient::Responses::factory_implementation

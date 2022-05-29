@@ -6,9 +6,14 @@ namespace winrt::BikaClient::Responses::implementation
 {
     UserResponse::UserResponse(winrt::Windows::Data::Json::JsonObject const& json)
     {
-        UserResponse(json, DEFAULT_FILE_SERVER);
+        Init(json);
     }
     UserResponse::UserResponse(winrt::Windows::Data::Json::JsonObject const& json, hstring const& fileServer)
+    {
+        m_fileServer = fileServer;
+        Init(json);
+    }
+    void UserResponse::Init(winrt::Windows::Data::Json::JsonObject const& json)
     {
         m_json = json.Stringify();
         if (json.HasKey(L"code")) m_code = static_cast<int32_t>(json.GetNamedNumber(L"code"));
@@ -17,7 +22,7 @@ namespace winrt::BikaClient::Responses::implementation
         if (json.HasKey(L"detail")) m_detail = json.GetNamedString(L"detail");
         if (json.HasKey(L"data"))
         {
-            m_user = make<winrt::BikaClient::Blocks::implementation::UserBlock>(json.GetNamedObject(L"data").GetNamedObject(L"user"), fileServer);
+            m_user = make<winrt::BikaClient::Blocks::implementation::UserBlock>(json.GetNamedObject(L"data").GetNamedObject(L"user"), m_fileServer);
         }
     }
     winrt::BikaClient::Blocks::UserBlock UserResponse::User()

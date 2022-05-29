@@ -10,9 +10,14 @@ namespace winrt::BikaClient::Responses::implementation
 {
     CommentsResponse::CommentsResponse(winrt::Windows::Data::Json::JsonObject const& json)
     {
-        CommentsResponse(json, DEFAULT_FILE_SERVER);
+        Init(json);
     }
     CommentsResponse::CommentsResponse(winrt::Windows::Data::Json::JsonObject const& json, hstring const& fileServer)
+    {
+        m_fileServer = fileServer;
+        Init(json);
+    }
+    void CommentsResponse::Init(winrt::Windows::Data::Json::JsonObject const& json)
     {
         m_json = json.Stringify();
         if (json.HasKey(L"code")) m_code = static_cast<int32_t>(json.GetNamedNumber(L"code"));
@@ -26,13 +31,13 @@ namespace winrt::BikaClient::Responses::implementation
             {
                 for (auto x : data.GetNamedArray(L"topComments"))
                 {
-                    m_topComments.Append(winrt::make<winrt::BikaClient::Blocks::implementation::CommentBlock>(x.GetObject(), fileServer));
+                    m_topComments.Append(winrt::make<winrt::BikaClient::Blocks::implementation::CommentBlock>(x.GetObject(), m_fileServer));
                 }
             }
             JsonObject comments = data.GetNamedObject(L"comments");
             for (auto y : comments.GetNamedArray(L"docs"))
             {
-                m_comments.Append(winrt::make<winrt::BikaClient::Blocks::implementation::CommentBlock>(y.GetObject(), fileServer));
+                m_comments.Append(winrt::make<winrt::BikaClient::Blocks::implementation::CommentBlock>(y.GetObject(), m_fileServer));
             }
             if (comments.HasKey(L"total")) m_total = static_cast<int32_t>(comments.GetNamedNumber(L"total"));
             if (comments.HasKey(L"limit")) m_limit = static_cast<int32_t>(comments.GetNamedNumber(L"limit"));
@@ -40,6 +45,7 @@ namespace winrt::BikaClient::Responses::implementation
             if (comments.HasKey(L"pages")) m_pages = static_cast<int32_t>(comments.GetNamedNumber(L"pages"));
         }
     }
+
     winrt::Windows::Foundation::Collections::IObservableVector<winrt::BikaClient::Blocks::CommentBlock> CommentsResponse::Comments()
     {
         return m_comments;

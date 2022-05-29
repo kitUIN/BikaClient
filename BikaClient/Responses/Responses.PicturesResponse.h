@@ -11,6 +11,7 @@ namespace winrt::BikaClient::Responses::implementation
 
         PicturesResponse(winrt::Windows::Data::Json::JsonObject const& json);
         PicturesResponse(winrt::Windows::Data::Json::JsonObject const& json, hstring const& fileServer);
+        void Init(winrt::Windows::Data::Json::JsonObject const& json);
         winrt::Windows::Foundation::Collections::IObservableVector<winrt::BikaClient::Blocks::ImageBlock> Pictures();
         void Pictures(winrt::Windows::Foundation::Collections::IObservableVector<winrt::BikaClient::Blocks::ImageBlock> const& value);
         winrt::BikaClient::Blocks::EpisodeBlock Episode();
@@ -44,6 +45,7 @@ namespace winrt::BikaClient::Responses::implementation
 		hstring m_error{ L"" };
 		hstring m_detail{ L"" };
 		hstring m_json{ L"" };
+        hstring m_fileServer = L"https://storage1.picacomic.com/static/";
     };
 }
 namespace winrt::BikaClient::Responses::factory_implementation
