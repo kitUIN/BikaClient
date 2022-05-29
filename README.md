@@ -13,10 +13,13 @@ _✨ 为[哔咔漫画UWP🍍](https://github.com/kitUIN/bikabika)提供API支持
 </div>
 <p align="center">
    <a href="https://github.com/kitUIN/BikaClient/releases">
-    <img src="https://img.shields.io/github/v/release/kitUIN/BikaClient?color=blueviolet&include_prereleases" alt="release">
+    <img src="https://img.shields.io/github/v/release/kitUIN/BikaClient?color=blueviolet" alt="release">
   </a>
   <a href="https://github.com/kitUIN/BikaClient/blob/master/LICENSE">
     <img src="https://img.shields.io/github/license/kitUIN/BikaClient" alt="license">
+  </a>
+  <a href="https://www.nuget.org/packages/BikaClient">
+    <img src="https://img.shields.io/nuget/v/BikaClient?color=blue" alt="nuget">
   </a>
   <img src="https://img.shields.io/badge/APP内核-2.2.1.2.3.4-pink" alt="bika">
 </p>
