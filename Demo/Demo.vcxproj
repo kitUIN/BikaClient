@@ -133,12 +133,20 @@
       <DependentUpon>ComicsPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="EpisodesPage.h">
+      <DependentUpon>EpisodesPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="FavouritePage.h">
       <DependentUpon>FavouritePage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
     <ClInclude Include="Items\ImageItem.h">
       <DependentUpon>Items\ImageItem.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="KeywordsPage.h">
+      <DependentUpon>KeywordsPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
     <ClInclude Include="LikePage.h">
@@ -207,10 +215,16 @@
     <Page Include="ComicsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="EpisodesPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="FavouritePage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Items\ImageItem.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="KeywordsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Include="LikePage.xaml">
@@ -283,12 +297,20 @@
       <DependentUpon>ComicsPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="EpisodesPage.cpp">
+      <DependentUpon>EpisodesPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="FavouritePage.cpp">
       <DependentUpon>FavouritePage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
     <ClCompile Include="Items\ImageItem.cpp">
       <DependentUpon>Items\ImageItem.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="KeywordsPage.cpp">
+      <DependentUpon>KeywordsPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
     <ClCompile Include="LikePage.cpp">
@@ -366,12 +388,20 @@
       <DependentUpon>ComicsPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Midl>
+    <Midl Include="EpisodesPage.idl">
+      <DependentUpon>EpisodesPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
     <Midl Include="FavouritePage.idl">
       <DependentUpon>FavouritePage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Midl>
     <Midl Include="Items\ImageItem.idl">
       <DependentUpon>Items\ImageItem.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="KeywordsPage.idl">
+      <DependentUpon>KeywordsPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Midl>
     <Midl Include="LikePage.idl">

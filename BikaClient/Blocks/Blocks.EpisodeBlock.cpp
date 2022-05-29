@@ -10,7 +10,7 @@ namespace winrt::BikaClient::Blocks::implementation
 
         if (json.HasKey(L"_id")) m_id = json.GetNamedString(L"_id");
         if (json.HasKey(L"updatedAt")) m_updatedAt = winrt::BikaClient::Date::BikaDate(json.GetNamedString(L"updatedAt"));
-        if (json.HasKey(L"order")) m_order = static_cast<int32_t>(json.GetNamedNumber(L"_id"));
+        if (json.HasKey(L"order")) m_order = static_cast<int32_t>(json.GetNamedNumber(L"order"));
         if (json.HasKey(L"title")) m_title = json.GetNamedString(L"title");
     }
     hstring EpisodeBlock::ID()

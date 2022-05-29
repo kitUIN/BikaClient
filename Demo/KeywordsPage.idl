@@ -1,0 +1,9 @@
+namespace Demo
+{
+    [default_interface]
+    runtimeclass KeywordsPage : Windows.UI.Xaml.Controls.Page
+    {
+        KeywordsPage();
+        Int32 MyProperty;
+    }
+}

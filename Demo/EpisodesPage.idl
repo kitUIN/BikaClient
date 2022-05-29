@@ -1,0 +1,9 @@
+namespace Demo
+{
+    [default_interface]
+    runtimeclass EpisodesPage : Windows.UI.Xaml.Controls.Page
+    {
+        EpisodesPage();
+        Int32 MyProperty;
+    }
+}
