@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>BikaClient</id>
-    <version>0.0.3</version>
+    <version>0.8.0</version>
     <title>BikaClient</title>
     <authors>KitUIN</authors>
     <owners>KitUIN</owners>
@@ -12,8 +12,7 @@
     <description>bikabika的Http API支持库</description>
     <copyright>Copyright 2022-2022</copyright>
     <icon>images\small-logo.png</icon>
-    <iconUrl>https://raw.githubusercontent.com/wiki/KitUIN/BikaClient/image/small-logo.png</iconUrl>
-    <tags>uwp</tags>
+    <tags>cpp uwp winrt cppwinrt picacomic</tags>
   </metadata>
   <files>
     <!-- WinMd and IntelliSense files -->
