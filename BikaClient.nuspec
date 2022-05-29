@@ -2,17 +2,24 @@
 <package >
   <metadata>
     <id>BikaClient</id>
-    <version>0.8.0</version>
+    <version>0.8.1</version>
     <title>BikaClient</title>
     <authors>KitUIN</authors>
     <owners>KitUIN</owners>
+    <readme>README.md</readme>
     <license type="expression">AGPL-3.0-only</license>
     <projectUrl>https://github.com/KitUIN/BikaClient</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>bikabika的Http API支持库</description>
+    <repository type="git" url="https://github.com/KitUIN/BikaClient"/>
     <copyright>Copyright 2022-2022</copyright>
     <icon>images\small-logo.png</icon>
     <tags>cpp uwp winrt cppwinrt picacomic</tags>
+    <dependencies>
+      <group targetFramework="UAP10.0">
+        <dependency id="Microsoft.Windows.CppWinRT" version="2.0.210806.1"/>
+      </group>
+    </dependencies>
   </metadata>
   <files>
     <!-- WinMd and IntelliSense files -->
@@ -33,9 +40,9 @@
     <!-- .targets -->
     <file src="BikaClient.targets" target="build\native"/>
     <!-- Docs -->
-    <file src=".\README.md" target="content"/>
-    <file src=".\LICENSE" target="content"/>
-    <file src=".\small-logo.png" target="images\small-logo.png" />
+    <file src=".\README.md" />
+    <file src=".\LICENSE"/>
+    <file src=".\small-logo.png" target="images" />
 
   </files>
 </package>
