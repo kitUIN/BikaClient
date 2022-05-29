@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/kitUIN/BikaClient/">
-    <img src="https://files.catbox.moe/6as3qy.png" width="200" height="200" alt="bikabika">
+    <img src="https://files.catbox.moe/hy9j6s.png" width="200" height="200" alt="bikabika">
   </a>
 </p>
 <div align="center">
