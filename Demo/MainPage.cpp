@@ -43,6 +43,7 @@ namespace winrt::Demo::implementation
         else if (lsit == L"PersonFavourite") mainFrame().Navigate(winrt::xaml_typename<Demo::PersonFavouritePage>());
         else if (lsit == L"Recommend") mainFrame().Navigate(winrt::xaml_typename<Demo::RecommendPage>());
         else if (lsit == L"PersonComment") mainFrame().Navigate(winrt::xaml_typename<Demo::PersonCommentPage>());
+        else if (lsit == L"Search") mainFrame().Navigate(winrt::xaml_typename<Demo::SearchPage>());
     }
 
 

@@ -472,7 +472,7 @@ namespace winrt::BikaClient::implementation
     /// <param name="categories">分区</param>
     /// <param name="page">页数</param>
     /// <returns>ComicsResponse</returns>
-    winrt::Windows::Foundation::IAsyncOperation<ComicsResponse> BikaHttpClient::Search(hstring const& keywords, winrt::BikaClient::Utils::SortMode const& sort, winrt::Windows::Data::Json::JsonArray const& categories, int32_t const& page)
+    winrt::Windows::Foundation::IAsyncOperation<ComicsResponse> BikaHttpClient::Search(int32_t const& page, hstring const& keywords, winrt::BikaClient::Utils::SortMode const& sort, winrt::Windows::Data::Json::JsonArray const& categories)
     {
         hstring api = L"comics/advanced-search?page=" + to_hstring(page);
         BikaSort bikasort{ sort };
@@ -489,6 +489,15 @@ namespace winrt::BikaClient::implementation
                 api);
         HttpLogOut(L"[Post]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return ComicsResponse{ res, m_fileServer };
+    }
+    winrt::Windows::Foundation::IAsyncOperation<ComicsResponse> BikaHttpClient::Search(int32_t const& page, hstring const& keywords, winrt::BikaClient::Utils::SortMode const& sort)
+    {
+        JsonArray jsonArray;
+        co_return co_await Search(page, keywords,sort, jsonArray);
+    }
+    winrt::Windows::Foundation::IAsyncOperation<ComicsResponse> BikaHttpClient::Search(int32_t const& page, hstring const& keywords)
+    {
+        co_return co_await Search(page, keywords, BikaClient::Utils::SortMode::UA);
     }
     /// <summary>
     /// 收藏本子
@@ -535,6 +544,7 @@ namespace winrt::BikaClient::implementation
         HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return CommentsResponse{ res, m_fileServer };
     }
+
     /// <summary>
     /// 发送评论
     /// </summary>

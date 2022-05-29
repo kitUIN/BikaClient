@@ -40,7 +40,9 @@ namespace BikaClient
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.ComicsResponse> PersonFavourite(BikaClient.Utils.SortMode sort, Int32 page);
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.ComicsResponse> Recommend(String bookId);
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.CommentsResponse> PersonComment(Int32 page);
-        Windows.Foundation.IAsyncOperation<BikaClient.Responses.ComicsResponse> Search(String keywords, BikaClient.Utils.SortMode sort, Windows.Data.Json.JsonArray categories, Int32 page);
+        Windows.Foundation.IAsyncOperation<BikaClient.Responses.ComicsResponse> Search(Int32 page, String keywords, BikaClient.Utils.SortMode sort, Windows.Data.Json.JsonArray categories);
+        Windows.Foundation.IAsyncOperation<BikaClient.Responses.ComicsResponse> Search(Int32 page, String keywords, BikaClient.Utils.SortMode sort);
+        Windows.Foundation.IAsyncOperation<BikaClient.Responses.ComicsResponse> Search(Int32 page, String keywords);
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.ActionResponse> Favourite(String bookId);
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.ActionResponse> Like(String bookId);
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.CommentsResponse> Comments(String bookId, Int32 page);

@@ -29,9 +29,9 @@ namespace winrt::Demo::implementation
     }
     winrt::Windows::Foundation::IAsyncAction ComicsPage::ClickHandler(IInspectable const&, RoutedEventArgs const&)
     {
-        m_res = co_await rootPage.Bika().Comics(static_cast<int32_t>(page().Value()), c().Text(), BikaClient::Utils::SortMode::UA);
+        auto res = co_await rootPage.Bika().Comics(static_cast<int32_t>(page().Value()), c().Text(), BikaClient::Utils::SortMode::UA);
         ComicItem comics;
-        comics.Comics(m_res);
+        comics.Comics(res);
         MainStackPanel().Children().Append(comics);
     }
 }

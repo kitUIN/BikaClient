@@ -1,0 +1,46 @@
+﻿<Page
+    x:Class="Demo.SearchPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:Demo"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    mc:Ignorable="d">
+
+    <StackPanel
+        x:Name="MainStackPanel"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Top"
+        Orientation="Vertical">
+        <muxc:NumberBox
+            x:Name="page"
+            Width="300"
+            HorizontalAlignment="Left"
+            SpinButtonPlacementMode="Compact"
+            Value="1" />
+        <TextBox
+            x:Name="keyword"
+            Width="300"
+            HorizontalAlignment="Left"
+            PlaceholderText="关键字"
+            Text="貧乳" />
+        <TextBox
+            x:Name="categories"
+            Width="300"
+            HorizontalAlignment="Left"
+            PlaceholderText="categories" />
+        <TextBlock
+            Width="300"
+            HorizontalAlignment="Left"
+            Text="排序:默认" />
+        <Button
+            x:Name="Button"
+            Width="100"
+            HorizontalAlignment="Left"
+            Click="ClickHandler">
+            请求
+        </Button>
+
+    </StackPanel>
+</Page>
