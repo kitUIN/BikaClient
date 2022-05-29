@@ -1,0 +1,11 @@
+namespace Demo
+{
+    [default_interface]
+    runtimeclass CommentItem : Windows.UI.Xaml.Controls.UserControl
+    {
+        CommentItem();
+    static Windows.UI.Xaml.DependencyProperty CommentsProperty{ get; };
+    BikaClient.Responses.CommentsResponse Comments;
+
+    }
+}

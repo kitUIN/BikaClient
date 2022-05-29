@@ -1,0 +1,9 @@
+namespace Demo
+{
+    [default_interface]
+    runtimeclass PersonCommentPage : Windows.UI.Xaml.Controls.Page
+    {
+        PersonCommentPage();
+        Int32 MyProperty;
+    }
+}

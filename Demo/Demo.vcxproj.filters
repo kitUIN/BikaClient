@@ -66,6 +66,12 @@
     <Page Include="RecommendPage.xaml">
       <Filter>Pages</Filter>
     </Page>
+    <Page Include="PersonCommentPage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
+    <Page Include="CommentItem.xaml">
+      <Filter>Items</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />

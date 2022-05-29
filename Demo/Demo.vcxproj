@@ -133,6 +133,10 @@
       <DependentUpon>ComicsPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="CommentItem.h">
+      <DependentUpon>CommentItem.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="EpisodesPage.h">
       <DependentUpon>EpisodesPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -159,6 +163,10 @@
     </ClInclude>
     <ClInclude Include="MainPage.h">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="PersonCommentPage.h">
+      <DependentUpon>PersonCommentPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </ClInclude>
     <ClInclude Include="PersonFavouritePage.h">
       <DependentUpon>PersonFavouritePage.xaml</DependentUpon>
@@ -223,6 +231,9 @@
     <Page Include="ComicsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="CommentItem.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="EpisodesPage.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -239,6 +250,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PersonCommentPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Include="PersonFavouritePage.xaml">
@@ -311,6 +325,10 @@
       <DependentUpon>ComicsPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="CommentItem.cpp">
+      <DependentUpon>CommentItem.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="EpisodesPage.cpp">
       <DependentUpon>EpisodesPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -341,6 +359,10 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+    <ClCompile Include="PersonCommentPage.cpp">
+      <DependentUpon>PersonCommentPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="PersonFavouritePage.cpp">
       <DependentUpon>PersonFavouritePage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -410,6 +432,10 @@
       <DependentUpon>ComicsPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Midl>
+    <Midl Include="CommentItem.idl">
+      <DependentUpon>CommentItem.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
     <Midl Include="EpisodesPage.idl">
       <DependentUpon>EpisodesPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -432,6 +458,10 @@
     </Midl>
     <Midl Include="MainPage.idl">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Midl>
+    <Midl Include="PersonCommentPage.idl">
+      <DependentUpon>PersonCommentPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Midl>
     <Midl Include="PersonFavouritePage.idl">
       <DependentUpon>PersonFavouritePage.xaml</DependentUpon>

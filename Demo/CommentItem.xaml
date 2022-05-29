@@ -1,0 +1,143 @@
+﻿<UserControl
+    x:Class="Demo.CommentItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:blocks="using:BikaClient.Blocks"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:Demo"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <DataTemplate x:Key="CommentTemplate" x:DataType="blocks:CommentBlock">
+            <Border>
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Foreground="Green" Text="BookId:" />
+                        <TextBlock
+                            Width="500"
+                            IsTextSelectionEnabled="True"
+                            Text="{x:Bind BookId, Mode=OneWay}"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Foreground="Green" Text="CreatedAt:" />
+                        <TextBlock
+                            Width="500"
+                            IsTextSelectionEnabled="True"
+                            Text="{x:Bind CreatedAt.GetDateTime, Mode=OneWay}"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Foreground="Green" Text="Content:" />
+                        <TextBlock
+                            Width="500"
+                            IsTextSelectionEnabled="True"
+                            Text="{x:Bind Content, Mode=OneWay}"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Foreground="Green" Text="Comic:" />
+                        <TextBlock
+                            Width="500"
+                            IsTextSelectionEnabled="True"
+                            Text="{x:Bind Comic, Mode=OneWay}"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Foreground="Green" Text="Content:" />
+                        <TextBlock
+                            Width="500"
+                            IsTextSelectionEnabled="True"
+                            Text="{x:Bind Content, Mode=OneWay}"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Foreground="Green" Text="IsTop:" />
+                        <TextBlock
+                            Width="500"
+                            IsTextSelectionEnabled="True"
+                            Text="true"
+                            TextWrapping="Wrap"
+                            Visibility="{x:Bind IsTop.Visibility, Mode=OneWay}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Foreground="Green" Text="IsLiked:" />
+                        <TextBlock
+                            Width="500"
+                            IsTextSelectionEnabled="True"
+                            Text="true"
+                            TextWrapping="Wrap"
+                            Visibility="{x:Bind IsLiked.Visibility, Mode=OneWay}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Foreground="Green" Text="Hide:" />
+                        <TextBlock
+                            Width="500"
+                            IsTextSelectionEnabled="True"
+                            Text="true"
+                            TextWrapping="Wrap"
+                            Visibility="{x:Bind Hide.Visibility, Mode=OneWay}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Foreground="Green" Text="LikesCount:" />
+                        <muxc:NumberBox Value="{x:Bind LikesCount, Mode=OneWay}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Foreground="Green" Text="CommentsCount:" />
+                        <muxc:NumberBox Value="{x:Bind CommentsCount, Mode=OneWay}" />
+                    </StackPanel>
+                    <local:UserItem Users="{x:Bind User}" />
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+    </UserControl.Resources>
+    <StackPanel Orientation="Vertical">
+        <StackPanel>
+            <TextBlock Foreground="Green" Text="Code:" />
+            <TextBlock
+                Width="700"
+                IsTextSelectionEnabled="True"
+                Text="{x:Bind Comments.Code, Mode=OneWay}"
+                TextWrapping="Wrap" />
+        </StackPanel>
+        <StackPanel>
+            <TextBlock Foreground="Green" Text="Message:" />
+            <TextBlock
+                Width="700"
+                IsTextSelectionEnabled="True"
+                Text="{x:Bind Comments.Message, Mode=OneWay}"
+                TextWrapping="Wrap" />
+        </StackPanel>
+        <StackPanel>
+            <TextBlock Foreground="Green" Text="Detail:" />
+            <TextBlock
+                Width="700"
+                IsTextSelectionEnabled="True"
+                Text="{x:Bind Comments.Detail, Mode=OneWay}"
+                TextWrapping="Wrap" />
+        </StackPanel>
+        <StackPanel>
+            <TextBlock Foreground="Green" Text="Error:" />
+            <TextBlock
+                Width="700"
+                IsTextSelectionEnabled="True"
+                Text="{x:Bind Comments.Error, Mode=OneWay}"
+                TextWrapping="Wrap" />
+        </StackPanel>
+        <StackPanel>
+            <TextBlock Foreground="Green" Text="Json:" />
+            <TextBlock
+                Width="700"
+                IsTextSelectionEnabled="True"
+                Text="{x:Bind Comments.Json, Mode=OneWay}"
+                TextWrapping="Wrap" />
+        </StackPanel>
+        <StackPanel>
+            <TextBlock Foreground="Green" Text="Comments:" />
+            <ListView ItemTemplate="{StaticResource CommentTemplate}" ItemsSource="{x:Bind Comments.Comments, Mode=OneWay}" />
+            <ListView ItemTemplate="{StaticResource CommentTemplate}" ItemsSource="{x:Bind Comments.TopComments, Mode=OneWay}" />
+        </StackPanel>
+    </StackPanel>
+</UserControl>
