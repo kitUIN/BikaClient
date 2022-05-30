@@ -26,6 +26,7 @@ namespace BikaClient.Blocks
     }
     runtimeclass UserBlock : Windows.UI.Xaml.Data.INotifyPropertyChanged, IBlockJson
     {
+        UserBlock();
         UserBlock(Windows.Data.Json.JsonObject json);
         UserBlock(Windows.Data.Json.JsonObject json, String fileServer);
         String ID;

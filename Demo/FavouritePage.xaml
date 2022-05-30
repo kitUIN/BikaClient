@@ -21,6 +21,6 @@
             Click="ClickHandler">
             请求
         </Button>
-
+        <Button Click="Button_Click" />
     </StackPanel>
 </Page>

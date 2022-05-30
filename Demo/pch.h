@@ -13,6 +13,7 @@
 #include <winrt/Windows.UI.Xaml.Interop.h>
 #include <winrt/Windows.UI.Xaml.Markup.h>
 #include <winrt/Windows.UI.Xaml.Navigation.h>
+#include <winrt/Windows.UI.Xaml.Media.Imaging.h>
 #include <winrt/BikaClient.h>
 #include <winrt/BikaClient.Blocks.h>
 #include <winrt/BikaClient.Date.h>

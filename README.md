@@ -9,7 +9,7 @@
 
 _✨ 第三方Nuget哔咔漫画API ✨_  
 _✨ 为[哔咔漫画UWP🍍](https://github.com/kitUIN/bikabika)提供API支持 ✨_  
-
+✨ 支持C++/WinRT C# UWP项目使用 ✨
 </div>
 <p align="center">
    <a href="https://github.com/kitUIN/BikaClient/releases">

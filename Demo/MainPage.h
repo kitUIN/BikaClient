@@ -11,7 +11,7 @@ namespace winrt::Demo::implementation
         BikaClient::BikaHttpClient Bika();
 
         void MainList_SelectionChanged(winrt::Windows::Foundation::IInspectable const& sender, winrt::Windows::UI::Xaml::Controls::SelectionChangedEventArgs const& e);
-
+        void ContentDialogShow();
     private:
         static Demo::MainPage current;
         BikaClient::BikaHttpClient bika;

@@ -49,6 +49,25 @@ namespace winrt::Demo::implementation
         else if (lsit == L"GetReplyComment") mainFrame().Navigate(winrt::xaml_typename<Demo::GetReplyCommentPage>());
     }
 
+    void MainPage::ContentDialogShow()
+    {
+		auto dialog = ContentDialog();
+		dialog.Title(box_value(L"提示"));
+		dialog.Content(box_value(L"您确定要退出程序吗？"));
+		dialog.PrimaryButtonText(L"确定");
+		dialog.SecondaryButtonText(L"取消");
+        dialog.DefaultButton(ContentDialogButton::Primary);
+		dialog.IsPrimaryButtonEnabled(true);
+		dialog.IsSecondaryButtonEnabled(true);
+		dialog.PrimaryButtonClick([](ContentDialog const&, ContentDialogButtonClickEventArgs const&) {
+            return;
+		});
+		dialog.SecondaryButtonClick([](ContentDialog const&, ContentDialogButtonClickEventArgs const&) {
+			return;
+		});
+		dialog.ShowAsync();
+    }
+
 
 
 }

@@ -1,9 +1,10 @@
 namespace Demo
 {
     [default_interface]
-    runtimeclass PersonInfoPage : Windows.UI.Xaml.Controls.Page
+    runtimeclass PersonInfoPage : Windows.UI.Xaml.Controls.Page, Windows.UI.Xaml.Data.INotifyPropertyChanged
     {
         PersonInfoPage();
         Int32 MyProperty;
+        BikaClient.Blocks.UserBlock User;
     }
 }

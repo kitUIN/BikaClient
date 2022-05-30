@@ -15,6 +15,8 @@ namespace winrt::Demo::implementation
     private:
         Demo::MainPage rootPage{ MainPage::Current() };
         BikaClient::Responses::ComicsResponse m_res{ nullptr };
+    public:
+        void Button_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Windows::UI::Xaml::RoutedEventArgs const& e);
     };
 }
 

@@ -32,3 +32,9 @@ namespace winrt::Demo::implementation
         MainStackPanel().Children().Append(action);
     }
 }
+
+
+void winrt::Demo::implementation::FavouritePage::Button_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Windows::UI::Xaml::RoutedEventArgs const& e)
+{
+    rootPage.ContentDialogShow();
+}

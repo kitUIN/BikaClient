@@ -20,6 +20,10 @@
             Click="ClickHandler">
             请求
         </Button>
+        <Image
+            Width="270"
+            Height="270"
+            Source="{x:Bind User.Thumb.Img, Mode=OneWay}" />
         <ItemsControl x:Name="Res">
             <ItemsControl.ItemTemplate>
                 <DataTemplate x:DataType="resp:UserResponse">

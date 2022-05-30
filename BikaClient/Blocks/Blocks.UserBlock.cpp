@@ -4,6 +4,7 @@
 #pragma warning( disable : 4244 )
 namespace winrt::BikaClient::Blocks::implementation
 {
+
 	UserBlock::UserBlock(winrt::Windows::Data::Json::JsonObject const& json)
 	{
 		Init(json);
@@ -162,11 +163,8 @@ namespace winrt::BikaClient::Blocks::implementation
 	}
 	void UserBlock::Gender(hstring const& value)
 	{
-		if (m_gender != value)
-		{
-			m_gender = value;
-			m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Gender" });
-		}
+		m_gender = value;
+		m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Gender" });
 	}
 	winrt::BikaClient::Blocks::ImageBlock UserBlock::Thumb()
 	{
@@ -194,11 +192,8 @@ namespace winrt::BikaClient::Blocks::implementation
 	}
 	void UserBlock::Slogan(hstring const& value)
 	{
-		if (m_slogan != value)
-		{
-			m_slogan = value;
-			m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Slogan" });
-		}
+		m_slogan = value;
+		m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Slogan" });
 	}
 	int32_t UserBlock::Exp()
 	{

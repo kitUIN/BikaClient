@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>BikaClient</id>
-    <version>0.8.1</version>
+    <version>0.8.2</version>
     <title>BikaClient</title>
     <authors>KitUIN</authors>
     <owners>KitUIN</owners>
@@ -10,10 +10,10 @@
     <license type="expression">AGPL-3.0-only</license>
     <projectUrl>https://github.com/KitUIN/BikaClient</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>bikabika的Http API支持库</description>
+    <description>bikabika的HttpAPI小体积支持库 第三方哔咔漫画API 可用于C#/Cppwinrt</description>
     <repository type="git" url="https://github.com/KitUIN/BikaClient"/>
     <copyright>Copyright 2022-2022</copyright>
-    <icon>images\small-logo.png</icon>
+    <icon>images\logo.png</icon>
     <tags>cpp uwp winrt cppwinrt picacomic</tags>
     <dependencies>
       <group targetFramework="UAP10.0">
@@ -42,7 +42,7 @@
     <!-- Docs -->
     <file src=".\README.md" />
     <file src=".\LICENSE"/>
-    <file src=".\small-logo.png" target="images" />
+    <file src=".\logo.png" target="images" />
 
   </files>
 </package>

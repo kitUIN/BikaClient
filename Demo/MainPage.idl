@@ -4,8 +4,8 @@ namespace Demo
     runtimeclass MainPage : Windows.UI.Xaml.Controls.Page
     {
         MainPage();
-    static MainPage Current{ get; };
-    BikaClient.BikaHttpClient Bika();
-
+        static MainPage Current{ get; };
+        BikaClient.BikaHttpClient Bika();
+        void ContentDialogShow();
     }
 }
