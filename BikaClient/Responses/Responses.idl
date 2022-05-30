@@ -70,4 +70,9 @@ namespace BikaClient.Responses
 		ActionResponse(Windows.Data.Json.JsonObject json);
 		String Action;
 	}
+	runtimeclass KeywordsResponse : IRespData
+	{
+		KeywordsResponse(Windows.Data.Json.JsonObject json);
+		Windows.Foundation.Collections.IObservableVector<BikaClient.Blocks.TagBlock> Keywords;
+	}
 }

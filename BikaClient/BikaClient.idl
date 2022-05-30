@@ -32,7 +32,7 @@ namespace BikaClient
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.LoginResponse> Login(String email, String password);
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.UserResponse> PersonInfo();
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.CategoriesResponse> Categories();
-        Windows.Foundation.IAsyncOperation<String> Keywords();
+        Windows.Foundation.IAsyncOperation<BikaClient.Responses.KeywordsResponse> Keywords();
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.ComicsResponse> Comics(Int32 page, String title, BikaClient.Utils.SortMode sort);
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.BookInfoResponse> BookInfo(String bookId);
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.EpisodesResponse> Episodes(String bookId, Int32 page);

@@ -33,7 +33,7 @@ namespace winrt::BikaClient::implementation
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::LoginResponse> Login(hstring const& email, hstring const& password);
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::UserResponse> PersonInfo();
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::CategoriesResponse> Categories();
-        winrt::Windows::Foundation::IAsyncOperation<hstring> Keywords();
+        winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::KeywordsResponse> Keywords();
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::ComicsResponse> Comics(int32_t const& page, hstring const& title, winrt::BikaClient::Utils::SortMode const& sort);
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::BookInfoResponse> BookInfo(hstring const& bookId);
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::EpisodesResponse> Episodes(hstring const& bookId, int32_t const& page);

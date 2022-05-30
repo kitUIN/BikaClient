@@ -363,12 +363,12 @@ namespace winrt::BikaClient::implementation
     /// 大家都在搜
     /// </summary>
     /// <returns></returns>
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Keywords()
+    winrt::Windows::Foundation::IAsyncOperation<KeywordsResponse> BikaHttpClient::Keywords()
     {
         hstring api = L"keywords";
         JsonObject res = co_await GET(Uri{ ORIGINURL + api }, api);
         HttpLogOut(L"[GET]->/keywords\nReturn:", res.Stringify().c_str());
-        co_return res.Stringify();
+        co_return KeywordsResponse{ res };
     }
     /// <summary>
     /// 获取分区
