@@ -16,6 +16,17 @@ namespace BikaClient.Responses
 		String Detail;
 		String Json{ get; };
 	}
+	enum Actions
+	{
+		OK = 0,
+		Fail = 1,
+		Like = 2,
+		UnLike = 3,
+		Favourite = 4,
+		UnFavourite = 5,
+		Success = 6,
+		Unknown = 7,
+	};
 	runtimeclass LoginResponse : IRespData
 	{
 		LoginResponse();
@@ -68,7 +79,7 @@ namespace BikaClient.Responses
 	runtimeclass ActionResponse : IRespData
 	{
 		ActionResponse(Windows.Data.Json.JsonObject json);
-		String Action;
+		BikaClient.Responses.Actions Action();
 	}
 	runtimeclass KeywordsResponse : IRespData
 	{

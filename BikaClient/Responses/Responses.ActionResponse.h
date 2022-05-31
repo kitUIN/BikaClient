@@ -9,8 +9,8 @@ namespace winrt::BikaClient::Responses::implementation
         ActionResponse() = default;
 
         ActionResponse(winrt::Windows::Data::Json::JsonObject const& json);
-        hstring Action();
-        void Action(hstring const& value);
+        winrt::BikaClient::Responses::Actions Action();
+        winrt::BikaClient::Responses::Actions ToAction(hstring const& action);
         int32_t Code();
         void Code(int32_t value);
         hstring Message();

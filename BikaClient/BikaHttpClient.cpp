@@ -255,7 +255,7 @@ namespace winrt::BikaClient::implementation
             else
             {
                 res.Insert(L"code", JsonValue::CreateNumberValue(-2));
-                res.Insert(L"message", JsonValue::CreateStringValue(L"Error"));
+                res.Insert(L"message", JsonValue::CreateStringValue(ex.message()));
             }
             res.Insert(L"detail", JsonValue::CreateStringValue(ex.message()));
             co_return res;

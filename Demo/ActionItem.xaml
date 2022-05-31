@@ -51,9 +51,9 @@
         <StackPanel>
             <TextBlock Foreground="Green" Text="Action:" />
             <TextBlock
+                x:Name="Action"
                 Width="500"
                 IsTextSelectionEnabled="True"
-                Text="{x:Bind Actions.Action}"
                 TextWrapping="Wrap" />
         </StackPanel>
     </StackPanel>

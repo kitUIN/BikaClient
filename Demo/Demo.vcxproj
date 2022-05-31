@@ -587,8 +587,8 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="BikaClient">
-      <HintPath>..\x64\Release\BikaClient\BikaClient.winmd</HintPath>
+    <Reference Include="bikabika">
+      <HintPath>..\x64\Release\BikaClient\bikabika.winmd</HintPath>
       <IsWinMDFile>true</IsWinMDFile>
     </Reference>
   </ItemGroup>

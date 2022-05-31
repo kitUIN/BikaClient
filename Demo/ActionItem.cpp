@@ -20,6 +20,7 @@ namespace winrt::Demo::implementation
     {
         DefaultStyleKey(winrt::box_value(L"Demo.ActionItem"));
         InitializeComponent();
+
     }
 
     winrt::BikaClient::Responses::ActionResponse ActionItem::Actions()
@@ -30,5 +31,13 @@ namespace winrt::Demo::implementation
     void ActionItem::Actions(winrt::BikaClient::Responses::ActionResponse const& value)
     {
         SetValue(m_actionsProperty, winrt::box_value(value));
+        if (value.Action() == winrt::BikaClient::Responses::Actions::OK) Action().Text(L"OK");
+        else if (value.Action() == winrt::BikaClient::Responses::Actions::Like) Action().Text(L"Like");
+        else if (value.Action() == winrt::BikaClient::Responses::Actions::UnLike) Action().Text(L"UnLike");
+        else if (value.Action() == winrt::BikaClient::Responses::Actions::Favourite) Action().Text(L"Favourite");
+        else if (value.Action() == winrt::BikaClient::Responses::Actions::UnFavourite) Action().Text(L"UnFavourite");
+        else if (value.Action() == winrt::BikaClient::Responses::Actions::Fail) Action().Text(L"Fail");
+        else if (value.Action() == winrt::BikaClient::Responses::Actions::Success) Action().Text(L"Success");
+        else Action().Text(L"Unknown");
     }
 }

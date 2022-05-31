@@ -18,15 +18,26 @@ namespace winrt::BikaClient::Responses::implementation
             if(data.HasKey(L"res")) m_action = data.GetNamedObject(L"res").GetNamedString(L"status");
             if(data.HasKey(L"action")) m_action = data.GetNamedString(L"action");
         }
+        else
+        {
+            m_action = m_message;
+        }
     }
-    hstring ActionResponse::Action()
+    winrt::BikaClient::Responses::Actions ActionResponse::Action()
     {
-        return m_action;
+        return ToAction(m_action);
     }
-    void ActionResponse::Action(hstring const& value)
-    {
-        m_action = value;
-    }
+    winrt::BikaClient::Responses::Actions ActionResponse::ToAction(hstring const& action)
+	{
+		if(action == L"OK") return winrt::BikaClient::Responses::Actions::OK;
+		else if(action == L"like") return winrt::BikaClient::Responses::Actions::Like;
+		else if(action == L"un_like") return winrt::BikaClient::Responses::Actions::UnLike;
+		else if(action == L"favourite") return winrt::BikaClient::Responses::Actions::Favourite;
+		else if(action == L"un_favourite") return winrt::BikaClient::Responses::Actions::UnFavourite;
+		else if(action == L"fail") return winrt::BikaClient::Responses::Actions::Fail;
+		else if(action == L"success") return winrt::BikaClient::Responses::Actions::Success;
+        else return winrt::BikaClient::Responses::Actions::Unknown;
+	}
     int32_t ActionResponse::Code()
     {
         return m_code;
