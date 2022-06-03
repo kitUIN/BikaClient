@@ -1,10 +1,10 @@
 #pragma once
 #include "Responses.UserResponse.g.h"
 #include "Blocks/Blocks.UserBlock.h"
-
+#include "Responses.IResponse.h"
 namespace winrt::BikaClient::Responses::implementation
 {
-    struct UserResponse : UserResponseT<UserResponse>
+    struct UserResponse : UserResponseT<UserResponse, BikaClient::Responses::implementation::IResponse>
     {
         UserResponse() = default;
 
@@ -13,21 +13,7 @@ namespace winrt::BikaClient::Responses::implementation
         void Init(winrt::Windows::Data::Json::JsonObject const& json);
         winrt::BikaClient::Blocks::UserBlock User();
         void User(winrt::BikaClient::Blocks::UserBlock const& value);
-        int32_t Code();
-        void Code(int32_t value);
-        hstring Message();
-        void Message(hstring const& value);
-        hstring Error();
-        void Error(hstring const& value);
-        hstring Detail();
-        void Detail(hstring const& value);
-        hstring Json();
     private:
-        int32_t m_code{ 0 };
-        hstring m_message{ L"" };
-        hstring m_error{ L"" };
-        hstring m_detail{ L"" };
-        hstring m_json{ L"" };
         winrt::BikaClient::Blocks::UserBlock m_user{ nullptr };
         hstring m_fileServer = L"https://storage1.picacomic.com/static/";
     };

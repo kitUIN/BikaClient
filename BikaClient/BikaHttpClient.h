@@ -14,14 +14,20 @@ namespace winrt::BikaClient::implementation
         BikaHttpClient(hstring const& token, BikaClient::ImageQualityMode const& imageQuality);
         BikaHttpClient(hstring const& token, BikaClient::ImageQualityMode const& imageQuality,hstring const& fileServer);
         winrt::Windows::Foundation::Diagnostics::LoggingChannel GetLoggingChannel();
+        static hstring FileServerModeToString(BikaClient::FileServerMode const& fileServerMode);
+        static BikaClient::FileServerMode FileServerStringToMode(hstring const& fileServerString);
+        static hstring ImageQualityModeToString(BikaClient::ImageQualityMode const& imageQualityMode);
+        static BikaClient::ImageQualityMode ImageQualityStringToMode(hstring const& imageQualityString);
         void Token(hstring const& value);
         hstring Token();
+
         void ImageQuality(BikaClient::ImageQualityMode const& value);
-        hstring GetImageQuality(BikaClient::ImageQualityMode const& imageQuality);
         BikaClient::ImageQualityMode ImageQuality();
         void FileServer(BikaClient::FileServerMode const& fileServerMode);
         hstring FileServer();
         hstring APPVersion();
+        void APPChannel(int32_t const& value);
+        int32_t APPChannel();
         void HttpLogOut(hstring const& s1, hstring const& s2);
         hstring SetRaw(hstring const& strAPI, hstring const& uid, time_t const& t, hstring const& method, hstring const& apiKey);
         hstring BikaEncryption(hstring const& strAPI, hstring const& uid, time_t const& t, hstring const& method, hstring const& apiKey, hstring const& strKey);
@@ -57,7 +63,7 @@ namespace winrt::BikaClient::implementation
     private:
 		hstring m_token;
         BikaClient::ImageQualityMode m_imageQuality = BikaClient::ImageQualityMode::HIGH;
-        hstring m_fileServer = L"https://storage1.picacomic.com/static/";
+        hstring m_fileServer = DEFAULT_FILE_SERVER;
         hstring m_appVersion = L"2.2.1.2.3.4";
         int32_t m_appChannel = 3;
         winrt::Windows::Foundation::Diagnostics::LoggingChannel m_loggingChannel = winrt::Windows::Foundation::Diagnostics::LoggingChannel(to_hstring(winrt::Windows::Foundation::GuidHelper::CreateNewGuid()));

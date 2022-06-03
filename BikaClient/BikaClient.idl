@@ -24,10 +24,14 @@ namespace BikaClient
         BikaHttpClient(String token, BikaClient.ImageQualityMode imageQuality,String fileServer);
         String Token;
         BikaClient.ImageQualityMode ImageQuality;
-        String GetImageQuality(BikaClient.ImageQualityMode imageQuality);
+        static String FileServerModeToString(BikaClient.FileServerMode fileServerMode);
+        static BikaClient.FileServerMode FileServerStringToMode(String fileServerString);
+        static String ImageQualityModeToString(BikaClient.ImageQualityMode imageQualityMode);
+        static BikaClient.ImageQualityMode ImageQualityStringToMode(String imageQualityString);
         void FileServer(BikaClient.FileServerMode fileServerMode);
         String FileServer();
         String APPVersion{ get; };
+        Int32 APPChannel;
         Windows.Foundation.Diagnostics.LoggingChannel GetLoggingChannel();
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.LoginResponse> Login(String email, String password);
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.UserResponse> PersonInfo();

@@ -1,0 +1,17 @@
+namespace Demo
+{
+    [default_interface]
+    unsealed runtimeclass Resm
+    {
+        Resm();
+        Resm(String res);
+        String Code;
+    }
+    runtimeclass Resu: Resm
+    {
+        Resu();
+        Resu(String res);
+        String Message;
+    }
+
+}

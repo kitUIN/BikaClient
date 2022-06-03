@@ -75,7 +75,7 @@
                                 Text="{x:Bind Json}"
                                 TextWrapping="Wrap" />
                         </StackPanel>
-                        <ListView ItemsSource="{x:Bind Episodes}">
+                        <ListView>
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="blocks:EpisodeBlock">
                                     <StackPanel>

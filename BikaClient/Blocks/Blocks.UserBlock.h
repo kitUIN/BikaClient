@@ -54,7 +54,6 @@ namespace winrt::BikaClient::Blocks::implementation
         void CharactersString(hstring const& value);
         hstring LevelExp();
         void LevelExp(hstring const& value);
-        void Clear();
         hstring Json();
         winrt::event_token PropertyChanged(winrt::Windows::UI::Xaml::Data::PropertyChangedEventHandler const& handler);
         void PropertyChanged(winrt::event_token const& token) noexcept;

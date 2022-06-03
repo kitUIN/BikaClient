@@ -49,7 +49,6 @@ namespace BikaClient.Blocks
         Windows.Foundation.Collections.IObservableVector<BikaClient.Blocks.TagBlock> Characters;
         String CharactersString;
         String LevelExp;
-        void Clear();
     }
     runtimeclass CategoriesBlock : Windows.UI.Xaml.Data.INotifyPropertyChanged, IBlockJson
     {

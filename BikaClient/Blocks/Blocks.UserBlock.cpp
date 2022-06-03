@@ -283,45 +283,6 @@ namespace winrt::BikaClient::Blocks::implementation
 			m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Role" });
 		}
 	}
-	void UserBlock::Clear()
-	{
-		m_title = L"";
-		m_gender = L"";
-		m_id = L"";
-		m_verified = false;
-		m_isPunched = false;
-		m_createAt = winrt::BikaClient::Date::BikaDate{ nullptr };
-		m_birthday = winrt::BikaClient::Date::BikaDate{ nullptr };
-		m_slogan = L"";
-		m_levelExp = L"(? / ?)";
-		m_exp = 0;
-		m_percent = 100;
-		m_name = L"Gentleman";
-		m_email = L"";
-		m_levelString = L"Lv.0";
-		m_level = L"";
-		m_role = L"";
-		m_character = L"";
-		m_charactersString = L"";
-		m_characters.Clear();
-		m_thumb = winrt::BikaClient::Blocks::ImageBlock{ nullptr };
-		m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"ID" });
-		m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Name" });
-		m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"CreatedAt" });
-		m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Birthday" });
-		m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Email" });
-		m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"LevelString" });
-		m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Gender" });
-		m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Img" });
-		m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Slogan" });
-		m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"LevelExp" });
-		m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Title" });
-		m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Percent" });
-		m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Character" });
-		m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Role" });
-		m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Characters" });
-		m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"CharactersString" });
-	}
 	hstring UserBlock::Json()
 	{
 		return m_json;

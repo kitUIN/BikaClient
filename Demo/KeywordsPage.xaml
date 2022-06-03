@@ -13,6 +13,7 @@
         VerticalAlignment="Center"
         Orientation="Horizontal">
         <Button x:Name="Button" Click="ClickHandler">Click Me</Button>
+        <TextBlock x:Name="Code" />
         <ListView x:Name="listView">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="block:TagBlock">

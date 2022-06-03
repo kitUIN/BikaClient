@@ -13,6 +13,7 @@ namespace winrt::Demo::implementation
     {
         InitializeComponent();
         MainPage::current = *this;
+
     }
 
     BikaClient::BikaHttpClient MainPage::Bika()

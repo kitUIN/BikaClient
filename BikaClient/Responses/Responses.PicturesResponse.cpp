@@ -18,11 +18,7 @@ namespace winrt::BikaClient::Responses::implementation
     }
     void PicturesResponse::Init(winrt::Windows::Data::Json::JsonObject const& json)
     {
-        m_json = json.Stringify();
-        if (json.HasKey(L"code")) m_code = static_cast<int32_t>(json.GetNamedNumber(L"code"));
-        if (json.HasKey(L"message")) m_message = json.GetNamedString(L"message");
-        if (json.HasKey(L"error")) m_error = json.GetNamedString(L"error");
-        if (json.HasKey(L"detail")) m_detail = json.GetNamedString(L"detail");
+        IInit(json);
         if (json.HasKey(L"data"))
         {
             JsonObject data = json.GetNamedObject(L"data").GetNamedObject(L"pages");
@@ -53,72 +49,5 @@ namespace winrt::BikaClient::Responses::implementation
     {
         m_episode = value;
     }
-    int32_t PicturesResponse::Page()
-    {
-        return m_page;
-    }
-    void PicturesResponse::Page(int32_t value)
-    {
-        m_page = value;
-    }
-    int32_t PicturesResponse::Pages()
-    {
-        return m_pages;
-    }
-    void PicturesResponse::Pages(int32_t value)
-    {
-        m_pages = value;
-    }
-    int32_t PicturesResponse::Total()
-    {
-        return m_total;
-    }
-    void PicturesResponse::Total(int32_t value)
-    {
-        m_total = value;
-    }
-    int32_t PicturesResponse::Limit()
-    {
-        return m_limit;
-    }
-    void PicturesResponse::Limit(int32_t value)
-    {
-        m_limit = value;
-    }
-    int32_t PicturesResponse::Code()
-    {
-        return m_code;
-    }
-    void PicturesResponse::Code(int32_t value)
-    {
-        m_code = value;
-    }
-    hstring PicturesResponse::Message()
-    {
-        return m_message;
-    }
-    void PicturesResponse::Message(hstring const& value)
-    {
-        m_message = value;
-    }
-    hstring PicturesResponse::Error()
-    {
-        return m_error;
-    }
-    void PicturesResponse::Error(hstring const& value)
-    {
-        m_error = value;
-    }
-    hstring PicturesResponse::Detail()
-    {
-        return m_detail;
-    }
-    void PicturesResponse::Detail(hstring const& value)
-    {
-        m_detail = value;
-    }
-    hstring PicturesResponse::Json()
-    {
-        return m_json;
-    }
+
 }

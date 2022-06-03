@@ -47,19 +47,30 @@ namespace winrt::BikaClient::implementation
         m_imageQuality = imageQuality;
         m_fileServer = fileServer;
     }
+    /// <summary>
+    /// 设置Token
+    /// </summary>
+    /// <param name="value">Token</param>
     void BikaHttpClient::Token(hstring const& value)
     {
 		m_token = value;
     }
-
+    /// <summary>
+    /// 获取当前Toekn
+    /// </summary>
+    /// <returns>当前token</returns>
     hstring BikaHttpClient::Token()
     {
         return m_token;
     }
-
-    hstring BikaHttpClient::GetImageQuality(BikaClient::ImageQualityMode const& imageQuality)
+    /// <summary>
+    /// 当前画质 Mode 转 String
+    /// </summary>
+    /// <param name="imageQuality">画质Mode</param>
+    /// <returns></returns>
+    hstring BikaHttpClient::ImageQualityModeToString(BikaClient::ImageQualityMode const& imageQualityMode)
     {
-		switch (imageQuality)
+		switch (imageQualityMode)
 		{
 		case BikaClient::ImageQualityMode::ORIGINAL:
 			return L"original";
@@ -70,36 +81,76 @@ namespace winrt::BikaClient::implementation
 		case BikaClient::ImageQualityMode::HIGH:
 			return L"high";
 		default:
-			return L"original";
+			return L"high";
 		}
     }
-
+    /// <summary>
+    /// 当前画质 String 转 Mode
+    /// </summary>
+    /// <param name="imageQualityString"></param>
+    /// <returns></returns>
+    BikaClient::ImageQualityMode BikaHttpClient::ImageQualityStringToMode(hstring const& imageQualityString)
+    {
+        if (imageQualityString == L"original") return BikaClient::ImageQualityMode::ORIGINAL;
+        else if (imageQualityString == L"low") return BikaClient::ImageQualityMode::LOW;
+        else if (imageQualityString == L"medium") return BikaClient::ImageQualityMode::MEDIUM;
+        else return BikaClient::ImageQualityMode::HIGH;
+    }
+    /// <summary>
+    /// 设置图片画质
+    /// </summary>
+    /// <param name="value"></param>
     void BikaHttpClient::ImageQuality(BikaClient::ImageQualityMode const& value)
     {
         m_imageQuality = value;
     }
-
+    /// <summary>
+    /// 获取图片画质
+    /// </summary>
+    /// <returns></returns>
     BikaClient::ImageQualityMode BikaHttpClient::ImageQuality()
     {
         return m_imageQuality;
     }
-
+    /// <summary>
+    /// 设置图片服务器
+    /// </summary>
+    /// <param name="fileServerMode">图片服务器</param>
     void BikaHttpClient::FileServer(BikaClient::FileServerMode const& fileServerMode)
     {
-        if (fileServerMode == BikaClient::FileServerMode::S1) m_fileServer = L"https://storage1.picacomic.com/static/";
-        else if (fileServerMode == BikaClient::FileServerMode::S2) m_fileServer = L"https://s2.picacomic.com/static/";
-        else m_fileServer = L"https://s3.picacomic.com/static/";
-
+        m_fileServer = FileServerModeToString(fileServerMode);
     }
-
+    /// <summary>
+    /// 获取图片服务器
+    /// </summary>
+    /// <returns></returns>
     hstring BikaHttpClient::FileServer()
     {
         return m_fileServer;
     }
-
+    /// <summary>
+    /// 获取APP 内核版本
+    /// </summary>
+    /// <returns></returns>
     hstring BikaHttpClient::APPVersion()
     {
         return m_appVersion;
+    }
+    /// <summary>
+    /// 设置分流
+    /// </summary>
+    /// <param name="value">分流(1-3)</param>
+    void BikaHttpClient::APPChannel(int32_t const& value)
+    {
+        m_appChannel = value;
+    }
+    /// <summary>
+    /// 获取分流
+    /// </summary>
+    /// <returns></returns>
+    int32_t BikaHttpClient::APPChannel()
+    {
+        return m_appChannel;
     }
 
     void BikaHttpClient::HttpLogOut(hstring const& s1, hstring const& s2)
@@ -171,6 +222,29 @@ namespace winrt::BikaClient::implementation
         return m_loggingChannel;
     }
     /// <summary>
+    /// FileServer Mode 转 String
+    /// </summary>
+    /// <param name="fileServerMode">Mode</param>
+    /// <returns></returns>
+    hstring BikaHttpClient::FileServerModeToString(BikaClient::FileServerMode const& fileServerMode)
+    {
+        if (fileServerMode == BikaClient::FileServerMode::S3) return L"https://s3.picacomic.com/static/";
+        else if (fileServerMode == BikaClient::FileServerMode::S2) return L"https://s2.picacomic.com/static/";
+        else return L"https://storage1.picacomic.com/static/";
+
+    }
+    /// <summary>
+    /// FileServer String 转 Mode
+    /// </summary>
+    /// <param name="fileServerModeString">String</param>
+    /// <returns></returns>
+    BikaClient::FileServerMode BikaHttpClient::FileServerStringToMode(hstring const& fileServerString)
+    {
+        if (fileServerString == L"https://s2.picacomic.com/static/") return BikaClient::FileServerMode::S2;
+        else if (fileServerString == L"https://s3.picacomic.com/static/") return BikaClient::FileServerMode::S3;
+        else return BikaClient::FileServerMode::S1;
+    }
+    /// <summary>
     /// 设置URL
     /// </summary>
     /// <param name="strAPI">调用的API</param>
@@ -222,7 +296,7 @@ namespace winrt::BikaClient::implementation
         {
             headers.Insert(L"Authorization", m_token);
         }
-        headers.Insert(L"image-quality", GetImageQuality(m_imageQuality));
+        headers.Insert(L"image-quality", ImageQualityModeToString(m_imageQuality));
         headers.Insert(L"api-key", L"C69BAF41DA5ABD1FFEDC6D2FEA56B");
         headers.Insert(L"accept", L"application/vnd.picacomic.com.v1+json");
         headers.Insert(L"app-channel", to_hstring(m_appChannel));

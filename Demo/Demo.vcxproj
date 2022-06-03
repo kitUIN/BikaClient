@@ -204,6 +204,8 @@
       <DependentUpon>ReplyCommentPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="Resm.h" />
+    <ClInclude Include="Resu.h" />
     <ClInclude Include="SearchPage.h">
       <DependentUpon>SearchPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -434,6 +436,8 @@
       <DependentUpon>ReplyCommentPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="Resm.cpp" />
+    <ClCompile Include="Resu.cpp" />
     <ClCompile Include="SearchPage.cpp">
       <DependentUpon>SearchPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -554,6 +558,7 @@
       <DependentUpon>ReplyCommentPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Midl>
+    <Midl Include="Resm.idl" />
     <Midl Include="SearchPage.idl">
       <DependentUpon>SearchPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -587,8 +592,8 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="bikabika">
-      <HintPath>..\x64\Release\BikaClient\bikabika.winmd</HintPath>
+    <Reference Include="BikaClient">
+      <HintPath>..\x64\Release\BikaClient\BikaClient.winmd</HintPath>
       <IsWinMDFile>true</IsWinMDFile>
     </Reference>
   </ItemGroup>

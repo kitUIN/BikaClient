@@ -1,10 +1,10 @@
 #pragma once
 #include "Responses.CommentsResponse.g.h"
 #include "Blocks/Blocks.CommentBlock.h"
-
+#include "Responses.IPage.h"
 namespace winrt::BikaClient::Responses::implementation
 {
-    struct CommentsResponse : CommentsResponseT<CommentsResponse>
+    struct CommentsResponse : CommentsResponseT<CommentsResponse, BikaClient::Responses::implementation::IPage>
     {
         CommentsResponse() = default;
 
@@ -15,35 +15,10 @@ namespace winrt::BikaClient::Responses::implementation
         void Comments(winrt::Windows::Foundation::Collections::IObservableVector<winrt::BikaClient::Blocks::CommentBlock> const& value);
         winrt::Windows::Foundation::Collections::IObservableVector<winrt::BikaClient::Blocks::CommentBlock> TopComments();
         void TopComments(winrt::Windows::Foundation::Collections::IObservableVector<winrt::BikaClient::Blocks::CommentBlock> const& value);
-        int32_t Page();
-        void Page(int32_t value);
-        int32_t Pages();
-        void Pages(int32_t value);
-        int32_t Total();
-        void Total(int32_t value);
-        int32_t Limit();
-        void Limit(int32_t value);
-        int32_t Code();
-        void Code(int32_t value);
-        hstring Message();
-        void Message(hstring const& value);
-        hstring Error();
-        void Error(hstring const& value);
-        hstring Detail();
-        void Detail(hstring const& value);
-        hstring Json();
+
     private:
 		winrt::Windows::Foundation::Collections::IObservableVector<winrt::BikaClient::Blocks::CommentBlock> m_comments = winrt::single_threaded_observable_vector<winrt::BikaClient::Blocks::CommentBlock>();
 		winrt::Windows::Foundation::Collections::IObservableVector<winrt::BikaClient::Blocks::CommentBlock> m_topComments = winrt::single_threaded_observable_vector<winrt::BikaClient::Blocks::CommentBlock>();
-		int32_t m_page{ 0 };
-		int32_t m_pages{ 0 };
-		int32_t m_total{ 0 };
-		int32_t m_limit{ 0 };
-		int32_t m_code{ 0 };
-		hstring m_message{ L"" };
-		hstring m_error{ L"" };
-		hstring m_detail{ L"" };
-		hstring m_json{ L"" };
         hstring m_fileServer = L"https://storage1.picacomic.com/static/";
     };
 }

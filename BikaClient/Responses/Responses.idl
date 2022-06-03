@@ -1,21 +1,6 @@
 import "Blocks/Blocks.idl";
 namespace BikaClient.Responses
 {
-	interface IPageData
-	{
-		Int32 Page;
-		Int32 Pages;
-		Int32 Total;
-		Int32 Limit;
-	}
-	interface IRespData
-	{
-		Int32 Code;
-		String Message;
-		String Error;
-		String Detail;
-		String Json{ get; };
-	}
 	enum Actions
 	{
 		OK = 0,
@@ -27,61 +12,80 @@ namespace BikaClient.Responses
 		Success = 6,
 		Unknown = 7,
 	};
-	runtimeclass LoginResponse : IRespData
+	unsealed runtimeclass IResponse
+	{
+		IResponse(Windows.Data.Json.JsonObject json);
+		void IInit(Windows.Data.Json.JsonObject json);
+		Int32 Code{ get; };
+		String Message{ get; };
+		String Error{ get; };
+		String Detail{ get; };
+		String Json{ get; };
+	}
+	unsealed runtimeclass IPage: IResponse
+	{
+		IPage();
+		Int32 Page{ get; };
+		Int32 Pages{ get; };
+		Int32 Total{ get; };
+		Int32 Limit{ get; };
+	}
+
+	runtimeclass LoginResponse : IResponse
 	{
 		LoginResponse();
 		LoginResponse(Windows.Data.Json.JsonObject json);
 		String Token{ get; };
 	}
-	runtimeclass CategoriesResponse : IRespData
+	runtimeclass CategoriesResponse : IResponse
 	{
 		CategoriesResponse(Windows.Data.Json.JsonObject json);
 		CategoriesResponse(Windows.Data.Json.JsonObject json,String fileServer);
 		Windows.Foundation.Collections.IObservableVector<BikaClient.Blocks.CategoriesBlock> Categories;
 	}
-	runtimeclass UserResponse : IRespData
+	runtimeclass UserResponse : IResponse
 	{
 		UserResponse(Windows.Data.Json.JsonObject json);
 		UserResponse(Windows.Data.Json.JsonObject json,String fileServer);
 		BikaClient.Blocks.UserBlock User;
 	}
-	runtimeclass ComicsResponse : IPageData, IRespData
+	runtimeclass ComicsResponse : IPage
 	{
 		ComicsResponse(Windows.Data.Json.JsonObject json);
 		ComicsResponse(Windows.Data.Json.JsonObject json,String fileServer);
 		Windows.Foundation.Collections.IObservableVector<BikaClient.Blocks.ComicBlock> Comics;
 	}
-	runtimeclass BookInfoResponse : IRespData
+	runtimeclass BookInfoResponse : IResponse
 	{
 		BookInfoResponse(Windows.Data.Json.JsonObject json);
 		BookInfoResponse(Windows.Data.Json.JsonObject json,String fileServer);
 		BikaClient.Blocks.BookBlock BookInfos;
 	}
-	runtimeclass EpisodesResponse : IPageData, IRespData
+	runtimeclass EpisodesResponse : IPage
 	{
 		EpisodesResponse(Windows.Data.Json.JsonObject json);
 		Windows.Foundation.Collections.IObservableVector<BikaClient.Blocks.EpisodeBlock> Episodes;
 	}
-	runtimeclass PicturesResponse : IPageData, IRespData
+	runtimeclass PicturesResponse : IPage
 	{
 		PicturesResponse(Windows.Data.Json.JsonObject json);
 		PicturesResponse(Windows.Data.Json.JsonObject json,String fileServer);
 		Windows.Foundation.Collections.IObservableVector<BikaClient.Blocks.ImageBlock> Pictures;
 		BikaClient.Blocks.EpisodeBlock Episode;
 	}
-	runtimeclass CommentsResponse : IPageData, IRespData
+	runtimeclass CommentsResponse : IPage
 	{
 		CommentsResponse(Windows.Data.Json.JsonObject json);
 		CommentsResponse(Windows.Data.Json.JsonObject json,String fileServer);
 		Windows.Foundation.Collections.IObservableVector<BikaClient.Blocks.CommentBlock> Comments;
 		Windows.Foundation.Collections.IObservableVector<BikaClient.Blocks.CommentBlock> TopComments;
 	}
-	runtimeclass ActionResponse : IRespData
+	runtimeclass ActionResponse : IResponse
 	{
 		ActionResponse(Windows.Data.Json.JsonObject json);
 		BikaClient.Responses.Actions Action();
 	}
-	runtimeclass KeywordsResponse : IRespData
+	runtimeclass KeywordsResponse : IResponse
 	{
 		KeywordsResponse(Windows.Data.Json.JsonObject json);
 		Windows.Foundation.Collections.IObservableVector<BikaClient.Blocks.TagBlock> Keywords;

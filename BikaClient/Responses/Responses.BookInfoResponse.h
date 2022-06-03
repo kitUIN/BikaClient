@@ -1,10 +1,10 @@
 #pragma once
 #include "Responses.BookInfoResponse.g.h"
 #include "Blocks/Blocks.BookBlock.h"
-
+#include "Responses.IResponse.h"
 namespace winrt::BikaClient::Responses::implementation
 {
-    struct BookInfoResponse : BookInfoResponseT<BookInfoResponse>
+    struct BookInfoResponse : BookInfoResponseT<BookInfoResponse, BikaClient::Responses::implementation::IResponse>
     {
         BookInfoResponse() = default;
 
@@ -13,22 +13,8 @@ namespace winrt::BikaClient::Responses::implementation
         void Init(winrt::Windows::Data::Json::JsonObject const& json);
         winrt::BikaClient::Blocks::BookBlock BookInfos();
         void BookInfos(winrt::BikaClient::Blocks::BookBlock const& value);
-        int32_t Code();
-        void Code(int32_t value);
-        hstring Message();
-        void Message(hstring const& value);
-        hstring Error();
-        void Error(hstring const& value);
-        hstring Detail();
-        void Detail(hstring const& value);
-        hstring Json();
     private:
         winrt::BikaClient::Blocks::BookBlock m_bookInfos{ nullptr };
-		int32_t m_code{ 0 };
-        hstring m_message{ L"" };
-        hstring m_error{ L"" };
-        hstring m_detail{ L"" };
-        hstring m_json{ L"" };
         hstring m_fileServer = L"https://storage1.picacomic.com/static/";
 	};
 }

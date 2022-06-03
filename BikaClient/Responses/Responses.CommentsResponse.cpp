@@ -19,11 +19,7 @@ namespace winrt::BikaClient::Responses::implementation
     }
     void CommentsResponse::Init(winrt::Windows::Data::Json::JsonObject const& json)
     {
-        m_json = json.Stringify();
-        if (json.HasKey(L"code")) m_code = static_cast<int32_t>(json.GetNamedNumber(L"code"));
-        if (json.HasKey(L"message")) m_message = json.GetNamedString(L"message");
-        if (json.HasKey(L"error")) m_error = json.GetNamedString(L"error");
-        if (json.HasKey(L"detail")) m_detail = json.GetNamedString(L"detail");
+        IInit(json);
         if (json.HasKey(L"data"))
         {
             JsonObject data = json.GetNamedObject(L"data");
@@ -62,72 +58,5 @@ namespace winrt::BikaClient::Responses::implementation
     {
         m_topComments = value;
     }
-    int32_t CommentsResponse::Page()
-    {
-        return m_page;
-    }
-    void CommentsResponse::Page(int32_t value)
-    {
-        m_page = value;
-    }
-    int32_t CommentsResponse::Pages()
-    {
-        return m_pages;
-    }
-    void CommentsResponse::Pages(int32_t value)
-    {
-        m_pages = value;
-    }
-    int32_t CommentsResponse::Total()
-    {
-        return m_total;
-    }
-    void CommentsResponse::Total(int32_t value)
-    {
-        m_total = value;
-    }
-    int32_t CommentsResponse::Limit()
-    {
-        return m_limit;
-    }
-    void CommentsResponse::Limit(int32_t value)
-    {
-        m_limit = value;
-    }
-    int32_t CommentsResponse::Code()
-    {
-        return m_code;
-    }
-    void CommentsResponse::Code(int32_t value)
-    {
-        m_code = value;
-    }
-    hstring CommentsResponse::Message()
-    {
-        return m_message;
-    }
-    void CommentsResponse::Message(hstring const& value)
-    {
-        m_message = value;
-    }
-    hstring CommentsResponse::Error()
-    {
-        return m_error;
-    }
-    void CommentsResponse::Error(hstring const& value)
-    {
-        m_error = value;
-    }
-    hstring CommentsResponse::Detail()
-    {
-        return m_detail;
-    }
-    void CommentsResponse::Detail(hstring const& value)
-    {
-        m_detail = value;
-    }
-    hstring CommentsResponse::Json()
-    {
-        return m_json;
-    }
+
 }

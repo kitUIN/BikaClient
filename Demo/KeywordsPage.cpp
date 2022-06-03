@@ -26,8 +26,11 @@ namespace winrt::Demo::implementation
 
     winrt::Windows::Foundation::IAsyncAction KeywordsPage::ClickHandler(IInspectable const&, RoutedEventArgs const&)
     {
-        
+
         auto res = co_await rootPage.Bika().Keywords();
+        OutputDebugStringW(L"\n\n");
+        OutputDebugStringW(res.Message().c_str());
+        Code().Text(to_hstring(res.Code()));
         listView().ItemsSource(box_value(res.Keywords()));
     }
 }

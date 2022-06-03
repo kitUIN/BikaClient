@@ -142,8 +142,7 @@
                     Width="500"
                     IsTextSelectionEnabled="True"
                     Text="true"
-                    TextWrapping="Wrap"
-                    Visibility="{x:Bind Users.IsPunched.Visibility}" />
+                    TextWrapping="Wrap" />
             </StackPanel>
             <StackPanel>
                 <TextBlock Foreground="Green" Text="Verified:" />
@@ -151,8 +150,7 @@
                     Width="500"
                     IsTextSelectionEnabled="True"
                     Text="true"
-                    TextWrapping="Wrap"
-                    Visibility="{x:Bind Users.Verified.Visibility}" />
+                    TextWrapping="Wrap" />
             </StackPanel>
             <local:ImageItem Thumb="{x:Bind Users.Thumb}" />
         </StackPanel>
