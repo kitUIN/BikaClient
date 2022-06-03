@@ -13,13 +13,6 @@ namespace winrt::BikaClient::Blocks::implementation
         m_fileServer = fileServer;
         Init(json);
     }
-    BikaClient::Blocks::CategoriesBlock CategoriesBlock::CreateCategoriesBlock(hstring const& title, BikaClient::Blocks::ImageBlock const& imageBlock)
-    {
-        CategoriesBlock categoriesBlock;
-        categoriesBlock.Thumb(imageBlock);
-        categoriesBlock.Title(title);
-        return categoriesBlock;
-    }
     void CategoriesBlock::Init(winrt::Windows::Data::Json::JsonObject const& json)
     {
         m_json = json.Stringify();

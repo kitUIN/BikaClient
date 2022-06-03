@@ -6,7 +6,6 @@ namespace winrt::BikaClient::Blocks::implementation
     struct ImageBlock : ImageBlockT<ImageBlock>
     {
         ImageBlock() = default;
-        static BikaClient::Blocks::ImageBlock CreateImageBlock(winrt::Windows::Foundation::Uri const& uri);
         ImageBlock(winrt::Windows::Data::Json::JsonObject const& json);
         ImageBlock(winrt::Windows::Data::Json::JsonObject const& json, hstring const& fileServer);
         void Init(winrt::Windows::Data::Json::JsonObject const& json);

@@ -5,12 +5,6 @@ using namespace winrt;
 using namespace winrt::Windows::Data::Json;
 namespace winrt::BikaClient::Blocks::implementation
 {
-    BikaClient::Blocks::ImageBlock ImageBlock::CreateImageBlock(winrt::Windows::Foundation::Uri const& uri)
-    {
-        ImageBlock imageBlock;
-        imageBlock.Img(winrt::Windows::UI::Xaml::Media::Imaging::BitmapImage{ uri });
-        return imageBlock;
-    }
     ImageBlock::ImageBlock(winrt::Windows::Data::Json::JsonObject const& json)
     {
         if (json.HasKey(L"_id"))
