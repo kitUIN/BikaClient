@@ -22,6 +22,10 @@ namespace winrt::BikaClient::Utils::implementation
     {
         return m_sortString;
     }
+    winrt::BikaClient::Utils::SortMode BikaSort::SortMode()
+    {
+        return m_sort;
+    }
     hstring BikaSort::SortResource()
     {
         if (m_sort == winrt::BikaClient::Utils::SortMode::DD) return L"sort/dd";

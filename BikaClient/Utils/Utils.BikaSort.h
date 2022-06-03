@@ -10,6 +10,7 @@ namespace winrt::BikaClient::Utils::implementation
 
         BikaSort(winrt::BikaClient::Utils::SortMode const& sort);
         hstring Sort();
+        winrt::BikaClient::Utils::SortMode SortMode();
         hstring SortResource();
         hstring SortName(winrt::Windows::ApplicationModel::Resources::ResourceLoader resourceLoader);
     private:

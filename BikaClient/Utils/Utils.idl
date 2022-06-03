@@ -14,11 +14,13 @@ namespace BikaClient.Utils
 		String Sort{ get; };
 		String SortResource{ get; };
 		String SortName(Windows.ApplicationModel.Resources.ResourceLoader resourceLoader);
+		BikaClient.Utils.SortMode SortMode{ get; };
 	}
 	runtimeclass BikaBoolean
 	{
 		BikaBoolean(Boolean isValue);
 		Boolean Bool;
 		Windows.UI.Xaml.Visibility Visibility{ get; };
+
 	}
 }
