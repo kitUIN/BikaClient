@@ -31,7 +31,7 @@ namespace winrt::BikaClient::Blocks::implementation
     }
     void ImageBlock::Init(winrt::Windows::Data::Json::JsonObject const& json)
     {
-        Init(json, json.GetNamedString(L"fileServer"));
+        Init(json, L"https://storage1.picacomic.com/static/");
     }
     void ImageBlock::Init(winrt::Windows::Data::Json::JsonObject const& json, hstring const& fileServer)
     {

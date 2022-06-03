@@ -22,6 +22,8 @@ namespace BikaClient.Blocks
     runtimeclass TagBlock : Windows.UI.Xaml.Data.INotifyPropertyChanged
     {
         TagBlock(String tag);
+        TagBlock(String tag, String id);
+        String ID;
         String Tag;
     }
     runtimeclass UserBlock : Windows.UI.Xaml.Data.INotifyPropertyChanged, IBlockJson
