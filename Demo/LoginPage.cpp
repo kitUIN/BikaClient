@@ -33,8 +33,8 @@ namespace winrt::Demo::implementation
             a.Append(res);
             RES().ItemsSource(box_value(a));
         }
-        auto res = co_await rootPage.Bika().Keywords();
-        OutputDebugStringW(L"\n\nI AM IRONMAN");
-        OutputDebugStringW(res.Message().c_str());
+        auto res1 = co_await rootPage.Bika().Random();
+        auto res2 = co_await rootPage.Bika().Comics();
+
     }
 }

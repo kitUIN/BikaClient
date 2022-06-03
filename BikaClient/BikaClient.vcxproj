@@ -141,6 +141,7 @@
     <ClInclude Include="Responses\Responses.EpisodesResponse.h" />
     <ClInclude Include="Responses\Responses.IPage.h" />
     <ClInclude Include="Responses\Responses.IResponse.h" />
+    <ClInclude Include="Responses\Responses.JsonResponse.h" />
     <ClInclude Include="Responses\Responses.KeywordsResponse.h" />
     <ClInclude Include="Responses\Responses.LoginResponse.h" />
     <ClInclude Include="Responses\Responses.PicturesResponse.h" />
@@ -171,6 +172,7 @@
     <ClCompile Include="Responses\Responses.EpisodesResponse.cpp" />
     <ClCompile Include="Responses\Responses.IPage.cpp" />
     <ClCompile Include="Responses\Responses.IResponse.cpp" />
+    <ClCompile Include="Responses\Responses.JsonResponse.cpp" />
     <ClCompile Include="Responses\Responses.KeywordsResponse.cpp" />
     <ClCompile Include="Responses\Responses.LoginResponse.cpp" />
     <ClCompile Include="Responses\Responses.PicturesResponse.cpp" />

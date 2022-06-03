@@ -71,6 +71,14 @@ namespace winrt::BikaClient::Blocks::implementation
         m_isWeb = value;
         m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"IsWeb" });
     }
+    bool CategoriesBlock::IsAuto()
+    {
+        return m_isAuto;
+    }
+    void CategoriesBlock::IsAuto(bool const& value)
+    {
+        m_isAuto = value;
+    }
     bool CategoriesBlock::Active()
     {
         return m_active;

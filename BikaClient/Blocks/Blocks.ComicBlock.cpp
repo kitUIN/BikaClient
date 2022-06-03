@@ -125,6 +125,14 @@ namespace winrt::BikaClient::Blocks::implementation
     {
         m_epsCount = value;
     }
+    BikaClient::Utils::BikaBoolean ComicBlock::IsSeal()
+    {
+        return m_isSeal;
+    }
+    void ComicBlock::IsSeal(BikaClient::Utils::BikaBoolean const& value)
+    {
+        m_isSeal = value;
+    }
     winrt::BikaClient::Blocks::ImageBlock ComicBlock::Thumb()
     {
         return m_thumb;

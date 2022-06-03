@@ -28,6 +28,8 @@ namespace winrt::BikaClient::Blocks::implementation
         void PagesCount(int32_t const& value);
         int32_t EpsCount();
         void EpsCount(int32_t const& value);
+        BikaClient::Utils::BikaBoolean IsSeal();
+        void IsSeal(BikaClient::Utils::BikaBoolean const& value);
         winrt::BikaClient::Utils::BikaBoolean Finished();
         void Finished(winrt::BikaClient::Utils::BikaBoolean const& value);
         winrt::BikaClient::Blocks::ImageBlock Thumb();
@@ -48,6 +50,7 @@ namespace winrt::BikaClient::Blocks::implementation
 		int32_t m_likesCount = 0;
 		int32_t m_pagesCount = 0;
 		int32_t m_epsCount = 0;
+        BikaClient::Utils::BikaBoolean m_isSeal{ false };
         hstring m_fileServer = L"https://storage1.picacomic.com/static/";
         winrt::BikaClient::Utils::BikaBoolean m_finished{ false };
         winrt::BikaClient::Blocks::ImageBlock m_thumb;

@@ -19,6 +19,8 @@ namespace winrt::BikaClient::Blocks::implementation
         void Id(hstring const& value);
         bool IsWeb();
         void IsWeb(bool const& value);
+        bool IsAuto();
+        void IsAuto(bool const& value);
         bool Active();
         void Active(bool const& value);
         hstring Link();
@@ -36,6 +38,7 @@ namespace winrt::BikaClient::Blocks::implementation
         hstring m_description = L"";
         bool m_isWeb = false;
         bool m_active = false;
+        bool m_isAuto = true;
         hstring m_json = L"";
         winrt::BikaClient::Blocks::ImageBlock m_thumb{ nullptr };
         hstring m_fileServer = L"https://storage1.picacomic.com/static/";

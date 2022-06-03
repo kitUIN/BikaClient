@@ -90,4 +90,9 @@ namespace BikaClient.Responses
 		KeywordsResponse(Windows.Data.Json.JsonObject json);
 		Windows.Foundation.Collections.IObservableVector<BikaClient.Blocks.TagBlock> Keywords;
 	}
+	runtimeclass JsonResponse : IResponse
+	{
+		JsonResponse(Windows.Data.Json.JsonObject json);
+		Windows.Data.Json.JsonObject Data;
+	}
 }

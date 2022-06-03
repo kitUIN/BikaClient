@@ -2,6 +2,7 @@
 #include "BikaHttpClient.h"
 #include "BikaHttpClient.g.cpp"
 
+
 using namespace winrt;
 using namespace std;
 using namespace Windows::Foundation;
@@ -459,6 +460,20 @@ namespace winrt::BikaClient::implementation
         HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return ComicsResponse{ res, m_fileServer };
     }
+    /// <summary>
+    /// 最近更新
+    /// </summary>
+    /// <param name="page"></param>
+    /// <param name="sort"></param>
+    /// <returns></returns>
+    winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::ComicsResponse> BikaHttpClient::Comics(int32_t const& page, winrt::BikaClient::Utils::SortMode const& sort)
+    {
+        BikaSort bikasort{ sort };
+        hstring api = L"comics?page=" + to_hstring(page) + L"&s=" + bikasort.Sort();
+        JsonObject res = co_await GET(Uri{ ORIGINURL + api }, api);
+        HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
+        co_return ComicsResponse{ res, m_fileServer };
+    }
 
     /// <summary>
     /// 获取本子详细信息
@@ -729,6 +744,48 @@ namespace winrt::BikaClient::implementation
     winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::GetReplyComment(hstring const& commentId, int32_t const& page)
     {
         hstring api = L"comments/" + commentId + L"/childrens?page=" + to_hstring(page);
+        JsonObject res = co_await GET(Uri{ ORIGINURL + api }, api);
+        HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
+        co_return res.Stringify();
+    }
+
+    /// <summary>
+    /// 安卓平台初始化
+    /// </summary>
+    /// <returns></returns>
+    winrt::Windows::Foundation::IAsyncOperation<JsonResponse> BikaHttpClient::PlatformInit()
+    {
+        hstring api = L"init?platform=android";
+        JsonObject res = co_await GET(Uri{ ORIGINURL + api }, api);
+        HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
+        co_return JsonResponse{ res };
+    }
+    /// <summary>
+    /// 本子神魔
+    /// </summary>
+    /// <returns></returns>
+    winrt::Windows::Foundation::IAsyncOperation<JsonResponse> BikaHttpClient::Collections()
+    {
+        hstring api = L"collections";
+        JsonObject res = co_await GET(Uri{ ORIGINURL + api }, api);
+        HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
+        co_return JsonResponse{ res };
+    }
+    /// <summary>
+    /// 公告栏
+    /// </summary>
+    /// <param name="page"></param>
+    /// <returns></returns>
+    winrt::Windows::Foundation::IAsyncOperation<JsonResponse> BikaHttpClient::Announcements(int32_t const& page)
+	{
+		hstring api = L"announcements?page=" + to_hstring(page);
+		JsonObject res = co_await GET(Uri{ ORIGINURL + api }, api);
+		HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
+        co_return JsonResponse{ res };
+	}
+    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Random()
+    {
+        hstring api = L"comics/random";
         JsonObject res = co_await GET(Uri{ ORIGINURL + api }, api);
         HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return res.Stringify();

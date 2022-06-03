@@ -39,9 +39,9 @@ _✨ 为[哔咔漫画UWP🍍](https://github.com/kitUIN/bikabika)提供API支持
 - 本子
   - [x] 分类
   - [ ] 排行榜
-  - [ ] 神魔推荐
-  - [ ] 最近更新
-  - [ ] 随机本子
+  - [x] 神魔推荐
+  - [x] 最近更新
+  - [x] 随机本子
   - [x] 分区
   - [x] 本子
   - [x] 分话
@@ -60,3 +60,5 @@ _✨ 为[哔咔漫画UWP🍍](https://github.com/kitUIN/bikabika)提供API支持
   - [ ] 聊天室
 - 游戏
   - [ ] 游戏区
+- 其他
+  - [x] 公告栏

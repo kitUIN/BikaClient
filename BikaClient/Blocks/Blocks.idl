@@ -54,12 +54,14 @@ namespace BikaClient.Blocks
     }
     runtimeclass CategoriesBlock : Windows.UI.Xaml.Data.INotifyPropertyChanged, IBlockJson
     {
+        CategoriesBlock();
         CategoriesBlock(Windows.Data.Json.JsonObject json);
         CategoriesBlock(Windows.Data.Json.JsonObject json,String fileServer);
         String Title;
         BikaClient.Blocks.ImageBlock Thumb;
         String Id;
         Boolean IsWeb;
+        Boolean IsAuto;
         Boolean Active;
         String Link;
         String Description;
@@ -77,6 +79,7 @@ namespace BikaClient.Blocks
 		Int32 PagesCount;
 		Int32 EpsCount;
         BikaClient.Utils.BikaBoolean Finished;
+        BikaClient.Utils.BikaBoolean IsSeal;
         BikaClient.Blocks.ImageBlock Thumb;
         Windows.Foundation.Collections.IObservableVector<BikaClient.Blocks.TagBlock> Categories;
         String CategoriesString;
