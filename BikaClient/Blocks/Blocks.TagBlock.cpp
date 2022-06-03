@@ -9,6 +9,11 @@ namespace winrt::BikaClient::Blocks::implementation
     {
         m_tag = tag;
     }
+    TagBlock::TagBlock(hstring const& tag, hstring const& id)
+    {
+        m_tag = tag;
+        m_id = id;
+    }
     hstring TagBlock::Tag()
     {
         return m_tag;
