@@ -11,6 +11,7 @@ namespace BikaClient.Blocks
         ImageBlock();
         ImageBlock(Windows.Data.Json.JsonObject json);
         ImageBlock(Windows.Data.Json.JsonObject json,String fileServer);
+        static BikaClient.Blocks.ImageBlock CreateImageBlock(Windows.Foundation.Uri uri);
         String FileServer;
         Windows.UI.Xaml.Media.Imaging.BitmapImage Img;
         String Path;
@@ -57,6 +58,7 @@ namespace BikaClient.Blocks
         CategoriesBlock();
         CategoriesBlock(Windows.Data.Json.JsonObject json);
         CategoriesBlock(Windows.Data.Json.JsonObject json,String fileServer);
+        static BikaClient.Blocks.CategoriesBlock CreateCategoriesBlock(String title, BikaClient.Blocks.ImageBlock imageBlock);
         String Title;
         BikaClient.Blocks.ImageBlock Thumb;
         String Id;

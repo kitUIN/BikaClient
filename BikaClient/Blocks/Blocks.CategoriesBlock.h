@@ -10,6 +10,7 @@ namespace winrt::BikaClient::Blocks::implementation
 
         CategoriesBlock(winrt::Windows::Data::Json::JsonObject const& json);
         CategoriesBlock(winrt::Windows::Data::Json::JsonObject const& json, hstring const& fileServer);
+        static BikaClient::Blocks::CategoriesBlock CreateCategoriesBlock(hstring const& title, BikaClient::Blocks::ImageBlock const& imageBlock);
         void Init(winrt::Windows::Data::Json::JsonObject const& json);
         hstring Title();
         void Title(hstring const& value);

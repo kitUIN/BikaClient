@@ -13,6 +13,13 @@ namespace winrt::BikaClient::Blocks::implementation
         m_fileServer = fileServer;
         Init(json);
     }
+    BikaClient::Blocks::CategoriesBlock CategoriesBlock::CreateCategoriesBlock(hstring const& title, BikaClient::Blocks::ImageBlock const& imageBlock)
+    {
+        CategoriesBlock categoriesBlock;
+        categoriesBlock.Thumb(imageBlock);
+        categoriesBlock.Title(title);
+        return categoriesBlock;
+    }
     void CategoriesBlock::Init(winrt::Windows::Data::Json::JsonObject const& json)
     {
         m_json = json.Stringify();
@@ -24,15 +31,7 @@ namespace winrt::BikaClient::Blocks::implementation
         if (json.HasKey(L"link")) Link(json.GetNamedString(L"link"));
         if (json.HasKey(L"thumb"))
         {
-            if (m_active)
-            {
-                m_thumb = make<winrt::BikaClient::Blocks::implementation::ImageBlock>(json.GetNamedObject(L"thumb"), json.GetNamedObject(L"thumb").GetNamedString(L"fileServer"));
-            }
-            else
-            {
-                m_thumb = make<winrt::BikaClient::Blocks::implementation::ImageBlock>(json.GetNamedObject(L"thumb"), m_fileServer);
-            }
-
+            m_thumb = make<winrt::BikaClient::Blocks::implementation::ImageBlock>(json.GetNamedObject(L"thumb"), m_fileServer);
         }
     }
     hstring CategoriesBlock::Title()
