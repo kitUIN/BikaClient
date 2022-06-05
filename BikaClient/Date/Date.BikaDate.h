@@ -8,12 +8,17 @@ namespace winrt::BikaClient::Date::implementation
         BikaDate() = default;
 
         BikaDate(hstring const& date);
-        hstring SetTimeZone();
-        void SetTimeZone(hstring const& value);
+        BikaDate(hstring const& date, BikaClient::Date::TimeZone const& zone);
+        hstring GetTime();
+        hstring GetTimeZoneString();
+        BikaClient::Date::TimeZone GetTimeZone();
+        void SetTimeZone(BikaClient::Date::TimeZone const& zone);
         hstring GetDateTime();
+        hstring GetDateTime(BikaClient::Date::TimeZone const& zone);
         hstring Raw();
     private:
         hstring m_raw = L"";
+        BikaClient::Date::TimeZone m_zone = BikaClient::Date::TimeZone::UTC8;
         hstring m_timeZone = L"UTC+8";
         int32_t m_times = 8;
         hstring m_dateTime;

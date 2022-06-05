@@ -43,10 +43,12 @@ namespace BikaClient.Blocks
         String Gender;
         BikaClient.Blocks.ImageBlock Thumb;
         String Slogan;
+        String SloganOmit;
         Int32 Exp;
         Int32 Percent;
         String Title;
         String Role;
+        BikaClient.Date.TimeZone TimeZone;
         String Character;
         Windows.Foundation.Collections.IObservableVector<BikaClient.Blocks.TagBlock> Characters;
         String CharactersString;

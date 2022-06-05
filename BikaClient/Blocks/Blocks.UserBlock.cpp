@@ -20,7 +20,10 @@ namespace winrt::BikaClient::Blocks::implementation
 		if (json.HasKey(L"name"))
 			Name(json.GetNamedString(L"name"));
 		if (json.HasKey(L"slogan"))
+		{
 			Slogan(L"\"" + to_hstring(json.GetNamedString(L"slogan")) + L"\"");
+			m_sloganOmit = m_slogan;
+		}
 		if (json.HasKey(L"title"))
 			Title(json.GetNamedString(L"title"));
 		if (json.HasKey(L"gender"))
@@ -195,6 +198,15 @@ namespace winrt::BikaClient::Blocks::implementation
 		m_slogan = value;
 		m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Slogan" });
 	}
+	hstring UserBlock::SloganOmit()
+	{
+		return m_sloganOmit;
+	}
+	void UserBlock::SloganOmit(hstring const& value)
+	{
+		m_sloganOmit = value;
+		m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"SloganOmit" });
+	}
 	int32_t UserBlock::Exp()
 	{
 		return m_exp;
@@ -236,6 +248,10 @@ namespace winrt::BikaClient::Blocks::implementation
 			m_levelExp = value;
 			m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"LevelExp" });
 		}
+	}
+	BikaClient::Date::TimeZone UserBlock::TimeZone()
+	{
+		return m_zone;
 	}
 	winrt::Windows::Foundation::Collections::IObservableVector<BikaClient::Blocks::TagBlock> UserBlock::Characters()
 	{
@@ -282,6 +298,11 @@ namespace winrt::BikaClient::Blocks::implementation
 			m_role = value;
 			m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Role" });
 		}
+	}
+	void UserBlock::TimeZone(BikaClient::Date::TimeZone const& value)
+	{
+		m_zone = value;
+		m_birthday.SetTimeZone(m_zone);
 	}
 	hstring UserBlock::Json()
 	{

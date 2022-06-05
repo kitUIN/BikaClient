@@ -1,10 +1,42 @@
 namespace BikaClient.Date
 {
+    enum TimeZone
+    {
+        UTC12 = 12,
+        UTC11 = 11,
+        UTC10 = 10,
+        UTC9 = 9,
+        UTC8 = 8,
+        UTC7 = 7,
+        UTC6 = 6,
+        UTC5 = 5,
+        UTC4 = 4,
+        UTC3 = 3,
+        UTC2 = 2,
+        UTC1 = 1,
+        UTC = 0,
+        UTCN1 = -1,
+        UTCN2 = -2,
+        UTCN3 = -3,
+        UTCN4 = -4,
+        UTCN5 = -5,
+        UTCN6 = -6,
+        UTCN7 = -7,
+        UTCN8 = -8,
+        UTCN9 = -9,
+        UTCN10 = -10,
+        UTCN11 = -11,
+        UTCN12= -12
+    };
     runtimeclass BikaDate
     {
         BikaDate(String date);
+        BikaDate(String date, BikaClient.Date.TimeZone zone);
         String Raw{ get; };
-        String SetTimeZone;
-        String GetDateTime{ get; };
+        void SetTimeZone(BikaClient.Date.TimeZone zone);
+        String GetDateTime();
+        String GetDateTime(BikaClient.Date.TimeZone zone);
+        String GetTimeZoneString();
+        BikaClient.Date.TimeZone GetTimeZone();
     }
 }

@@ -38,6 +38,8 @@ namespace winrt::BikaClient::Blocks::implementation
         void Thumb(winrt::BikaClient::Blocks::ImageBlock const& value);
         hstring Slogan();
         void Slogan(hstring const& value);
+        hstring SloganOmit();
+        void SloganOmit(hstring const& value);
         int32_t Exp();
         void Exp(int32_t const& value);
         int32_t Percent();
@@ -54,6 +56,8 @@ namespace winrt::BikaClient::Blocks::implementation
         void CharactersString(hstring const& value);
         hstring LevelExp();
         void LevelExp(hstring const& value);
+        BikaClient::Date::TimeZone TimeZone();
+        void TimeZone(BikaClient::Date::TimeZone const& value);
         hstring Json();
         winrt::event_token PropertyChanged(winrt::Windows::UI::Xaml::Data::PropertyChangedEventHandler const& handler);
         void PropertyChanged(winrt::event_token const& token) noexcept;
@@ -65,11 +69,13 @@ namespace winrt::BikaClient::Blocks::implementation
         winrt::hstring m_role = L"";
         winrt::hstring m_character = L"";
         winrt::hstring m_id = L"";
+        BikaClient::Date::TimeZone m_zone = BikaClient::Date::TimeZone::UTC8;
         winrt::BikaClient::Utils::BikaBoolean m_verified{ false };
         winrt::BikaClient::Utils::BikaBoolean m_isPunched{ false };
         winrt::BikaClient::Date::BikaDate m_createAt{ nullptr };
         winrt::BikaClient::Date::BikaDate m_birthday{ nullptr };
         winrt::hstring m_slogan = L"";
+        winrt::hstring m_sloganOmit = L"";
         winrt::hstring m_levelExp = L"(? / ?)";
         int32_t m_exp = 0;
         int32_t m_percent = 100;
