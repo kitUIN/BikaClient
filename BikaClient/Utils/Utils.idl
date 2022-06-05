@@ -8,6 +8,12 @@ namespace BikaClient.Utils
 		LD = 3,
 		VD = 4
 	};
+	enum Gender
+	{
+		Female = 0,
+		Male = 1,
+		Bot = 2
+	};
 	runtimeclass BikaSort
 	{
 		BikaSort(SortMode sort);

@@ -65,7 +65,7 @@ namespace winrt::BikaClient::implementation
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::JsonResponse> PlatformInit();
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::JsonResponse> Collections();
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::JsonResponse> Announcements(int32_t const& page);
-        winrt::Windows::Foundation::IAsyncOperation<hstring> Register(hstring const& email, hstring const& password, hstring const& name, hstring const& birthday, hstring const& gender, hstring const& question1, hstring const& question2, hstring const& question3, hstring const& answer1, hstring const& answer2, hstring const& answer3);
+        winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::IResponse> Register(hstring const& email, hstring const& password, hstring const& name, hstring const& birthday, BikaClient::Utils::Gender const& gender, hstring const& question1, hstring const& question2, hstring const& question3, hstring const& answer1, hstring const& answer2, hstring const& answer3);
         const hstring ORIGINURL = L"https://picaapi.picacomic.com/";
     private:
 		hstring m_token;

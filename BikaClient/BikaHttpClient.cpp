@@ -807,7 +807,7 @@ namespace winrt::BikaClient::implementation
         HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return ComicsResponse{ res };
     }
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Register(hstring const& email, hstring const& password, hstring const& name, hstring const& birthday, hstring const& gender, hstring const& question1, hstring const& question2, hstring const& question3, hstring const& answer1, hstring const& answer2, hstring const& answer3)
+    winrt::Windows::Foundation::IAsyncOperation<IResponse> BikaHttpClient::Register(hstring const& email, hstring const& password, hstring const& name, hstring const& birthday, BikaClient::Utils::Gender const& gender, hstring const& question1, hstring const& question2, hstring const& question3, hstring const& answer1, hstring const& answer2, hstring const& answer3)
     {
         hstring api = L"auth/register";
         JsonObject json;
@@ -815,7 +815,11 @@ namespace winrt::BikaClient::implementation
         json.Insert(L"password", JsonValue::CreateStringValue(password));
         json.Insert(L"name", JsonValue::CreateStringValue(name));
         json.Insert(L"birthday", JsonValue::CreateStringValue(birthday));
-        json.Insert(L"gender", JsonValue::CreateStringValue(gender));
+        hstring g;
+        if (BikaClient::Utils::Gender::Female == gender) g = L"f";
+        else if(BikaClient::Utils::Gender::Male == gender) g = L"m";
+        else g = L"bot";
+        json.Insert(L"gender", JsonValue::CreateStringValue(g));
         json.Insert(L"question1", JsonValue::CreateStringValue(question1));
         json.Insert(L"question2", JsonValue::CreateStringValue(question2));
         json.Insert(L"question3", JsonValue::CreateStringValue(question3));
@@ -830,7 +834,7 @@ namespace winrt::BikaClient::implementation
                 L"application/json" },
                 api);
         HttpLogOut(L"[POST]->/" + api + L"\nReturn:", res.Stringify().c_str());
-        co_return res.Stringify();
+        co_return IResponse{ res };
     }
 
 }
