@@ -26,7 +26,7 @@ _✨ 为[哔咔漫画UWP🍍](https://github.com/kitUIN/bikabika)提供API支持
 
 ## API
 - 用户
-  - [ ] 注册
+  - [x] 注册
   - [x] 登录
   - [x] 更改个性签名
   - [x] 更改密码

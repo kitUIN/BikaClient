@@ -10,7 +10,7 @@
     <license type="expression">AGPL-3.0-only</license>
     <projectUrl>https://github.com/kitUIN/BikaClient</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>bikabika的HttpAPI小体积支持库 第三方哔咔漫画API 可用于C#/Cppwinrt</description>
+    <description>bikabika的HttpAPI支持库 第三方哔咔漫画API 可用于C#/Cppwinrt</description>
     <repository type="git" url="https://github.com/kitUIN/BikaClient"/>
     <copyright>Copyright 2022-2022</copyright>
     <icon>images\logo.png</icon>

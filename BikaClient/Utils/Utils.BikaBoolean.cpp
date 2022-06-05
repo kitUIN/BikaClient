@@ -22,4 +22,5 @@ namespace winrt::BikaClient::Utils::implementation
         if(m_isValue) return winrt::Windows::UI::Xaml::Visibility::Visible;
 		else return winrt::Windows::UI::Xaml::Visibility::Collapsed;
     }
+
 }

@@ -33,8 +33,8 @@ namespace winrt::Demo::implementation
             a.Append(res);
             RES().ItemsSource(box_value(a));
         }
-        auto res1 = co_await rootPage.Bika().Random();
-        auto res2 = co_await rootPage.Bika().Comics();
+
+        auto res1 = co_await rootPage.Bika().SetTitle(L"",L"发生什么事了");
 
     }
 }

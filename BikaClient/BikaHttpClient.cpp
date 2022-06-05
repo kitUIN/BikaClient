@@ -24,7 +24,7 @@ namespace winrt::BikaClient::implementation
     /// <param name="token">用户凭证</param>
     BikaHttpClient::BikaHttpClient(hstring const& token)
     {
-        BikaHttpClient(token, BikaClient::ImageQualityMode::HIGH, DEFAULT_FILE_SERVER);
+        BikaHttpClient(token, BikaClient::ImageQualityMode::HIGH, hstring{ DEFAULT_FILE_SERVER });
     }
 
     /// <summary>
@@ -34,7 +34,7 @@ namespace winrt::BikaClient::implementation
     /// <param name="imageQuality">图片质量</param>
     BikaHttpClient::BikaHttpClient(hstring const& token, BikaClient::ImageQualityMode const& imageQuality)
     {
-        BikaHttpClient(token, imageQuality, DEFAULT_FILE_SERVER);
+        BikaHttpClient(token, imageQuality, hstring{ DEFAULT_FILE_SERVER });
     }
     /// <summary>
     /// 初始化
@@ -454,8 +454,8 @@ namespace winrt::BikaClient::implementation
     /// <returns>ComicsResponse</returns>
     winrt::Windows::Foundation::IAsyncOperation<ComicsResponse> BikaHttpClient::Comics(int32_t const& page, hstring const& title, SortMode const& sort)
     {
-        BikaSort bikasort{ sort };
-        hstring api = L"comics?page=" + to_hstring(page) + L"&c=" + to_hstring(UrlEncode(to_string(title))) + L"&s=" + bikasort.Sort();
+
+        hstring api = L"comics?page=" + to_hstring(page) + L"&c=" + to_hstring(UrlEncode(to_string(title))) + L"&s=" + BikaSort::ToSort(sort);
         JsonObject res = co_await GET(Uri{ ORIGINURL + api }, api);
         HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return ComicsResponse{ res, m_fileServer };
@@ -468,8 +468,7 @@ namespace winrt::BikaClient::implementation
     /// <returns></returns>
     winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::ComicsResponse> BikaHttpClient::Comics(int32_t const& page, winrt::BikaClient::Utils::SortMode const& sort)
     {
-        BikaSort bikasort{ sort };
-        hstring api = L"comics?page=" + to_hstring(page) + L"&s=" + bikasort.Sort();
+        hstring api = L"comics?page=" + to_hstring(page) + L"&s=" + BikaSort::ToSort(sort);
         JsonObject res = co_await GET(Uri{ ORIGINURL + api }, api);
         HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return ComicsResponse{ res, m_fileServer };
@@ -522,8 +521,8 @@ namespace winrt::BikaClient::implementation
     /// <returns>ComicsResponse</returns>
     winrt::Windows::Foundation::IAsyncOperation<ComicsResponse> BikaHttpClient::PersonFavourite(SortMode const& sort, int32_t const& page)
     {
-        BikaSort bikasort{ sort };
-        hstring api = L"users/favourite?s=" + bikasort.Sort() + L"&page=" + to_hstring(page);
+
+        hstring api = L"users/favourite?s=" + BikaSort::ToSort(sort) + L"&page=" + to_hstring(page);
         JsonObject res = co_await GET(Uri{ ORIGINURL + api }, api);
         HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return ComicsResponse{ res, m_fileServer };
@@ -564,11 +563,10 @@ namespace winrt::BikaClient::implementation
     winrt::Windows::Foundation::IAsyncOperation<ComicsResponse> BikaHttpClient::Search(int32_t const& page, hstring const& keywords, winrt::BikaClient::Utils::SortMode const& sort, winrt::Windows::Data::Json::JsonArray const& categories)
     {
         hstring api = L"comics/advanced-search?page=" + to_hstring(page);
-        BikaSort bikasort{ sort };
         JsonObject json;
         json.SetNamedValue(L"keyword", JsonValue::CreateStringValue(keywords));
         if (categories.Size() > 0) json.SetNamedValue(L"categories", categories);
-        json.SetNamedValue(L"sort", JsonValue::CreateStringValue(bikasort.Sort()));
+        json.SetNamedValue(L"sort", JsonValue::CreateStringValue(BikaSort::ToSort(sort)));
         JsonObject res = co_await POST(
             Uri{ ORIGINURL + api },
             HttpStringContent{
@@ -714,6 +712,21 @@ namespace winrt::BikaClient::implementation
         HttpLogOut(L"[Put]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return ActionResponse{ res };
     }
+    winrt::Windows::Foundation::IAsyncOperation<IResponse> BikaHttpClient::SetTitle(hstring const& userId, hstring const& title)
+    {
+        hstring api = L"users/" + userId + L"/title";
+        JsonObject json;
+        json.SetNamedValue(L"title", JsonValue::CreateStringValue(title));
+        JsonObject res = co_await PUT(
+            Uri{ ORIGINURL + api },
+            HttpStringContent{
+                json.Stringify(),
+                UnicodeEncoding::Utf8,
+                L"application/json" },
+                api);
+        HttpLogOut(L"[Put]->/" + api + L"\nReturn:", res.Stringify().c_str());
+        co_return IResponse{ res };
+    }
     /// <summary>
     /// 回复评论
     /// </summary>
@@ -783,11 +796,40 @@ namespace winrt::BikaClient::implementation
 		HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return JsonResponse{ res };
 	}
-    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Random()
+    /// <summary>
+    /// 随机本子
+    /// </summary>
+    /// <returns></returns>
+    winrt::Windows::Foundation::IAsyncOperation<ComicsResponse> BikaHttpClient::Random()
     {
         hstring api = L"comics/random";
         JsonObject res = co_await GET(Uri{ ORIGINURL + api }, api);
         HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
+        co_return ComicsResponse{ res };
+    }
+    winrt::Windows::Foundation::IAsyncOperation<hstring> BikaHttpClient::Register(hstring const& email, hstring const& password, hstring const& name, hstring const& birthday, hstring const& gender, hstring const& question1, hstring const& question2, hstring const& question3, hstring const& answer1, hstring const& answer2, hstring const& answer3)
+    {
+        hstring api = L"auth/register";
+        JsonObject json;
+        json.Insert(L"email", JsonValue::CreateStringValue(email));
+        json.Insert(L"password", JsonValue::CreateStringValue(password));
+        json.Insert(L"name", JsonValue::CreateStringValue(name));
+        json.Insert(L"birthday", JsonValue::CreateStringValue(birthday));
+        json.Insert(L"gender", JsonValue::CreateStringValue(gender));
+        json.Insert(L"question1", JsonValue::CreateStringValue(question1));
+        json.Insert(L"question2", JsonValue::CreateStringValue(question2));
+        json.Insert(L"question3", JsonValue::CreateStringValue(question3));
+        json.Insert(L"answer1", JsonValue::CreateStringValue(answer1));
+        json.Insert(L"answer2", JsonValue::CreateStringValue(answer2));
+        json.Insert(L"answer3", JsonValue::CreateStringValue(answer3));
+        JsonObject res = co_await POST(
+            Uri{ ORIGINURL + api },
+            HttpStringContent{
+                json.Stringify(),
+                UnicodeEncoding::Utf8,
+                L"application/json" },
+                api);
+        HttpLogOut(L"[POST]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return res.Stringify();
     }
 

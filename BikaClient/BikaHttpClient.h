@@ -42,6 +42,7 @@ namespace winrt::BikaClient::implementation
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::KeywordsResponse> Keywords();
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::ComicsResponse> Comics(int32_t const& page, hstring const& title, winrt::BikaClient::Utils::SortMode const& sort);
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::ComicsResponse> Comics(int32_t const& page, winrt::BikaClient::Utils::SortMode const& sort);
+        winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::ComicsResponse> Random();
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::BookInfoResponse> BookInfo(hstring const& bookId);
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::EpisodesResponse> Episodes(hstring const& bookId, int32_t const& page);
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::PicturesResponse> Pictures(hstring const& bookId, int32_t const& epsId, int32_t const& page);
@@ -58,13 +59,13 @@ namespace winrt::BikaClient::implementation
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::ActionResponse> PunchIn();
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::ActionResponse> SetSlogan(hstring const& slogan);
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::ActionResponse> SetPassword(hstring const& oldPassword, hstring const& newPassword);
-
+        winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::IResponse> SetTitle(hstring const& userId, hstring const& title);
         winrt::Windows::Foundation::IAsyncOperation<hstring> ReplyComment(hstring const& commentId, hstring const& content);
         winrt::Windows::Foundation::IAsyncOperation<hstring> GetReplyComment(hstring const& commentId, int32_t const& page);
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::JsonResponse> PlatformInit();
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::JsonResponse> Collections();
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::JsonResponse> Announcements(int32_t const& page);
-        winrt::Windows::Foundation::IAsyncOperation<hstring> Random();
+        winrt::Windows::Foundation::IAsyncOperation<hstring> Register(hstring const& email, hstring const& password, hstring const& name, hstring const& birthday, hstring const& gender, hstring const& question1, hstring const& question2, hstring const& question3, hstring const& answer1, hstring const& answer2, hstring const& answer3);
         const hstring ORIGINURL = L"https://picaapi.picacomic.com/";
     private:
 		hstring m_token;

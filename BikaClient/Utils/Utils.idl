@@ -15,6 +15,10 @@ namespace BikaClient.Utils
 		String SortResource{ get; };
 		String SortName(Windows.ApplicationModel.Resources.ResourceLoader resourceLoader);
 		BikaClient.Utils.SortMode SortMode{ get; };
+		static String ToSort(BikaClient.Utils.SortMode sort);
+		static String GetResource(BikaClient.Utils.SortMode  sort);
+		static String ToString(BikaClient.Utils.SortMode sort, Windows.ApplicationModel.Resources.ResourceLoader resourceLoader);
+
 	}
 	runtimeclass BikaBoolean
 	{
