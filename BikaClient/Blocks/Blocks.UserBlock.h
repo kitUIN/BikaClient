@@ -85,7 +85,7 @@ namespace winrt::BikaClient::Blocks::implementation
         hstring  m_level = L"";
         winrt::Windows::Foundation::Collections::IObservableVector<BikaClient::Blocks::TagBlock> m_characters = winrt::single_threaded_observable_vector<BikaClient::Blocks::TagBlock>();
         hstring m_charactersString = L"";
-        winrt::BikaClient::Blocks::ImageBlock m_thumb{ nullptr };
+        winrt::BikaClient::Blocks::ImageBlock m_thumb;
         hstring m_json = L"";
     };
 }

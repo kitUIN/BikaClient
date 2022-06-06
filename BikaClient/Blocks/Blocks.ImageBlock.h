@@ -27,7 +27,7 @@ namespace winrt::BikaClient::Blocks::implementation
     private:
         winrt::event<Windows::UI::Xaml::Data::PropertyChangedEventHandler> m_propertyChanged;
         hstring m_fileServer = L"https://storage1.picacomic.com/static/";
-		winrt::Windows::UI::Xaml::Media::Imaging::BitmapImage m_img;
+		winrt::Windows::UI::Xaml::Media::Imaging::BitmapImage m_img = winrt::Windows::UI::Xaml::Media::Imaging::BitmapImage{Windows::Foundation::Uri{L"https://files.catbox.moe/lx8fu2.png"}};
         hstring m_path = L"";
 		hstring m_originalName = L"";
 		hstring m_url = L"";
