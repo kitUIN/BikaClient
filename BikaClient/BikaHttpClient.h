@@ -59,18 +59,19 @@ namespace winrt::BikaClient::implementation
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::ActionResponse> PunchIn();
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::ActionResponse> SetSlogan(hstring const& slogan);
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::ActionResponse> SetPassword(hstring const& oldPassword, hstring const& newPassword);
-        winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::IResponse> SetTitle(hstring const& userId, hstring const& title);
+        winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::JsonResponse> SetTitle(hstring const& userId, hstring const& title);
         winrt::Windows::Foundation::IAsyncOperation<hstring> ReplyComment(hstring const& commentId, hstring const& content);
         winrt::Windows::Foundation::IAsyncOperation<hstring> GetReplyComment(hstring const& commentId, int32_t const& page);
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::JsonResponse> PlatformInit();
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::JsonResponse> Collections();
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::JsonResponse> Announcements(int32_t const& page);
-        winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::IResponse> Register(hstring const& email, hstring const& password, hstring const& name, hstring const& birthday, BikaClient::Utils::Gender const& gender, hstring const& question1, hstring const& question2, hstring const& question3, hstring const& answer1, hstring const& answer2, hstring const& answer3);
+        winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::JsonResponse> Register(hstring const& email, hstring const& password, hstring const& name, hstring const& birthday, BikaClient::Utils::Gender const& gender, hstring const& question1, hstring const& question2, hstring const& question3, hstring const& answer1, hstring const& answer2, hstring const& answer3);
+        winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::JsonResponse> SetAvatar(Windows::Storage::Streams::IBuffer const& buffer, hstring const& fileType);
         const hstring ORIGINURL = L"https://picaapi.picacomic.com/";
     private:
 		hstring m_token;
         BikaClient::ImageQualityMode m_imageQuality = BikaClient::ImageQualityMode::HIGH;
-        hstring m_fileServer = DEFAULT_FILE_SERVER;
+        hstring m_fileServer = L"https://storage1.picacomic.com/static/";
         hstring m_appVersion = L"2.2.1.2.3.4";
         int32_t m_appChannel = 3;
         winrt::Windows::Foundation::Diagnostics::LoggingChannel m_loggingChannel = winrt::Windows::Foundation::Diagnostics::LoggingChannel(to_hstring(winrt::Windows::Foundation::GuidHelper::CreateNewGuid()));

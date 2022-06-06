@@ -56,13 +56,14 @@ namespace BikaClient
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.ActionResponse> PunchIn();
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.ActionResponse> SetSlogan(String slogan);
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.ActionResponse> SetPassword(String oldPassword, String newPassword);
-        Windows.Foundation.IAsyncOperation<BikaClient.Responses.IResponse> SetTitle(String userId, String title);
+        Windows.Foundation.IAsyncOperation<BikaClient.Responses.JsonResponse> SetTitle(String userId, String title);
         Windows.Foundation.IAsyncOperation<String> ReplyComment(String commentId, String content);
         Windows.Foundation.IAsyncOperation<String> GetReplyComment(String commentId, Int32 page);
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.JsonResponse> PlatformInit();
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.JsonResponse> Collections();
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.JsonResponse> Announcements(Int32 page);
-        Windows.Foundation.IAsyncOperation<BikaClient.Responses.IResponse> Register(String email, String password, String name, String birthday, BikaClient.Utils.Gender gender, String question1, String question2, String question3, String answer1, String answer2, String answer3);
+        Windows.Foundation.IAsyncOperation<BikaClient.Responses.JsonResponse> Register(String email, String password, String name, String birthday, BikaClient.Utils.Gender gender, String question1, String question2, String question3, String answer1, String answer2, String answer3);
+        Windows.Foundation.IAsyncOperation<BikaClient.Responses.JsonResponse> SetAvatar(Windows.Storage.Streams.IBuffer buffer,String fileType);
 
     }
 }

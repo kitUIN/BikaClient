@@ -24,7 +24,7 @@ namespace winrt::BikaClient::implementation
     /// <param name="token">用户凭证</param>
     BikaHttpClient::BikaHttpClient(hstring const& token)
     {
-        BikaHttpClient(token, BikaClient::ImageQualityMode::HIGH, hstring{ DEFAULT_FILE_SERVER });
+        BikaHttpClient(token, BikaClient::ImageQualityMode::HIGH, L"https://storage1.picacomic.com/static/");
     }
 
     /// <summary>
@@ -34,7 +34,7 @@ namespace winrt::BikaClient::implementation
     /// <param name="imageQuality">图片质量</param>
     BikaHttpClient::BikaHttpClient(hstring const& token, BikaClient::ImageQualityMode const& imageQuality)
     {
-        BikaHttpClient(token, imageQuality, hstring{ DEFAULT_FILE_SERVER });
+        BikaHttpClient(token, imageQuality, L"https://storage1.picacomic.com/static/");
     }
     /// <summary>
     /// 初始化
@@ -712,7 +712,7 @@ namespace winrt::BikaClient::implementation
         HttpLogOut(L"[Put]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return ActionResponse{ res };
     }
-    winrt::Windows::Foundation::IAsyncOperation<IResponse> BikaHttpClient::SetTitle(hstring const& userId, hstring const& title)
+    winrt::Windows::Foundation::IAsyncOperation<JsonResponse> BikaHttpClient::SetTitle(hstring const& userId, hstring const& title)
     {
         hstring api = L"users/" + userId + L"/title";
         JsonObject json;
@@ -725,7 +725,29 @@ namespace winrt::BikaClient::implementation
                 L"application/json" },
                 api);
         HttpLogOut(L"[Put]->/" + api + L"\nReturn:", res.Stringify().c_str());
-        co_return IResponse{ res };
+        co_return JsonResponse{ res };
+    }
+    /// <summary>
+    /// 设置头像
+    /// </summary>
+    /// <param name="buffer">图片缓冲流</param>
+    /// <param name="fileType">图片类型</param>
+    /// <returns></returns>
+    winrt::Windows::Foundation::IAsyncOperation<JsonResponse> BikaHttpClient::SetAvatar(Windows::Storage::Streams::IBuffer const& buffer, hstring const& fileType)
+    {
+        hstring api = L"users/avatar";
+        hstring avatar = L"data:image/" + fileType + L";base64," + CryptographicBuffer::EncodeToBase64String(buffer);
+        JsonObject json;
+        json.SetNamedValue(L"avatar", JsonValue::CreateStringValue(avatar));
+        JsonObject res = co_await PUT(
+            Uri{ ORIGINURL + api },
+            HttpStringContent{
+                json.Stringify(),
+                UnicodeEncoding::Utf8,
+                L"application/json" },
+                api);
+        HttpLogOut(L"[Put]->/" + api + L"\nReturn:", res.Stringify().c_str());
+        co_return JsonResponse{ res };
     }
     /// <summary>
     /// 回复评论
@@ -807,7 +829,7 @@ namespace winrt::BikaClient::implementation
         HttpLogOut(L"[GET]->/" + api + L"\nReturn:", res.Stringify().c_str());
         co_return ComicsResponse{ res };
     }
-    winrt::Windows::Foundation::IAsyncOperation<IResponse> BikaHttpClient::Register(hstring const& email, hstring const& password, hstring const& name, hstring const& birthday, BikaClient::Utils::Gender const& gender, hstring const& question1, hstring const& question2, hstring const& question3, hstring const& answer1, hstring const& answer2, hstring const& answer3)
+    winrt::Windows::Foundation::IAsyncOperation<JsonResponse> BikaHttpClient::Register(hstring const& email, hstring const& password, hstring const& name, hstring const& birthday, BikaClient::Utils::Gender const& gender, hstring const& question1, hstring const& question2, hstring const& question3, hstring const& answer1, hstring const& answer2, hstring const& answer3)
     {
         hstring api = L"auth/register";
         JsonObject json;
@@ -834,7 +856,7 @@ namespace winrt::BikaClient::implementation
                 L"application/json" },
                 api);
         HttpLogOut(L"[POST]->/" + api + L"\nReturn:", res.Stringify().c_str());
-        co_return IResponse{ res };
+        co_return JsonResponse{ res };
     }
 
 }
