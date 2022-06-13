@@ -26,7 +26,7 @@ namespace winrt::BikaClient::Blocks::implementation
         hstring Json();
     private:
 		hstring m_id = L"";
-        winrt::BikaClient::Date::BikaDate m_updatedAt{ nullptr };
+        winrt::BikaClient::Date::BikaDate m_updatedAt;
 		int32_t m_order = 0;
 		hstring m_title = L"";
 		hstring m_bookId = L"";

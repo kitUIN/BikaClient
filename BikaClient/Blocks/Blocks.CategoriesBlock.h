@@ -40,7 +40,7 @@ namespace winrt::BikaClient::Blocks::implementation
         bool m_active = false;
         bool m_isAuto = true;
         hstring m_json = L"";
-        winrt::BikaClient::Blocks::ImageBlock m_thumb{ nullptr };
+        winrt::BikaClient::Blocks::ImageBlock m_thumb;
         hstring m_fileServer = L"https://storage1.picacomic.com/static/";
     };
 }

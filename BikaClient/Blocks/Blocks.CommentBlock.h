@@ -41,13 +41,13 @@ namespace winrt::BikaClient::Blocks::implementation
 		hstring m_id = L"";
 		hstring m_content = L"";
         hstring m_comic = L"";
-		winrt::BikaClient::Blocks::UserBlock m_user{ nullptr };
-		winrt::BikaClient::Date::BikaDate m_createdAt{ nullptr };
+		winrt::BikaClient::Blocks::UserBlock m_user;
+		winrt::BikaClient::Date::BikaDate m_createdAt;
 		int32_t m_likesCount = 0;
 		int32_t m_commentsCount = 0;
-        winrt::BikaClient::Utils::BikaBoolean m_isTop{ nullptr };
-		winrt::BikaClient::Utils::BikaBoolean m_hide{ nullptr };
-		winrt::BikaClient::Utils::BikaBoolean m_isLiked{ nullptr };
+        winrt::BikaClient::Utils::BikaBoolean m_isTop;
+		winrt::BikaClient::Utils::BikaBoolean m_hide;
+		winrt::BikaClient::Utils::BikaBoolean m_isLiked;
         hstring m_fileServer = L"https://storage1.picacomic.com/static/";
 		hstring m_bookId = L"";
 		winrt::event<winrt::Windows::UI::Xaml::Data::PropertyChangedEventHandler> m_propertyChanged;

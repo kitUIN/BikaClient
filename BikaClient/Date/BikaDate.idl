@@ -30,6 +30,7 @@ namespace BikaClient.Date
     };
     runtimeclass BikaDate
     {
+        BikaDate();
         BikaDate(String date);
         BikaDate(String date, BikaClient.Date.TimeZone zone);
         String Raw{ get; };

@@ -28,6 +28,7 @@ namespace BikaClient.Utils
 	}
 	runtimeclass BikaBoolean
 	{
+		BikaBoolean();
 		BikaBoolean(Boolean isValue);
 		Boolean Bool;
 		Windows.UI.Xaml.Visibility Visibility{ get; };

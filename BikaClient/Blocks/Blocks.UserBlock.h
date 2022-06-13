@@ -70,10 +70,10 @@ namespace winrt::BikaClient::Blocks::implementation
         winrt::hstring m_character = L"";
         winrt::hstring m_id = L"";
         BikaClient::Date::TimeZone m_zone = BikaClient::Date::TimeZone::UTC8;
-        winrt::BikaClient::Utils::BikaBoolean m_verified{ false };
-        winrt::BikaClient::Utils::BikaBoolean m_isPunched{ false };
-        winrt::BikaClient::Date::BikaDate m_createAt{ nullptr };
-        winrt::BikaClient::Date::BikaDate m_birthday{ nullptr };
+        winrt::BikaClient::Utils::BikaBoolean m_verified;
+        winrt::BikaClient::Utils::BikaBoolean m_isPunched;
+        winrt::BikaClient::Date::BikaDate m_createAt;
+        winrt::BikaClient::Date::BikaDate m_birthday;
         winrt::hstring m_slogan = L"";
         winrt::hstring m_sloganOmit = L"";
         winrt::hstring m_levelExp = L"(? / ?)";

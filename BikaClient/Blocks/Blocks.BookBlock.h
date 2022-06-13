@@ -70,9 +70,9 @@ namespace winrt::BikaClient::Blocks::implementation
     private:
 		hstring m_id = L"";
 		hstring m_title = L"";
-        winrt::BikaClient::Blocks::UserBlock m_creater{ nullptr };
+        winrt::BikaClient::Blocks::UserBlock m_creater;
 		hstring m_description = L"";
-		winrt::BikaClient::Blocks::ImageBlock m_thumb{ nullptr };
+		winrt::BikaClient::Blocks::ImageBlock m_thumb;
 		hstring m_author = L"";
 		hstring m_chineseTeam = L"";
 		winrt::Windows::Foundation::Collections::IObservableVector<winrt::BikaClient::Blocks::TagBlock> m_categories = winrt::single_threaded_observable_vector<BikaClient::Blocks::TagBlock>();
@@ -81,9 +81,9 @@ namespace winrt::BikaClient::Blocks::implementation
 		hstring m_tagsString = L"";
 		int32_t m_pagesCount = 0;
 		int32_t m_epsCount = 0;
-        winrt::BikaClient::Utils::BikaBoolean m_finished{ false };
-		winrt::BikaClient::Date::BikaDate m_updatedAt{ nullptr };
-		winrt::BikaClient::Date::BikaDate m_createdAt{ nullptr };
+        winrt::BikaClient::Utils::BikaBoolean m_finished;
+		winrt::BikaClient::Date::BikaDate m_updatedAt;
+		winrt::BikaClient::Date::BikaDate m_createdAt;
 		bool m_allowDownload = false;
 		bool m_allowComment = false;
 		int32_t m_totalLikes = 0;

@@ -21,6 +21,7 @@ namespace BikaClient.Blocks
     }
     runtimeclass TagBlock : Windows.UI.Xaml.Data.INotifyPropertyChanged
     {
+        TagBlock();
         TagBlock(String tag);
         TagBlock(String tag, String id);
         String ID;
@@ -70,9 +71,10 @@ namespace BikaClient.Blocks
     }
     runtimeclass ComicBlock : Windows.UI.Xaml.Data.INotifyPropertyChanged, IBlockJson
     {
+        ComicBlock();
         ComicBlock(Windows.Data.Json.JsonObject json);
         ComicBlock(Windows.Data.Json.JsonObject json,String fileServer);
-        String Id;
+        String ID;
         String Title;
         String Author;
         Int32 TotalViews;
@@ -88,6 +90,7 @@ namespace BikaClient.Blocks
     }
     runtimeclass BookBlock : Windows.UI.Xaml.Data.INotifyPropertyChanged, IBlockJson
     {
+        BookBlock();
         BookBlock(Windows.Data.Json.JsonObject json);
         BookBlock(Windows.Data.Json.JsonObject json, String fileServer);
         String ID;
@@ -118,6 +121,7 @@ namespace BikaClient.Blocks
     }
     runtimeclass EpisodeBlock : Windows.UI.Xaml.Data.INotifyPropertyChanged, IBlockJson
     {
+        EpisodeBlock();
         EpisodeBlock(Windows.Data.Json.JsonObject json);
         String ID;
         BikaClient.Date.BikaDate UpdatedAt;
@@ -128,6 +132,7 @@ namespace BikaClient.Blocks
     }
     runtimeclass CommentBlock : Windows.UI.Xaml.Data.INotifyPropertyChanged, IBlockJson
     {
+        CommentBlock();
         CommentBlock(Windows.Data.Json.JsonObject json);
         String ID;
         String Content;

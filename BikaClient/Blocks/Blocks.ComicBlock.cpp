@@ -61,11 +61,11 @@ namespace winrt::BikaClient::Blocks::implementation
         if (json.HasKey(L"thumb"))  m_thumb = make<winrt::BikaClient::Blocks::implementation::ImageBlock>(json.GetNamedObject(L"thumb"), m_fileServer);
 
     }
-    hstring ComicBlock::Id()
+    hstring ComicBlock::ID()
     {
         return m_id;
     }
-    void ComicBlock::Id(hstring const& value)
+    void ComicBlock::ID(hstring const& value)
     {
         m_id = value;
     }
