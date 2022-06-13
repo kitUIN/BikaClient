@@ -62,7 +62,7 @@ namespace BikaClient.Blocks
         CategoriesBlock(Windows.Data.Json.JsonObject json,String fileServer);
         String Title;
         BikaClient.Blocks.ImageBlock Thumb;
-        String Id;
+        String ID;
         Boolean IsWeb;
         Boolean IsAuto;
         Boolean Active;

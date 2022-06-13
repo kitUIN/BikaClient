@@ -15,8 +15,8 @@ namespace winrt::BikaClient::Blocks::implementation
         void Title(hstring const& value);
         winrt::BikaClient::Blocks::ImageBlock Thumb();
         void Thumb(winrt::BikaClient::Blocks::ImageBlock const& value);
-        hstring Id();
-        void Id(hstring const& value);
+        hstring ID();
+        void ID(hstring const& value);
         bool IsWeb();
         void IsWeb(bool const& value);
         bool IsAuto();

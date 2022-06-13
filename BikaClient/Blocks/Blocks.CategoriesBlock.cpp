@@ -16,7 +16,7 @@ namespace winrt::BikaClient::Blocks::implementation
     void CategoriesBlock::Init(winrt::Windows::Data::Json::JsonObject const& json)
     {
         m_json = json.Stringify();
-        if (json.HasKey(L"_id")) Id(json.GetNamedString(L"_id"));
+        if (json.HasKey(L"_id")) ID(json.GetNamedString(L"_id"));
         if (json.HasKey(L"title")) Title(json.GetNamedString(L"title"));
         if (json.HasKey(L"description")) Description(json.GetNamedString(L"description"));
         if (json.HasKey(L"active")) Active(json.GetNamedBoolean(L"active"));
@@ -45,11 +45,11 @@ namespace winrt::BikaClient::Blocks::implementation
         m_thumb = value;
         m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Thumb" });
     }
-    hstring CategoriesBlock::Id()
+    hstring CategoriesBlock::ID()
     {
         return m_id;
     }
-    void CategoriesBlock::Id(hstring const& value)
+    void CategoriesBlock::ID(hstring const& value)
     {
         m_id = value;
         m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Id" });
