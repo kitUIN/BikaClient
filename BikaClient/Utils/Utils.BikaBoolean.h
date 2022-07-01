@@ -12,6 +12,9 @@ namespace winrt::BikaClient::Utils::implementation
         void Bool(bool value);
         bool Bool();
         winrt::Windows::UI::Xaml::Visibility Visibility();
+        winrt::Windows::UI::Xaml::Visibility Reverse();
+        void Visibility(winrt::Windows::UI::Xaml::Visibility const& value);
+        void Reverse(winrt::Windows::UI::Xaml::Visibility const& value);
     private:
 		bool m_isValue = false;
     };

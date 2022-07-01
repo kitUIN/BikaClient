@@ -31,14 +31,19 @@ namespace winrt::BikaClient::Responses::implementation
                 }
             }
             JsonObject comments = data.GetNamedObject(L"comments");
-            for (auto y : comments.GetNamedArray(L"docs"))
-            {
-                m_comments.Append(winrt::make<winrt::BikaClient::Blocks::implementation::CommentBlock>(y.GetObject(), m_fileServer));
-            }
             if (comments.HasKey(L"total")) m_total = static_cast<int32_t>(comments.GetNamedNumber(L"total"));
             if (comments.HasKey(L"limit")) m_limit = static_cast<int32_t>(comments.GetNamedNumber(L"limit"));
             if (comments.HasKey(L"page")) m_page = atoi(to_string(comments.GetNamedString(L"page")).c_str());
             if (comments.HasKey(L"pages")) m_pages = static_cast<int32_t>(comments.GetNamedNumber(L"pages"));
+            int32_t order = m_total;
+
+            for (auto y : comments.GetNamedArray(L"docs"))
+            {
+                auto _comment = winrt::make<winrt::BikaClient::Blocks::implementation::CommentBlock>(y.GetObject(), m_fileServer);
+                _comment.Order(order--);
+                m_comments.Append(_comment);
+            }
+
         }
     }
 

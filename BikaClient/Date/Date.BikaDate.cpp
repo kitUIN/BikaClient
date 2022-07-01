@@ -18,9 +18,8 @@ namespace winrt::BikaClient::Date::implementation
     }
     BikaDate::BikaDate(hstring const& date,BikaClient::Date::TimeZone const& zone)
     {
-        SetTimeZone(zone);
         m_raw = date;
-        m_dateTime = GetTime();
+        SetTimeZone(zone);
     }
     hstring BikaDate::GetTime()
     {
@@ -76,13 +75,12 @@ namespace winrt::BikaClient::Date::implementation
     }
     hstring BikaDate::GetDateTime()
     {
-        return m_dateTime + L" (" + m_timeZone + L")";
-    }
-    hstring BikaDate::GetDateTime(BikaClient::Date::TimeZone const& zone)
-    {
-        SetTimeZone(zone);
-        m_dateTime = GetTime();
+        OutputDebugStringW(m_dateTime.c_str());
         return m_dateTime;
+    }
+    hstring BikaDate::GetDateTimeWithZone()
+    {
+        return m_dateTime + L" (" + m_timeZone + L")";
     }
     hstring BikaDate::Raw()
     {

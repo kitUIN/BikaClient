@@ -140,10 +140,13 @@ namespace BikaClient.Blocks
         BikaClient.Blocks.UserBlock User;
         BikaClient.Date.BikaDate CreatedAt;
         Int32 LikesCount;
+        Int32 Order;
         Int32 CommentsCount;
         BikaClient.Utils.BikaBoolean IsTop;
         BikaClient.Utils.BikaBoolean Hide;
         BikaClient.Utils.BikaBoolean IsLiked;
         String BookId;
+        Windows.Foundation.Collections.IObservableVector<BikaClient.Blocks.CommentBlock> ReplyComments;
+
     }
 }

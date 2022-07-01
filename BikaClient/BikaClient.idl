@@ -53,12 +53,14 @@ namespace BikaClient
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.ActionResponse> Like(String bookId);
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.CommentsResponse> Comments(String bookId, Int32 page);
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.ActionResponse> SendComments(String bookId, String content);
+        Windows.Foundation.IAsyncOperation<BikaClient.Responses.ActionResponse> LikeComments(String commentId);
+        Windows.Foundation.IAsyncOperation<BikaClient.Responses.ActionResponse> ReportComments(String commentId);
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.ActionResponse> PunchIn();
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.ActionResponse> SetSlogan(String slogan);
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.ActionResponse> SetPassword(String oldPassword, String newPassword);
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.JsonResponse> SetTitle(String userId, String title);
-        Windows.Foundation.IAsyncOperation<String> ReplyComment(String commentId, String content);
-        Windows.Foundation.IAsyncOperation<String> GetReplyComment(String commentId, Int32 page);
+        Windows.Foundation.IAsyncOperation<BikaClient.Responses.ActionResponse> ReplyComment(String commentId, String content);
+        Windows.Foundation.IAsyncOperation<BikaClient.Responses.CommentsResponse> GetReplyComment(String commentId, Int32 page);
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.JsonResponse> PlatformInit();
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.JsonResponse> Collections();
         Windows.Foundation.IAsyncOperation<BikaClient.Responses.JsonResponse> Announcements(Int32 page);

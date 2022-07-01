@@ -26,13 +26,18 @@ namespace winrt::BikaClient::Blocks::implementation
         void LikesCount(int32_t value);
         int32_t CommentsCount();
         void CommentsCount(int32_t value);
+
         winrt::BikaClient::Utils::BikaBoolean IsTop();
         void IsTop(winrt::BikaClient::Utils::BikaBoolean const& value);
         winrt::BikaClient::Utils::BikaBoolean Hide();
         void Hide(winrt::BikaClient::Utils::BikaBoolean const& value);
         winrt::BikaClient::Utils::BikaBoolean IsLiked();
         void IsLiked(winrt::BikaClient::Utils::BikaBoolean const& value);
+        winrt::Windows::Foundation::Collections::IObservableVector<winrt::BikaClient::Blocks::CommentBlock> ReplyComments();
+        void ReplyComments(winrt::Windows::Foundation::Collections::IObservableVector<winrt::BikaClient::Blocks::CommentBlock> const& value);
         hstring BookId();
+        int32_t Order();
+        void Order(int32_t value);
         void BookId(hstring const& value);
         winrt::event_token PropertyChanged(winrt::Windows::UI::Xaml::Data::PropertyChangedEventHandler const& handler);
         void PropertyChanged(winrt::event_token const& token) noexcept;
@@ -44,10 +49,12 @@ namespace winrt::BikaClient::Blocks::implementation
 		winrt::BikaClient::Blocks::UserBlock m_user;
 		winrt::BikaClient::Date::BikaDate m_createdAt;
 		int32_t m_likesCount = 0;
+		int32_t m_order = 0;
 		int32_t m_commentsCount = 0;
         winrt::BikaClient::Utils::BikaBoolean m_isTop;
 		winrt::BikaClient::Utils::BikaBoolean m_hide;
 		winrt::BikaClient::Utils::BikaBoolean m_isLiked;
+        winrt::Windows::Foundation::Collections::IObservableVector<winrt::BikaClient::Blocks::CommentBlock> m_replyComments = winrt::single_threaded_observable_vector<winrt::BikaClient::Blocks::CommentBlock>();
         hstring m_fileServer = L"https://storage1.picacomic.com/static/";
 		hstring m_bookId = L"";
 		winrt::event<winrt::Windows::UI::Xaml::Data::PropertyChangedEventHandler> m_propertyChanged;

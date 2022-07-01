@@ -22,5 +22,20 @@ namespace winrt::BikaClient::Utils::implementation
         if(m_isValue) return winrt::Windows::UI::Xaml::Visibility::Visible;
 		else return winrt::Windows::UI::Xaml::Visibility::Collapsed;
     }
+    winrt::Windows::UI::Xaml::Visibility BikaBoolean::Reverse()
+    {
+        if (m_isValue) return winrt::Windows::UI::Xaml::Visibility::Collapsed;
+        else return winrt::Windows::UI::Xaml::Visibility::Visible;
+    }
+    void BikaBoolean::Reverse(winrt::Windows::UI::Xaml::Visibility const& value)
+    {
+        if (value == winrt::Windows::UI::Xaml::Visibility::Visible) m_isValue = false;
+        else m_isValue = true;
+    }
+    void BikaBoolean::Visibility(winrt::Windows::UI::Xaml::Visibility const& value)
+    {
+        if (value == winrt::Windows::UI::Xaml::Visibility::Visible) m_isValue = true;
+        else m_isValue = false;
+    }
 
 }

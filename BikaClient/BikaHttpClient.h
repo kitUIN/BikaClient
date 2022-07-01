@@ -56,12 +56,14 @@ namespace winrt::BikaClient::implementation
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::ActionResponse> Like(hstring const& bookId);
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::CommentsResponse> Comments(hstring const& bookId, int32_t const& page);
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::ActionResponse> SendComments(hstring const& bookId, hstring const& content);
+        winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::ActionResponse> LikeComments(hstring const& commentId);
+        winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::ActionResponse> ReportComments(hstring const& commentId);
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::ActionResponse> PunchIn();
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::ActionResponse> SetSlogan(hstring const& slogan);
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::ActionResponse> SetPassword(hstring const& oldPassword, hstring const& newPassword);
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::JsonResponse> SetTitle(hstring const& userId, hstring const& title);
-        winrt::Windows::Foundation::IAsyncOperation<hstring> ReplyComment(hstring const& commentId, hstring const& content);
-        winrt::Windows::Foundation::IAsyncOperation<hstring> GetReplyComment(hstring const& commentId, int32_t const& page);
+        winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::ActionResponse> ReplyComment(hstring const& commentId, hstring const& content);
+        winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::CommentsResponse> GetReplyComment(hstring const& commentId, int32_t const& page);
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::JsonResponse> PlatformInit();
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::JsonResponse> Collections();
         winrt::Windows::Foundation::IAsyncOperation<BikaClient::Responses::JsonResponse> Announcements(int32_t const& page);

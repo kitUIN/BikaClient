@@ -35,6 +35,7 @@ namespace winrt::BikaClient::Blocks::implementation
     void CommentBlock::ID(hstring const& value)
     {
         m_id = value;
+        m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"ID" });
     }
     hstring CommentBlock::Content()
     {
@@ -43,6 +44,7 @@ namespace winrt::BikaClient::Blocks::implementation
     void CommentBlock::Content(hstring const& value)
     {
         m_content = value;
+        m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Content" });
     }
     hstring CommentBlock::Comic()
     {
@@ -51,6 +53,7 @@ namespace winrt::BikaClient::Blocks::implementation
     void CommentBlock::Comic(hstring const& value)
     {
         m_comic = value;
+        m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Comic" });
     }
     winrt::BikaClient::Blocks::UserBlock CommentBlock::User()
     {
@@ -59,6 +62,7 @@ namespace winrt::BikaClient::Blocks::implementation
     void CommentBlock::User(winrt::BikaClient::Blocks::UserBlock const& value)
     {
         m_user = value;
+        m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"User" });
     }
     winrt::BikaClient::Date::BikaDate CommentBlock::CreatedAt()
     {
@@ -67,6 +71,7 @@ namespace winrt::BikaClient::Blocks::implementation
     void CommentBlock::CreatedAt(winrt::BikaClient::Date::BikaDate const& value)
     {
         m_createdAt = value;
+        m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"CreatedAt" });
     }
     int32_t CommentBlock::LikesCount()
     {
@@ -75,6 +80,7 @@ namespace winrt::BikaClient::Blocks::implementation
     void CommentBlock::LikesCount(int32_t value)
     {
         m_likesCount = value;
+        m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"LikesCount" });
     }
     int32_t CommentBlock::CommentsCount()
     {
@@ -83,6 +89,17 @@ namespace winrt::BikaClient::Blocks::implementation
     void CommentBlock::CommentsCount(int32_t value)
     {
         m_commentsCount = value;
+        m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"CommentsCount" });
+    }
+
+    int32_t CommentBlock::Order()
+    {
+        return m_order;
+    }
+    void CommentBlock::Order(int32_t value)
+    {
+        m_order = value;
+        m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Order" });
     }
     winrt::BikaClient::Utils::BikaBoolean CommentBlock::IsTop()
     {
@@ -91,6 +108,7 @@ namespace winrt::BikaClient::Blocks::implementation
     void CommentBlock::IsTop(winrt::BikaClient::Utils::BikaBoolean const& value)
     {
         m_isTop = value;
+        m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"IsLiIsTopked" });
     }
     winrt::BikaClient::Utils::BikaBoolean CommentBlock::Hide()
     {
@@ -99,6 +117,7 @@ namespace winrt::BikaClient::Blocks::implementation
     void CommentBlock::Hide(winrt::BikaClient::Utils::BikaBoolean const& value)
     {
         m_hide = value;
+        m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"Hide" });
     }
     winrt::BikaClient::Utils::BikaBoolean CommentBlock::IsLiked()
     {
@@ -107,6 +126,16 @@ namespace winrt::BikaClient::Blocks::implementation
     void CommentBlock::IsLiked(winrt::BikaClient::Utils::BikaBoolean const& value)
     {
         m_isLiked = value;
+        m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"IsLiked" });
+    }
+    winrt::Windows::Foundation::Collections::IObservableVector<winrt::BikaClient::Blocks::CommentBlock> CommentBlock::ReplyComments()
+    {
+        return m_replyComments;
+    }
+    void CommentBlock::ReplyComments(winrt::Windows::Foundation::Collections::IObservableVector<winrt::BikaClient::Blocks::CommentBlock> const& value)
+    {
+        m_replyComments = value;
+        m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"ReplyComments" });
     }
     hstring CommentBlock::BookId()
     {
@@ -115,6 +144,7 @@ namespace winrt::BikaClient::Blocks::implementation
     void CommentBlock::BookId(hstring const& value)
     {
         m_bookId = value;
+        m_propertyChanged(*this, Windows::UI::Xaml::Data::PropertyChangedEventArgs{ L"BookId" });
     }
     hstring CommentBlock::Json()
     {

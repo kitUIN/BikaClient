@@ -14,7 +14,7 @@ namespace winrt::BikaClient::Date::implementation
         BikaClient::Date::TimeZone GetTimeZone();
         void SetTimeZone(BikaClient::Date::TimeZone const& zone);
         hstring GetDateTime();
-        hstring GetDateTime(BikaClient::Date::TimeZone const& zone);
+        hstring GetDateTimeWithZone();
         hstring Raw();
     private:
         hstring m_raw = L"1999-01-01T00:00:00.000Z";

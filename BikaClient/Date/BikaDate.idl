@@ -35,8 +35,8 @@ namespace BikaClient.Date
         BikaDate(String date, BikaClient.Date.TimeZone zone);
         String Raw{ get; };
         void SetTimeZone(BikaClient.Date.TimeZone zone);
-        String GetDateTime();
-        String GetDateTime(BikaClient.Date.TimeZone zone);
+        String GetDateTime{ get; };
+        String GetDateTimeWithZone{ get; };
         String GetTimeZoneString();
         BikaClient.Date.TimeZone GetTimeZone();
     }

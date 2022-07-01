@@ -31,7 +31,8 @@ namespace BikaClient.Utils
 		BikaBoolean();
 		BikaBoolean(Boolean isValue);
 		Boolean Bool;
-		Windows.UI.Xaml.Visibility Visibility{ get; };
+		Windows.UI.Xaml.Visibility Visibility;
+		Windows.UI.Xaml.Visibility Reverse;
 
 	}
 }
