@@ -4,7 +4,7 @@ icon: home
 title: 项目主页
 heroImage: /logo.png
 heroText: BikaClient
-tagline: ✨第三方哔咔漫画API-Nuget包✨
+tagline: ✨第三方哔咔漫画API✨
 actions:
   - text: 使用指南 💡
     link: /guide

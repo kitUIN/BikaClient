@@ -3,7 +3,7 @@ import theme from "./theme";
 
 export default defineUserConfig({
   lang: "zh-CN",
-  title: "主题演示",
+  title: "BikaClient",
   description: "BikaClient的文档",
 
   base: "/",
